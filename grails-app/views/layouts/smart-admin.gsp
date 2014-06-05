@@ -32,11 +32,11 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
 		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/demo.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.css">
 
 		<!-- FAVICONS -->
-		<link rel="shortcut icon" href="${request.contextPath}/smart-admin/img/favicon/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="${request.contextPath}/smart-admin/img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="${request.contextPath}/smart-admin/image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="${request.contextPath}/smart-admin/image/x-icon">
 
 		<!-- GOOGLE FONT -->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
@@ -63,13 +63,13 @@
 					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
 					<div class="btn-group btn-group-justified" data-toggle="buttons">
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="ajax/notify/mail.html">
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/mail.html">
 							Msgs (14) </label>
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="ajax/notify/notifications.html">
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/notifications.html">
 							notify (3) </label>
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="ajax/notify/tasks.html">
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/tasks.html">
 							Tasks (4) </label>
 					</div>
 
@@ -239,7 +239,7 @@
 							<li>
 								<a href="table.html">Normal Tables</a>
 							</li>
-							<li>
+							<li class="active">
 								<a href="datatables.html">Data Tables</a>
 							</li>
 						</ul>
@@ -401,7 +401,7 @@
 							<li>
 								<a href="error500.html">Error 500</a>
 							</li>
-							<li class="active">
+							<li>
 								<a href="blank_.html">Blank Page</a>
 							</li>
 							<li>
@@ -437,43 +437,9 @@
 		<!-- END NAVIGATION -->
 
 		<!-- MAIN PANEL -->
+		<!-- MAIN PANEL -->
 		<div id="main" role="main">
-
-			<!-- RIBBON -->
-			<div id="ribbon">
-
-				<span class="ribbon-button-alignment"> <span id="refresh" class="btn btn-ribbon" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true"><i class="fa fa-refresh"></i></span> </span>
-
-				<!-- breadcrumb -->
-				<ol class="breadcrumb">
-					<li>
-						Blank Page
-					</li>
-				</ol>
-				<!-- end breadcrumb -->
-
-				<!-- You can also add more buttons to the
-				ribbon for further usability
-
-				Example below:
-
-				<span class="ribbon-button-alignment pull-right">
-				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
-				</span> -->
-
-			</div>
-			<!-- END RIBBON -->
-
-			<!-- MAIN CONTENT -->
-			<div id="content">
-
-				<g:layoutBody/>
-
-			</div>
-			<!-- END MAIN CONTENT -->
-
+			<g:layoutBody/>
 		</div>
 		<!-- END MAIN PANEL -->
 
@@ -511,14 +477,14 @@
 		<script data-pace-options='{ "restartOnRequestAfter": true }' src="${request.contextPath}/smart-admin/js/plugin/pace/pace.min.js"></script>
 
 		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
-		<script src="${request.contextPath}/smart-admin/http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script>
 			if (!window.jQuery) {
 				document.write('<script src="${request.contextPath}/smart-admin/js/libs/jquery-2.0.2.min.js"><\/script>');
 			}
 		</script>
 
-		<script src="${request.contextPath}/smart-admin/http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 		<script>
 			if (!window.jQuery.ui) {
 				document.write('<script src="${request.contextPath}/smart-admin/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
@@ -526,7 +492,7 @@
 		</script>
 
 		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
-		<script src="${request.contextPath}/smart-admin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+		<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
 
 		<!-- BOOTSTRAP JS -->
 		<script src="${request.contextPath}/smart-admin/js/bootstrap/bootstrap.min.js"></script>
@@ -550,7 +516,7 @@
 		<script src="${request.contextPath}/smart-admin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
 
 		<!-- JQUERY SELECT2 INPUT -->
-		<script src="${request.contextPath}/smart-admin/js/plugin/select2/select2.min.js"></script>
+		<script src="js/plugin/select2/select2.min.js"></script>
 
 		<!-- JQUERY UI + Bootstrap Slider -->
 		<script src="${request.contextPath}/smart-admin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
@@ -573,9 +539,14 @@
 		<!-- MAIN APP JS FILE -->
 		<script src="${request.contextPath}/smart-admin/js/app.js"></script>
 
-		<!-- PAGE RELATED PLUGIN(S) 
-		<script src="${request.contextPath}/smart-admin/..."></script>-->
-
+		<!-- PAGE RELATED PLUGIN(S) -->
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/jquery.dataTables-cust.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/ColReorder.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/FixedColumns.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/ColVis.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/ZeroClipboard.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/media/js/TableTools.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/DT_bootstrap.js"></script>
 		
 
 		<script type="text/javascript">
@@ -586,29 +557,98 @@
 			
 			pageSetUp();
 			
+			/*
+			 * BASIC
+			 */
+			$('#dt_basic').dataTable({
+				"sPaginationType" : "bootstrap_full"
+			});
+	
+			/* END BASIC */
+	
+			/* Add the events etc before DataTables hides a column */
+			$("#datatable_fixed_column thead input").keyup(function() {
+				oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+			});
+	
+			$("#datatable_fixed_column thead input").each(function(i) {
+				this.initVal = this.value;
+			});
+			$("#datatable_fixed_column thead input").focus(function() {
+				if (this.className == "search_init") {
+					this.className = "";
+					this.value = "";
+				}
+			});
+			$("#datatable_fixed_column thead input").blur(function(i) {
+				if (this.value == "") {
+					this.className = "search_init";
+					this.value = this.initVal;
+				}
+			});		
 			
 	
+			var oTable = $('#datatable_fixed_column').dataTable({
+				"sDom" : "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+				//"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
+				"oLanguage" : {
+					"sSearch" : "Search all columns:"
+				},
+				"bSortCellsTop" : true
+			});		
 			
+	
+	
+			/*
+			 * COL ORDER
+			 */
+			$('#datatable_col_reorder').dataTable({
+				"sPaginationType" : "bootstrap",
+				"sDom" : "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+				"fnInitComplete" : function(oSettings, json) {
+					$('.ColVis_Button').addClass('btn btn-default btn-sm').html('Columns <i class="icon-arrow-down"></i>');
+				}
+			});
+			
+			/* END COL ORDER */
+	
+			/* TABLE TOOLS */
+			$('#datatable_tabletools').dataTable({
+				"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+				"oTableTools" : {
+					"aButtons" : ["copy", "print", {
+						"sExtends" : "collection",
+						"sButtonText" : 'Save <span class="caret" />',
+						"aButtons" : ["csv", "xls", "pdf"]
+					}],
+					"sSwfPath" : "${request.contextPath}/smart-admin/js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+				},
+				"fnInitComplete" : function(oSettings, json) {
+					$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function() {
+						$(this).addClass('btn-sm btn-default');
+					});
+				}
+			});
 		
-		
+		/* END TABLE TOOLS */
 		})
 
 		</script>
 
 		<!-- Your GOOGLE ANALYTICS CODE Below -->
 		<script type="text/javascript">
-			var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-				_gaq.push(['_trackPageview']);
-			
-			(function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script');
+ga.type = 'text/javascript';
+ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+})();
 
 		</script>
 
