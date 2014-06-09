@@ -91,7 +91,8 @@
 									<!-- widget content -->
 									<div class="widget-body no-padding">
 										<div class="widget-body-toolbar">
-				
+											<g:link class="btn btn-primary" action="create" resource="${searchableFileInstance}"><g:message code="default.button.create.label" default="Add Searchable file" /></g:link>
+												
 										</div>
 										
 										<table id="dt_basic" class="table table-striped table-bordered table-hover">

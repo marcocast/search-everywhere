@@ -4,14 +4,10 @@ class BootStrap {
 		def userHomeFolder  = System.getProperty("user.home")
 		def searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere"
 		if(!new File(searchEverywhereHomeFolder).exists()){
-			println  "creating search-everywhere home folder"
-			new File( userHomeFolder + "/.search-everywhere" ).mkdir()
+			new File( searchEverywhereHomeFolder ).mkdir()
+			new File( searchEverywhereHomeFolder + "/searchable-files" ).mkdir()
 		}
-		println  "done"
 	}
-
-
-
 
 
 	def destroy = {

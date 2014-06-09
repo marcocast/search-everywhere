@@ -22,14 +22,14 @@
 		*/
 	
 		// Load FLOAT dependencies (related to page)
-		loadScript("js/plugin/flot/jquery.flot.cust.js", loadFlotResize);
+		loadScript("js/plugin/flot/jquery.flot.cust.min.js", loadFlotResize);
 	
 		function loadFlotResize() {
-			loadScript("js/plugin/flot/jquery.flot.resize.js", loadFlotToolTip);
+			loadScript("js/plugin/flot/jquery.flot.resize.min.js", loadFlotToolTip);
 		}
 	
 		function loadFlotToolTip() {
-			loadScript("js/plugin/flot/jquery.flot.tooltip.js", generateRandomFlot);
+			loadScript("js/plugin/flot/jquery.flot.tooltip.min.js", generateRandomFlot);
 		}
 
 		function generateRandomFlot(){

@@ -8,73 +8,193 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-searchableFile" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-searchableFile" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list searchableFile">
-			
-				<g:if test="${searchableFileInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="searchableFile.name.label" default="Name" /></span>
+		
+		
+		<div id="content">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark">
+							<i class="fa fa-edit fa-fw "></i> 
+								Forms 
+							<span>> 
+								Form Elements
+							</span>
+						</h1>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+						<ul id="sparks" class="">
+							<li class="sparks-info">
+								<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+								<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+									1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+								</div>
+							</li>
+							<li class="sparks-info">
+								<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+								<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+									110,150,300,130,400,240,220,310,220,300, 270, 210
+								</div>
+							</li>
+							<li class="sparks-info">
+								<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+								<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+									110,150,300,130,400,240,220,310,220,300, 270, 210
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				
+				
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${searchableFileInstance}" field="name"/></span>
+				
+					<!-- END ROW -->
+				
+					<!-- START ROW -->
+				
+					<div class="row">
+				
+						<!-- NEW COL START -->
+						<article class="col-sm-12 col-md-12 col-lg-6">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+									<h2>Basic Form Elements </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+				
+										<g:form url="[resource:searchableFileInstance, action:'delete']" method="DELETE" class="smart-form">
+											<header>
+												Standard Form Header
+											</header>
+				
+											<fieldset>
+												
+												<section>
+													<label class="label">Name</label>
+													<label class="input state-disabled">
+														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="name"/>">
+													</label>
+												</section>
+				
+												<section>
+													<label class="label">File path</label>
+													<label class="input state-disabled">
+														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="path"/>">
+													</label>
+												</section>
+				
+											
+											</fieldset>
+				
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${searchableFileInstance?.url}">
-				<li class="fieldcontain">
-					<span id="url-label" class="property-label"><g:message code="searchableFile.url.label" default="Url" /></span>
 					
-						<span class="property-value" aria-labelledby="url-label"><g:fieldValue bean="${searchableFileInstance}" field="url"/></span>
 					
-				</li>
-				</g:if>
-			
-				<g:if test="${searchableFileInstance?.path}">
-				<li class="fieldcontain">
-					<span id="path-label" class="property-label"><g:message code="searchableFile.path.label" default="Path" /></span>
+											<fieldset>
+												
+												
+												<section>
+													<label class="label">URL</label>
+													<label class="input state-disabled">
+														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="url"/>">
+													</label>
+												</section>
+												
+												<section>
+													<label class="label">User</label>
+													<label class="input state-disabled">
+														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="user"/>">
+													</label>
+												</section>
+				
+												<section>
+													<label class="label">Password</label>
+													<label class="input state-disabled">
+														
+														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="password"/>">
+													</label>
+												</section>
+												
+												
+												
+												
+											</fieldset>
+				
+											
+											<footer>
+												<fieldset class="buttons">
+													<g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+													<g:link class="btn btn-primary" action="edit" resource="${searchableFileInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+													<g:link class="btn btn-default" action="index" resource="${searchableFileInstance}">List</g:link>
+				
+												</fieldset>
+											</footer>
+										</g:form>	
+											
+											
+										
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+				
+						</article>
+						<!-- END COL -->
+				
+						
+				
+					</div>
+				
+					<!-- END ROW -->
+				
 					
-						<span class="property-value" aria-labelledby="path-label"><g:fieldValue bean="${searchableFileInstance}" field="path"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${searchableFileInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="searchableFile.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${searchableFileInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${searchableFileInstance?.user}">
-				<li class="fieldcontain">
-					<span id="user-label" class="property-label"><g:message code="searchableFile.user.label" default="User" /></span>
-					
-						<span class="property-value" aria-labelledby="user-label"><g:fieldValue bean="${searchableFileInstance}" field="user"/></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form url="[resource:searchableFileInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${searchableFileInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
+				
+				</section>
+				<!-- end widget grid -->
+
+
+			</div>
+		
+		
+		
+		
 	</body>
 </html>

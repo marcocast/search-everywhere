@@ -4,16 +4,10 @@
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> SmartAdmin </title>
+		<title> Search Everywhere </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
-
-		<!-- Use the correct meta names below for your web application
-			 Ref: http://davidbcalhoun.com/2010/viewport-metatag 
-			 
-		<meta name="HandheldFriendly" content="True">
-		<meta name="MobileOptimized" content="320">-->
-		
+			
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<!-- Basic Styles -->
@@ -21,25 +15,42 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/font-awesome.min.css">
 
 		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
-		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/smartadmin-production.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/smartadmin-skins.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/smartadmin-skins.min.css">
 
 		<!-- SmartAdmin RTL Support is under construction
-		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->
+			 This RTL CSS will be released in version 1.5
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> -->
 
 		<!-- We recommend you use "your_style.css" to override SmartAdmin
 		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
 		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
 
 		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="${request.contextPath}/smart-admin/css/demo.min.css">
 
 		<!-- FAVICONS -->
-		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="${request.contextPath}/smart-admin/image/x-icon">
-		<link rel="icon" href="img/favicon/favicon.ico" type="${request.contextPath}/smart-admin/image/x-icon">
+		<link rel="shortcut icon" href="${request.contextPath}/smart-admin/img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="${request.contextPath}/smart-admin/img/favicon/favicon.ico" type="image/x-icon">
 
 		<!-- GOOGLE FONT -->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+		<!-- Specifying a Webpage Icon for Web Clip 
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="${request.contextPath}/smart-admin/img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="${request.contextPath}/smart-admin/img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="${request.contextPath}/smart-admin/img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="${request.contextPath}/smart-admin/img/splash/touch-icon-ipad-retina.png">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="${request.contextPath}/smart-admin/img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="${request.contextPath}/smart-admin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="${request.contextPath}/smart-admin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 
 	</head>
 	<body class="">
@@ -98,10 +109,10 @@
 			</div>
 
 			<!-- projects dropdown -->
-			<div id="project-context">
+			<div class="project-context hidden-xs">
 
 				<span class="label">Projects:</span>
-				<span id="project-selector" class="popover-trigger-element dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
 
 				<!-- Suggestion: populate this list with fetch and push technique -->
 				<ul class="dropdown-menu">
@@ -126,16 +137,47 @@
 
 			<!-- pulled right: nav area -->
 			<div class="pull-right">
-
+				
 				<!-- collapse menu button -->
 				<div id="hide-menu" class="btn-header pull-right">
-					<span> <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
 				</div>
 				<!-- end collapse menu -->
+				
+				<!-- #MOBILE -->
+				<!-- Top menu profile link : this shows only when top menu is active -->
+				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+					<li class="">
+						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+							<img src="${request.contextPath}/smart-admin/img/avatars/sunny.png" alt="John Doe" class="online" />  
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
 
 				<!-- logout button -->
 				<div id="logout" class="btn-header transparent pull-right">
-					<span> <a href="login.html" title="Sign Out"><i class="fa fa-sign-out"></i></a> </span>
+					<span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
 				</div>
 				<!-- end logout button -->
 
@@ -146,8 +188,30 @@
 				<!-- end search mobile button -->
 
 				<!-- input: search field -->
-				<form action="#search.html" class="header-search pull-right">
-					<input type="text" placeholder="Find reports and more" id="search-fld">
+				<form action="search.html" class="header-search pull-right">
+					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"]'>
 					<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>
@@ -155,19 +219,25 @@
 				</form>
 				<!-- end input: search field -->
 
-				<!-- multiple lang dropdown : find all flags in the image folder -->
+				<!-- fullscreen button -->
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+				<!-- end fullscreen button -->
+
+				<!-- multiple lang dropdown : find all flags in the flags page -->
 				<ul class="header-dropdown-list hidden-xs">
 					<li>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img alt="" src="${request.contextPath}/smart-admin/img/flags/us.png"> <span> US </span> <i class="fa fa-angle-down"></i> </a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="${request.contextPath}/smart-admin/img/blank.gif" class="flag flag-us" alt="United States"> <span> US </span> <i class="fa fa-angle-down"></i> </a>
 						<ul class="dropdown-menu pull-right">
 							<li class="active">
-								<a href="javascript:void(0);"><img alt="" src="${request.contextPath}/smart-admin/img/flags/us.png"> US</a>
+								<a href="javascript:void(0);"><img src="${request.contextPath}/smart-admin/img/blank.gif" class="flag flag-us" alt="United States"> US</a>
 							</li>
 							<li>
-								<a href="javascript:void(0);"><img alt="" src="${request.contextPath}/smart-admin/img/flags/es.png"> Spanish</a>
+								<a href="javascript:void(0);"><img src="${request.contextPath}/smart-admin/img/blank.gif" class="flag flag-es" alt="Spanish"> Spanish</a>
 							</li>
 							<li>
-								<a href="javascript:void(0);"><img alt="" src="${request.contextPath}/smart-admin/img/flags/de.png"> German</a>
+								<a href="javascript:void(0);"><img src="${request.contextPath}/smart-admin/img/blank.gif" class="flag flag-de" alt="German"> German</a>
 							</li>
 						</ul>
 					</li>
@@ -188,7 +258,7 @@
 			<div class="login-info">
 				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
 					
-					<a href="javascript:void(0);" id="show-shortcut">
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
 						<img src="${request.contextPath}/smart-admin/img/avatars/sunny.png" alt="me" class="online" /> 
 						<span>
 							john.doe 
@@ -209,7 +279,7 @@
 			<nav>
 				<!-- NOTE: Notice the gaps after each icon usage <i></i>..
 				Please note that these links work a bit different than
-				traditional hre="" links. See documentation for details.
+				traditional href="" links. See documentation for details.
 				-->
 
 				<ul>
@@ -231,16 +301,22 @@
 							<li>
 								<a href="inline-charts.html">Inline Charts</a>
 							</li>
+							<li>
+								<a href="dygraphs.html">Dygraphs <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
+							</li>
 						</ul>
 					</li>
-					<li>
+					<li class="active">
 						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
 						<ul>
 							<li>
 								<a href="table.html">Normal Tables</a>
 							</li>
 							<li class="active">
-								<a href="datatables.html">Data Tables</a>
+								<a href="datatables.html">Data Tables <span class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
+							</li>
+							<li>
+								<a href="jqgrid.html">Jquery Grid</a>
 							</li>
 						</ul>
 					</li>
@@ -269,7 +345,10 @@
 								<a href="other-editors.html">Bootstrap Editors</a>
 							</li>
 							<li>
-								<a href="dropzone.html">Dropzone <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
+								<a href="dropzone.html">Dropzone </a>
+							</li>
+							<li>
+								<a href="image-editor.html">Image Cropping <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
 							</li>
 						</ul>
 					</li>
@@ -289,7 +368,10 @@
 										<a href="fa.html"><i class="fa fa-plane"></i> Font Awesome</a>
 									</li>	
 									<li>
-										<a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons </a>
+										<a href="glyph.html"><i class="glyphicon glyphicon-plane"></i> Glyph Icons</a>
+									</li>	
+									<li>
+										<a href="flags.html"><i class="fa fa-flag"></i> Flags</a>
 									</li>
 								</ul>
 							</li>
@@ -305,63 +387,58 @@
 							<li>
 								<a href="jqui.html">JQuery UI</a>
 							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-folder-open"></i> <span class="menu-item-parent">6 Level Navigation</span></a>
-						<ul>
 							<li>
-								<a href="#"><i class="fa fa-fw fa-folder-open"></i> 2nd Level</a>
+								<a href="typography.html">Typography</a>
+							</li>
+							<li>
+								<a href="#">Six Level Menu</a>
 								<ul>
 									<li>
-										<a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
+										<a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #2</a>
 										<ul>
 											<li>
-												<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-											</li>
-											<li>
-												<a href="#"><i class="fa fa-fw fa-folder-open"></i> 4th Level</a>
+												<a href="#"><i class="fa fa-fw fa-folder-open"></i> Sub #2.1 </a>
 												<ul>
 													<li>
-														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+														<a href="#"><i class="fa fa-fw fa-file-text"></i> Item #2.1.1</a>
 													</li>
 													<li>
-														<a href="#"><i class="fa fa-fw fa-folder-open"></i> 5th Level</a>
+														<a href="#"><i class="fa fa-fw fa-plus"></i> Expand</a>
 														<ul>
 															<li>
 																<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
 															</li>
 															<li>
-																<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-															</li>
+																<a href="#"><i class="fa fa-fw fa-trash-o"></i> Delete</a></li>
 														</ul>
 													</li>
 												</ul>
 											</li>
 										</ul>
 									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-fw fa-folder-open"></i> Folder</a>
-
-								<ul>
 									<li>
-										<a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
+										<a href="#"><i class="fa fa-fw fa-folder-open"></i> Item #3</a>
+		
 										<ul>
 											<li>
-												<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
-											</li>
-											<li>
-												<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+												<a href="#"><i class="fa fa-fw fa-folder-open"></i> 3ed Level </a>
+												<ul>
+													<li>
+														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+													</li>
+													<li>
+														<a href="#"><i class="fa fa-fw fa-file-text"></i> File</a>
+													</li>
+												</ul>
 											</li>
 										</ul>
+		
 									</li>
 								</ul>
-
 							</li>
 						</ul>
 					</li>
+				
 					<li>
 						<a href="calendar.html"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span class="menu-item-parent">Calendar</span></a>
 					</li>
@@ -372,13 +449,24 @@
 						<a href="gallery.html"><i class="fa fa-lg fa-fw fa-picture-o"></i> <span class="menu-item-parent">Gallery</span></a>
 					</li>
 					<li>
-						<a href="gmap-xml.html"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">Google Map Skins</span><span class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
+						<a href="gmap-xml.html"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">GMap Skins</span><span class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
 					</li>
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">Miscellaneous</span></a>
 						<ul>
 							<li>
-								<a href="typography.html">Typography</a>
+								<a href="#"><i class="fa fa-lg fa-fw fa-file"></i> Other Pages</a>
+								<ul>
+									<li>
+										<a href="forum.html">Forum Layout</a>
+									</li>
+									<li>
+										<a href="profile.html">Profile</a>
+									</li>
+									<li>
+										<a href="timeline.html">Timeline</a>
+									</li>
+								</ul>
 							</li>
 							<li>
 								<a href="pricing-table.html">Pricing Tables</a>
@@ -415,33 +503,96 @@
 							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="#"><i class="fa fa-lg fa-fw fa-file"></i> <span class="menu-item-parent">Other Pages</span></a>
+					<li class="top-menu-hidden">
+						<a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">SmartAdmin Intel</span></a>
 						<ul>
 							<li>
-								<a href="forum.html">Forum Layout</a>
+								<a href="difver.html"><i class="fa fa-stack-overflow"></i> Different Versions</a>
 							</li>
 							<li>
-								<a href="profile.html">Profile</a>
+								<a href="applayout.html"><i class="fa fa-cube"></i> App Settings</a>
 							</li>
 							<li>
-								<a href="timeline.html">Timeline</a>
+								<a href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/documentation/index.html" target="_blank"><i class="fa fa-book"></i> Documentation</a>
+							</li>
+							<li>
+								<a href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/" target="_blank"><i class="fa fa-bug"></i> Bug Tracker</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</nav>
-			<span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
 
 		</aside>
 		<!-- END NAVIGATION -->
 
 		<!-- MAIN PANEL -->
-		<!-- MAIN PANEL -->
 		<div id="main" role="main">
+
+		
 			<g:layoutBody/>
+			
+
 		</div>
 		<!-- END MAIN PANEL -->
+
+		<!-- PAGE FOOTER -->
+		<div class="page-footer">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<span class="txt-color-white">SmartAdmin WebApp © 2013-2014</span>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+					<div class="txt-color-white inline-block">
+						<i class="txt-color-blueLight hidden-mobile">Last account activity <i class="fa fa-clock-o"></i> <strong>52 mins ago &nbsp;</strong> </i>
+						<div class="btn-group dropup">
+							<button class="btn btn-xs dropdown-toggle bg-color-blue txt-color-white" data-toggle="dropdown">
+								<i class="fa fa-link"></i> <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu pull-right text-left">
+								<li>
+									<div class="padding-5">
+										<p class="txt-color-darken font-sm no-margin">Download Progress</p>
+										<div class="progress progress-micro no-margin">
+											<div class="progress-bar progress-bar-success" style="width: 50%;"></div>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="padding-5">
+										<p class="txt-color-darken font-sm no-margin">Server Load</p>
+										<div class="progress progress-micro no-margin">
+											<div class="progress-bar progress-bar-success" style="width: 20%;"></div>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="padding-5">
+										<p class="txt-color-darken font-sm no-margin">Memory Load <span class="text-danger">*critical*</span></p>
+										<div class="progress progress-micro no-margin">
+											<div class="progress-bar progress-bar-danger" style="width: 70%;"></div>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="padding-5">
+										<button class="btn btn-block btn-default">refresh</button>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE FOOTER -->
 
 		<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
 		Note: These tiles are completely responsive,
@@ -474,7 +625,7 @@
 		<!--================================================== -->
 
 		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-		<script data-pace-options='{ "restartOnRequestAfter": true }' src="${request.contextPath}/smart-admin/js/plugin/pace/pace.min.js"></script>
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
 
 		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -516,7 +667,7 @@
 		<script src="${request.contextPath}/smart-admin/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
 
 		<!-- JQUERY SELECT2 INPUT -->
-		<script src="js/plugin/select2/select2.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/select2/select2.min.js"></script>
 
 		<!-- JQUERY UI + Bootstrap Slider -->
 		<script src="${request.contextPath}/smart-admin/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
@@ -525,29 +676,25 @@
 		<script src="${request.contextPath}/smart-admin/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
 
 		<!-- FastClick: For mobile devices -->
-		<script src="${request.contextPath}/smart-admin/js/plugin/fastclick/fastclick.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/fastclick/fastclick.min.js"></script>
 
-		<!--[if IE 7]>
+		<!--[if IE 8]>
 
 		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
 
 		<![endif]-->
 
 		<!-- Demo purpose only -->
-		<script src="${request.contextPath}/smart-admin/js/demo.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/demo.min.js"></script>
 
 		<!-- MAIN APP JS FILE -->
-		<script src="${request.contextPath}/smart-admin/js/app.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/app.min.js"></script>
 
 		<!-- PAGE RELATED PLUGIN(S) -->
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/jquery.dataTables-cust.min.js"></script>
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/ColReorder.min.js"></script>
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/FixedColumns.min.js"></script>
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/ColVis.min.js"></script>
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/ZeroClipboard.js"></script>
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/media/js/TableTools.min.js"></script>
-		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/DT_bootstrap.js"></script>
-		
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/jquery.dataTables.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/dataTables.colVis.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/dataTables.tableTools.min.js"></script>
+		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
 
 		<script type="text/javascript">
 		
@@ -557,99 +704,114 @@
 			
 			pageSetUp();
 			
-			/*
-			 * BASIC
-			 */
-			$('#dt_basic').dataTable({
-				"sPaginationType" : "bootstrap_full"
-			});
+			/* // DOM Position key index //
+			
+				l - Length changing (dropdown)
+				f - Filtering input (search)
+				t - The Table! (datatable)
+				i - Information (records)
+				p - Pagination (paging)
+				r - pRocessing 
+				< and > - div elements
+				<"#id" and > - div with an id
+				<"class" and > - div with a class
+				<"#id.class" and > - div with an id and class
+				
+				Also see: http://legacy.datatables.net/usage/features
+			*/	
 	
+			/* BASIC ;*/
+			
+			$('#dt_basic').dataTable();
+	
+			
 			/* END BASIC */
-	
-			/* Add the events etc before DataTables hides a column */
-			$("#datatable_fixed_column thead input").keyup(function() {
-				oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
-			});
-	
-			$("#datatable_fixed_column thead input").each(function(i) {
-				this.initVal = this.value;
-			});
-			$("#datatable_fixed_column thead input").focus(function() {
-				if (this.className == "search_init") {
-					this.className = "";
-					this.value = "";
-				}
-			});
-			$("#datatable_fixed_column thead input").blur(function(i) {
-				if (this.value == "") {
-					this.className = "search_init";
-					this.value = this.initVal;
-				}
-			});		
 			
-	
-			var oTable = $('#datatable_fixed_column').dataTable({
-				"sDom" : "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-				//"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
-				"oLanguage" : {
-					"sSearch" : "Search all columns:"
-				},
-				"bSortCellsTop" : true
-			});		
+			/* COLUMN FILTER  */
+		    var otable = $('#datatable_fixed_column').DataTable({
+		    	//"bFilter": false,
+		    	//"bInfo": false,
+		    	//"bLengthChange": false
+		    	//"bAutoWidth": false,
+		    	//"bPaginate": false,
+		    	//"bStateSave": true // saves sort state using localStorage
+				"sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'<'toolbar'>>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
 			
-	
-	
-			/*
-			 * COL ORDER
-			 */
+		    });
+		    
+		    // custom toolbar
+		    $("div.toolbar").html('<div class="text-right"><img src="${request.contextPath}/smart-admin/img/logo.png" alt="SmartAdmin" style="width: 111px; margin-top: 3px; margin-right: 10px;"></div>');
+		    	   
+		    // Apply the filter
+		    $("#datatable_fixed_column thead th input[type=text]").on( 'keyup change', function () {
+		    	
+		        otable
+		            .column( $(this).parent().index()+':visible' )
+		            .search( this.value )
+		            .draw();
+		            
+		    } );
+		    /* END COLUMN FILTER */   
+	    
+			/* COLUMN SHOW - HIDE */
 			$('#datatable_col_reorder').dataTable({
-				"sPaginationType" : "bootstrap",
-				"sDom" : "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-				"fnInitComplete" : function(oSettings, json) {
-					$('.ColVis_Button').addClass('btn btn-default btn-sm').html('Columns <i class="icon-arrow-down"></i>');
-				}
+				"sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'C>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>"
 			});
 			
-			/* END COL ORDER */
+			/* END COLUMN SHOW - HIDE */
 	
-			/* TABLE TOOLS */
+			/* TABLETOOLS */
 			$('#datatable_tabletools').dataTable({
-				"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-				"oTableTools" : {
-					"aButtons" : ["copy", "print", {
-						"sExtends" : "collection",
-						"sButtonText" : 'Save <span class="caret" />',
-						"aButtons" : ["csv", "xls", "pdf"]
-					}],
-					"sSwfPath" : "${request.contextPath}/smart-admin/js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
-				},
-				"fnInitComplete" : function(oSettings, json) {
-					$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function() {
-						$(this).addClass('btn-sm btn-default');
-					});
-				}
+				
+				// Tabletools options: 
+				//   https://datatables.net/extensions/tabletools/button_options
+				"sDom": "<'dt-toolbar'<'col-xs-6'f><'col-xs-6'T>r>"+
+						"t"+
+						"<'dt-toolbar-footer'<'col-xs-6'i><'col-xs-6'p>>",
+		        "oTableTools": {
+		        	 "aButtons": [
+		             "copy",
+		             "csv",
+		             "xls",
+		                {
+		                    "sExtends": "pdf",
+		                    "sTitle": "SmartAdmin_PDF",
+		                    "sPdfMessage": "SmartAdmin PDF Export",
+		                    "sPdfSize": "letter"
+		                },
+		             	{
+	                    	"sExtends": "print",
+	                    	"sMessage": "Generated by SmartAdmin <i>(press Esc to close)</i>"
+	                	}
+		             ],
+		            "sSwfPath": "${request.contextPath}/smart-admin/js/plugin/datatables/swf/copy_csv_xls_pdf.swf"
+		        }
 			});
+			
+			/* END TABLETOOLS */
 		
-		/* END TABLE TOOLS */
 		})
 
 		</script>
 
 		<!-- Your GOOGLE ANALYTICS CODE Below -->
 		<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-var ga = document.createElement('script');
-ga.type = 'text/javascript';
-ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0];
-s.parentNode.insertBefore(ga, s);
-})();
-
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+			})();
 		</script>
 
 	</body>
