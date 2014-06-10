@@ -3,6 +3,7 @@ package search.everywhere
 
 
 import static org.springframework.http.HttpStatus.*
+import grails.converters.JSON
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -34,6 +35,20 @@ class SearchableFileController {
 			respond searchableFileInstance.errors, view:'create'
 			return
 		}
+
+		def userHomeFolder  = System.getProperty("user.home")
+		def searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere"
+
+		def file1 = new File(searchEverywhereHomeFolder + "/searchable-files/" + searchableFileInstance.name)
+
+
+		def jsonFormat = searchableFileInstance.encodeAsJSON().toString()
+
+		def someDomain = new SearchableFile(JSON.parse(jsonFormat))
+
+		println("!!!!!!!!!!!!!!!: " + someDomain.url)
+
+		file1.write "" +jsonFormat
 
 		searchableFileInstance.save flush:true
 

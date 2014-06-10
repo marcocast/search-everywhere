@@ -1,5 +1,6 @@
 package search.everywhere
 
+
 class SearchableFile {
 
 	String name;
