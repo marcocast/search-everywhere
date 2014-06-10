@@ -3,21 +3,22 @@ package search.everywhere
 
 
 import static org.springframework.http.HttpStatus.*
-import grails.converters.JSON
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class SearchableFileController {
 
-	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static allowedMethods = [save: "POST", update: "PUT"]
+	def searchEverywhereCacheService;
 
-	def index(Integer max) {
-		params.max = Math.min(max ?: 100, 100)
-		respond SearchableFile.list(params), model:[searchableFileInstanceCount: SearchableFile.count()]
+
+
+	def index() {
+		respond searchEverywhereCacheService.getAllSearchableFiles(), model:[searchableFileInstanceCount: searchEverywhereCacheService.getAllSearchableFiles().size()]
 	}
 
-	def show(SearchableFile searchableFileInstance) {
-		respond searchableFileInstance
+	def show(params) {
+		respond searchEverywhereCacheService.getSearchableFile(params.name)
 	}
 
 	def create() {
@@ -39,33 +40,17 @@ class SearchableFileController {
 		def userHomeFolder  = System.getProperty("user.home")
 		def searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere"
 
-		def file1 = new File(searchEverywhereHomeFolder + "/searchable-files/" + searchableFileInstance.name)
 
 
-		def jsonFormat = searchableFileInstance.encodeAsJSON().toString()
+		searchEverywhereCacheService.addSearchableFile(searchableFileInstance)
 
-		def someDomain = new SearchableFile(JSON.parse(jsonFormat))
 
-		println("!!!!!!!!!!!!!!!: " + someDomain.url)
 
-		file1.write "" +jsonFormat
-
-		searchableFileInstance.save flush:true
-
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.created.message', args: [
-					message(code: 'searchableFileInstance.label', default: 'SearchableFile'),
-					searchableFileInstance.id
-				])
-				redirect searchableFileInstance
-			}
-			'*' { respond searchableFileInstance, [status: CREATED] }
-		}
+		redirect(controller:'searchableFile',action:'index')
 	}
 
-	def edit(SearchableFile searchableFileInstance) {
-		respond searchableFileInstance
+	def edit(params) {
+		respond searchEverywhereCacheService.getSearchableFile(params.name)
 	}
 
 	@Transactional
@@ -80,40 +65,18 @@ class SearchableFileController {
 			return
 		}
 
-		searchableFileInstance.save flush:true
+		searchEverywhereCacheService.editSearchableFile(searchableFileInstance)
 
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.updated.message', args: [
-					message(code: 'SearchableFile.label', default: 'SearchableFile'),
-					searchableFileInstance.id
-				])
-				redirect searchableFileInstance
-			}
-			'*'{ respond searchableFileInstance, [status: OK] }
-		}
+		redirect(controller:'searchableFile',action:'index')
 	}
 
 	@Transactional
-	def delete(SearchableFile searchableFileInstance) {
+	def delete(params) {
 
-		if (searchableFileInstance == null) {
-			notFound()
-			return
-		}
 
-		searchableFileInstance.delete flush:true
+		searchEverywhereCacheService.removeSearchableFile(params.name)
 
-		request.withFormat {
-			form multipartForm {
-				flash.message = message(code: 'default.deleted.message', args: [
-					message(code: 'SearchableFile.label', default: 'SearchableFile'),
-					searchableFileInstance.id
-				])
-				redirect action:"index", method:"GET"
-			}
-			'*'{ render status: NO_CONTENT }
-		}
+		redirect(controller:'searchableFile',action:'index')
 	}
 
 	protected void notFound() {
