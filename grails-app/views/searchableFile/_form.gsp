@@ -2,6 +2,15 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'identifier', 'error')} ">
+
+	<label class="input">
+		<g:hiddenField name="identifier" value="${searchableFileInstance?.identifier}" />
+	</label>
+
+</div>
+
+
 <div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'name', 'error')} required">
 	<label class="label" for="name">
 		<g:message code="searchableFile.name.label" default="Name" />

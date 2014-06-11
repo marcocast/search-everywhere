@@ -9,16 +9,17 @@ import grails.transaction.Transactional
 class SearchableFileController {
 
 	static allowedMethods = [save: "POST", update: "PUT"]
-	def searchEverywhereCacheService;
+
+	SearchableFileDAOService searchableFileDAOService;
 
 
 
 	def index() {
-		respond searchEverywhereCacheService.getAllSearchableFiles(), model:[searchableFileInstanceCount: searchEverywhereCacheService.getAllSearchableFiles().size()]
+		respond searchableFileDAOService.getAllSearchableFiles(), model:[searchableFileInstanceCount: searchableFileDAOService.getAllSearchableFiles().size()]
 	}
 
 	def show(params) {
-		respond searchEverywhereCacheService.getSearchableFile(params.name)
+		respond searchableFileDAOService.getSearchableFile(params.identifier)
 	}
 
 	def create() {
@@ -37,20 +38,13 @@ class SearchableFileController {
 			return
 		}
 
-		def userHomeFolder  = System.getProperty("user.home")
-		def searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere"
-
-
-
-		searchEverywhereCacheService.addSearchableFile(searchableFileInstance)
-
-
+		searchableFileDAOService.addSearchableFile(searchableFileInstance)
 
 		redirect(controller:'searchableFile',action:'index')
 	}
 
 	def edit(params) {
-		respond searchEverywhereCacheService.getSearchableFile(params.name)
+		respond searchableFileDAOService.getSearchableFile(params.identifier)
 	}
 
 	@Transactional
@@ -65,7 +59,7 @@ class SearchableFileController {
 			return
 		}
 
-		searchEverywhereCacheService.editSearchableFile(searchableFileInstance)
+		searchableFileDAOService.editSearchableFile(searchableFileInstance)
 
 		redirect(controller:'searchableFile',action:'index')
 	}
@@ -74,7 +68,7 @@ class SearchableFileController {
 	def delete(params) {
 
 
-		searchEverywhereCacheService.removeSearchableFile(params.name)
+		searchableFileDAOService.removeSearchableFile(params.identifier)
 
 		redirect(controller:'searchableFile',action:'index')
 	}

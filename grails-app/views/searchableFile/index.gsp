@@ -110,7 +110,7 @@
 											<g:each in="${searchableFileInstanceList}" status="i" var="searchableFileInstance">
 												<tr>
 												
-													<td><g:link action="show" id="${searchableFileInstance.name}" params="[name: searchableFileInstance.name]">${fieldValue(bean: searchableFileInstance, field: "name")}</g:link></td>
+													<td><g:link action="show" id="${searchableFileInstance.name}" params="[identifier: searchableFileInstance.identifier]">${fieldValue(bean: searchableFileInstance, field: "name")}</g:link></td>
 												
 													<td>${fieldValue(bean: searchableFileInstance, field: "url")}</td>
 												

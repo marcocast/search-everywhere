@@ -156,8 +156,8 @@
 											
 											<footer>
 												<fieldset class="buttons">
-													<g:link class="btn btn-danger" action="delete" params="[name: searchableFileInstance.name]" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" ><g:message code="default.button.delete.label" default="Delete" /></g:link>
-													<g:link class="btn btn-primary" action="edit" params="[name: searchableFileInstance.name]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+													<g:link class="btn btn-danger" action="delete" params="[identifier: searchableFileInstance.identifier]" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" ><g:message code="default.button.delete.label" default="Delete" /></g:link>
+													<g:link class="btn btn-primary" action="edit" params="[identifier: searchableFileInstance.identifier]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 													<g:link class="btn btn-default" action="index">List</g:link>
 				
 												</fieldset>
