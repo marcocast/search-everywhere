@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
@@ -66,7 +67,7 @@
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> </span>
 
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -75,13 +76,13 @@
 					<div class="btn-group btn-group-justified" data-toggle="buttons">
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/mail.html">
-							Msgs (14) </label>
+							Files (<g:totSearchablefiles/>) </label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/notifications.html">
-							notify (3) </label>
+							Results (3000) </label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/tasks.html">
-							Tasks (4) </label>
+							Searches (445) </label>
 					</div>
 
 					<!-- notification content -->
@@ -111,19 +112,19 @@
 			<!-- projects dropdown -->
 			<div class="project-context hidden-xs">
 
-				<span class="label">Projects:</span>
-				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+				<span class="label">Jobs:</span>
+				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent Searches <i class="fa fa-angle-down"></i></span>
 
 				<!-- Suggestion: populate this list with fetch and push technique -->
 				<ul class="dropdown-menu">
 					<li>
-						<a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
+						<a href="javascript:void(0);">ERROR on prod box 1</a>
 					</li>
 					<li>
-						<a href="javascript:void(0);">Notes on pipeline upgradee</a>
+						<a href="javascript:void(0);">Campaign id on DEV api</a>
 					</li>
 					<li>
-						<a href="javascript:void(0);">Assesment Report for merchant account</a>
+						<a href="javascript:void(0);">INFO on property abc</a>
 					</li>
 					<li class="divider"></li>
 					<li>
@@ -167,19 +168,13 @@
 							<li>
 								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
 							</li>
-							<li class="divider"></li>
-							<li>
-								<a href="login.html" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
-							</li>
+							
+							
 						</ul>
 					</li>
 				</ul>
 
-				<!-- logout button -->
-				<div id="logout" class="btn-header transparent pull-right">
-					<span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
-				</div>
-				<!-- end logout button -->
+			
 
 				<!-- search mobile button (this is hidden till mobile view port) -->
 				<div id="search-mobile" class="btn-header transparent pull-right">
@@ -258,7 +253,7 @@
 						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Searchable Files</span></a>
 						<ul>
 							<li>
-								<g:link controller="searchableFile" action="index">View<span class="badge pull-right inbox-badge">14</span></g:link>
+								<g:link controller="searchableFile" action="index">View<span class="badge pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
 							</li>
 							<li class="active">
 								<g:link controller="searchableFile" action="create">Create new</g:link>

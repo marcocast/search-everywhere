@@ -43,4 +43,9 @@ class SearchableFileDAOService {
 		modifiedFile.write searchableFile.encodeAsJSON().toString()
 		searchEverywhereCacheService.getSearchableFileCache().put(searchableFile.identifier,searchableFile)
 	}
+
+	def searchableFilesSize(){
+
+		return searchEverywhereCacheService.getSearchableFileCache().size()
+	}
 }
