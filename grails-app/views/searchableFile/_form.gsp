@@ -42,15 +42,6 @@
 	</label>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'password', 'error')} ">
-	<label class="label"  for="password">
-		<g:message code="searchableFile.password.label" default="Password" />
-		
-	</label>
-	<label class="input">
-		<g:textField name="password" value="${searchableFileInstance?.password}"/>
-	</label>
-</div>
 
 <div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'user', 'error')} ">
 	<label class="label"  for="user">
@@ -62,3 +53,12 @@
 	</label>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'password', 'error')} ">
+	<label class="label"  for="password">
+		<g:message code="searchableFile.password.label" default="Password" />
+		
+	</label>
+	<label class="input">
+		<g:passwordField name="password" value="${searchableFileInstance?.password}"/>
+	</label>
+</div>

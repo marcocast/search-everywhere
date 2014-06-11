@@ -98,11 +98,12 @@
 										<table id="dt_basic" class="table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>name</th>
-													<th>url</th>
-													<th>path</th>
-													<th>password</th>
-													<th>user</th>
+													<th>Name</th>
+													<th>URL</th>
+													<th>Path</th>
+													<th>User</th>
+													<th>Password</th>
+													
 												</tr>
 											</thead>
 											<tbody>
@@ -115,10 +116,16 @@
 													<td>${fieldValue(bean: searchableFileInstance, field: "url")}</td>
 												
 													<td>${fieldValue(bean: searchableFileInstance, field: "path")}</td>
-												
-													<td>${fieldValue(bean: searchableFileInstance, field: "password")}</td>
-												
+													
 													<td>${fieldValue(bean: searchableFileInstance, field: "user")}</td>
+												
+													<g:if test="${searchableFileInstance?.password}">
+														<td>*********</td>
+													</g:if>
+													<g:else>
+													     <td></td>
+													</g:else>
+													
 												
 												</tr>
 												

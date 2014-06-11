@@ -14,6 +14,7 @@ class SearchableFileController {
 
 
 
+
 	def index() {
 		respond searchableFileDAOService.getAllSearchableFiles(), model:[searchableFileInstanceCount: searchableFileDAOService.getAllSearchableFiles().size()]
 	}
