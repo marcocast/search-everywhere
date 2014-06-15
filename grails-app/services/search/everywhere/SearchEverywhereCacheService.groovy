@@ -14,20 +14,24 @@ class SearchEverywhereCacheService {
 
 	private static final String userHomeFolder  = System.getProperty("user.home");
 	private static final String searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere";
-	private static final String searchableFilesFolder = searchEverywhereHomeFolder + "/searchable-files";
-	private final Map<String,SearchableFile> searchableFileCache = new ConcurrentHashMap<String,SearchableFile>();
+	static final String searchableFilesFolder = searchEverywhereHomeFolder + "/searchable-files";
+	static final String searchParamsFolder = searchEverywhereHomeFolder + "/search-params";
+	final Map<String,SearchableFile> searchableFileCache = new ConcurrentHashMap<String,SearchableFile>();
+	final Map<String,SearchParam> searchParamCache = new ConcurrentHashMap<String,SearchParam>();
 
 
 	def createFolersIfNotExist(){
 		if(!new File(searchEverywhereHomeFolder).exists()){
 			new File( searchEverywhereHomeFolder ).mkdir()
 			new File( searchableFilesFolder ).mkdir()
+			new File( searchParamsFolder ).mkdir()
 		}
 	}
 
 	def loadAllIntoCache() {
 
 		loadSearchbaleFiles()
+		loadSearchParams()
 	}
 
 
@@ -39,11 +43,12 @@ class SearchEverywhereCacheService {
 		}
 	}
 
-	def Map<String,SearchableFile> getSearchableFileCache(){
-		return searchableFileCache;
-	}
 
-	def String getSearchableFilesFolder(){
-		return searchableFilesFolder
+	def loadSearchParams() {
+
+		def dir = new File(searchParamsFolder)
+		dir.eachFileRecurse (FileType.FILES) { file ->
+			searchParamCache.put(file.name, new SearchParam(JSON.parse(file.text)))
+		}
 	}
 }

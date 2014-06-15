@@ -41,15 +41,16 @@ grails.project.dependency.resolution = {
 		grailsCentral()
 		mavenCentral()
 		// uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
-		//mavenRepo "http://repository.codehaus.org"
-		//mavenRepo "http://download.java.net/maven/2/"
-		//mavenRepo "http://repository.jboss.com/maven2/"
+		mavenRepo "http://repository.codehaus.org"
+		mavenRepo "http://download.java.net/maven/2/"
+		mavenRepo "http://repository.jboss.com/maven2/"
 	}
 
 	dependencies {
 		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 		// runtime 'mysql:mysql-connector-java:5.1.27'
 		// runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
+		compile 'com.googlecode.grep4j:grep4j:1.8.7'
 
 	}
 
@@ -60,7 +61,6 @@ grails.project.dependency.resolution = {
 		// plugins for the compile step
 		compile ":scaffolding:2.0.2"
 		compile ':cache:1.1.1'
-
 
 		// plugins needed at runtime but not for compilation
 		runtime ":hibernate:3.6.10.8" // or ":hibernate4:4.3.1.1"

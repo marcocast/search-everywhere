@@ -261,7 +261,25 @@
 							
 						</ul>
 					</li>
-				
+					
+					<li>
+						<g:link controller="search" action="index"><i class="fa fa-lg fa-fw fa-search"></i> <span class="menu-item-parent">Search</span></g:link>
+						
+					</li>
+					
+					<li>
+						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Search Paramas</span></a>
+						<ul>
+							<li>
+								<g:link controller="searchParam" action="index">View<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
+							</li>
+							<li>
+								<g:link controller="searchParam" action="create">Create new</g:link>
+							</li>
+							
+						</ul>
+					</li>
+					
 					
 				</ul>
 			</nav>
