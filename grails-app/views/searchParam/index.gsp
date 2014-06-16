@@ -100,7 +100,6 @@
 								<tr>
 									<th>Name</th>
 									<th>Text</th>
-									<th>Regex</th>
 									<th>Searchable Files</th>
 								</tr>
 							</thead>
@@ -112,7 +111,13 @@
 
 									<td><g:link action="show" id="${searchParamInstance.name}" params="[identifier: searchParamInstance.identifier]">${fieldValue(bean: searchParamInstance, field: "name")}</g:link></td>
 								
-									<td>${fieldValue(bean: searchParamInstance, field: "text")}</td>
+									<td>${fieldValue(bean: searchParamInstance, field: "text")}
+									<g:if test="${searchParamInstance?.regex==true}">
+										<span class="badge pull-right toggle state-disabled">Regex</span>
+									</g:if>
+									
+					
+									</td>
 								
 									<td>${fieldValue(bean: searchParamInstance, field: "regex")}</td>
 									

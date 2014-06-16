@@ -110,7 +110,7 @@
 				
 				
 										<section>
-											<label class="toggle">
+											<label class="toggle pull-left text-left">
 													<input type="checkbox" name="regex" checked="checked">
 													<i data-swchon-text="ON" data-swchoff-text="OFF"></i>Regex</label>
 										</section>
@@ -126,17 +126,95 @@
 											<label class="label">Select Searchable files</label>
 											<label class="select select-multiple">
 												<g:select optionKey="identifier" class="custom-scroll" optionValue="name"
-												name="pnames" from="${searchableFileInstanceList}" multiple="true" />
+												name="searchableFileNames" from="${searchableFileInstanceList}" multiple="true" />
 												</label>
 											<div class="note">
 												<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
 											</div>
 										</section>
 								
+										
+										
+									</fieldset>
+		
+									
+									<footer>
+												<fieldset class="buttons">
+													<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Execute Search " /><i class="fa fa-search"></i></button>
+												</fieldset>
+											</footer>
+								</g:form>	
+									
+									
 								
-										
-										
-										
+		
+							</div>
+							<!-- end widget content -->
+		
+						</div>
+						<!-- end widget div -->
+		
+					</div>
+					<!-- end widget -->
+		
+				</article>
+				<!-- END COL -->
+		
+				
+		<article class="col-sm-12 col-md-12 col-lg-6">
+		
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+						<!-- widget options:
+						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+		
+						data-widget-colorbutton="false"
+						data-widget-editbutton="false"
+						data-widget-togglebutton="false"
+						data-widget-deletebutton="false"
+						data-widget-fullscreenbutton="false"
+						data-widget-custombutton="false"
+						data-widget-collapsed="true"
+						data-widget-sortable="false"
+		
+						-->
+						<header>
+							<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+							<h2>Search Form Elements </h2>
+		
+						</header>
+		
+						<!-- widget div-->
+						<div>
+		
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+		
+							</div>
+							<!-- end widget edit box -->
+		
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+		
+								<g:form action="search" id="formSearch"  class="smart-form">
+									<header>
+										Standard Form Header
+									</header>
+			
+									<g:set var="searchParamDAOService" bean="searchParamDAOService"/>
+									<fieldset>
+										<section>
+											<label class="label">Select Search existing Param</label>
+											<label class="select select-multiple">
+												<g:select optionKey="name" class="custom-scroll" optionValue="name"
+												name="searchParamas" from="${searchParamDAOService.getAllSearchParams()}" />
+												</label>
+											<div class="note">
+												<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
+											</div>
+										</section>
+								
 										
 									</fieldset>
 		
@@ -162,9 +240,7 @@
 		
 				</article>
 				<!-- END COL -->
-		
 				
-		
 			</div>
 		
 			<!-- END ROW -->

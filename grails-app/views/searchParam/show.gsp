@@ -109,17 +109,9 @@
 								<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchParamInstance}" field="name"/>">
 							</label>
 						</section>
-
-						<section>
-							<label class="label">Text</label>
-							<label class="input state-disabled">
-								<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchParamInstance}" field="text"/>">
-							</label>
-						</section>
-						
 						
 						<section>
-							<label class="toggle state-disabled">
+							<label class="toggle pull-right state-disabled">
 							<input type="checkbox" name="regex" checked="checked" disabled="disabled">
 						
 								<g:if test="${searchParamInstance?.regex==true}">
@@ -129,6 +121,15 @@
 								     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
 								</g:else>Regex</label>
 						</section>
+
+						<section>
+							<label class="label">Text</label>
+							<label class="input state-disabled">
+								<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchParamInstance}" field="text"/>">
+							</label>
+						</section>
+						
+						
 		
 						
 						<section>

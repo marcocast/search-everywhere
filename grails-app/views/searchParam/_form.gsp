@@ -1,15 +1,19 @@
 <%@ page import="search.everywhere.SearchParam" %>
 <%@ page import="search.everywhere.SearchableFile" %>
 
+<fieldset>
+										
+<section>
+	<div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'identifier', 'error')} ">
+	
+		<label class="input">
+			<g:hiddenField name="identifier" value="${searchParamInstance?.identifier}" />
+		</label>
+	
+	</div>
+</section>
 
-<div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'identifier', 'error')} ">
-
-	<label class="input">
-		<g:hiddenField name="identifier" value="${searchParamInstance?.identifier}" />
-	</label>
-
-</div>
-
+<section>
 
 <div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'name', 'error')} required">
 	<label class="label" for="name">
@@ -21,6 +25,9 @@
 	</label>
 
 </div>
+</section>
+
+<section>
 
 <div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'text', 'error')} required">
 	<label class="label" for="name">
@@ -32,6 +39,9 @@
 	</label>
 
 </div>
+</section>
+
+<section>
 
 <div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'regex', 'error')} ">
 	<label for="regex">
@@ -40,22 +50,37 @@
 	<g:checkBox name="regex" value="${searchParamInstance?.regex}" />
 
 </div>
+</section>
 
+<section>
 
 <div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'searchableFileNames', 'error')} ">
 		<label  for="searchableFileNames" class="label">Select Searchable files</label>
 		<label class="select select-multiple">
 		
-				<g:select optionKey="identifier" class="custom-scroll" optionValue="${{it.name}}"
-				name="pnames" from="${searchableFileInstanceList}" multiple="multiple" />
-				</label>
+			<select name="pnames" multiple="" class="custom-scroll">
+			<g:each in="${searchableFileInstanceList}" status="i" var="searchableFileInstance">
+				
+				<g:if test="${searchParamInstance?.searchableFileNames != null && searchParamInstance?.searchableFileNames.contains(searchableFileInstance.name)}">
+					<option value="${searchableFileInstance.name}" selected>${searchableFileInstance.name}</option>
+				</g:if>
+				<g:else>
+					<option value="${searchableFileInstance.name}" >${searchableFileInstance.name}</option>
+				</g:else>
+
+			</g:each>
+				
+			</select> 
+			
+		</label>	
 			
 		<div class="note">
 			<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
 		</div>
 	
 </div>
+</section>
 
 	
 
-</div>
+</fieldset>

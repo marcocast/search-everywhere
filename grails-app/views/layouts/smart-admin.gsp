@@ -386,7 +386,8 @@
 		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/dataTables.colVis.min.js"></script>
 		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/dataTables.tableTools.min.js"></script>
 		<script src="${request.contextPath}/smart-admin/js/plugin/datatables/dataTables.bootstrap.min.js"></script>
-
+		<script src="${request.contextPath}/smart-admin/js/plugin/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+		
 		<script type="text/javascript">
 		
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!

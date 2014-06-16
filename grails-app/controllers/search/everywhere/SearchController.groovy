@@ -8,14 +8,15 @@ class SearchController {
 
 	def executeSearch(){
 
-		//render (template: "result", model: [grepsearchResult: grepsearchResult])
+		Thread.sleep(3000);
+		render "searchParam"
 	}
 
 
 
 	def search() {
-
-		[ searchParams:searchParamsService.getSearchParam(params) ]
+		SearchParam searchParam = new SearchParam(params)
+		[ searchParam:searchParam ]
 	}
 
 
