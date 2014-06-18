@@ -48,6 +48,10 @@ class SearchableFileController {
 		respond searchableFileDAOService.getSearchableFile(params.identifier)
 	}
 
+	def copy(params) {
+		respond searchableFileDAOService.getSearchableFile(params.identifier)
+	}
+
 	@Transactional
 	def update(SearchableFile searchableFileInstance) {
 		if (searchableFileInstance == null) {

@@ -4,20 +4,29 @@ package search.everywhere;
 
 class SearchController {
 
+	GrepService grepService
 	SearchableFileDAOService searchableFileDAOService;
 
-	def executeSearch(){
+	def executeSearch(params){
 
-		Thread.sleep(3000)
 
-		render (template: "result")
+		SearchParam searchParam = new SearchParam(params)
+
+
+
+		searchParam.searchableFileNames = [params.searchableFileName].flatten().findAll{ it != null }
+
+		String grepsearchResult = grepService.grepBasedOnSearchParams(searchParam)
+
+
+
+		render (template: "result", model: [grepsearchResult: grepsearchResult])
 	}
 
 
 
 	def search() {
 		SearchParam searchParam = new SearchParam(params)
-
 		[ searchParam:searchParam ]
 	}
 

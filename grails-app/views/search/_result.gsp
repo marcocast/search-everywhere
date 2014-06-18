@@ -10,7 +10,7 @@
 				
 												<section>
 													<label class="input">
-														<input type="text" placeholder="Some results">
+														${grepsearchResult}
 													</label>
 												</section>
 											</fieldset>

@@ -17,8 +17,8 @@
 						<h1 class="page-title txt-color-blueDark">
 							<i class="fa fa-edit fa-fw "></i> 
 								Forms 
-							<span>> 
-								Form Elements
+							<span>
+								Copy Form Elements
 							</span>
 						</h1>
 					</div>
@@ -95,77 +95,36 @@
 				
 									<!-- widget content -->
 									<div class="widget-body no-padding">
-				
-										<g:form url="[resource:searchableFileInstance, action:'delete']" method="DELETE" class="smart-form">
+									<div id="edit-searchableFile" class="content scaffold-edit" role="main">
+										<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+										<g:if test="${flash.message}">
+										<div class="message" role="status">${flash.message}</div>
+										</g:if>
+										<g:hasErrors bean="${searchableFileInstance}">
+										<ul class="errors" role="alert">
+											<g:eachError bean="${searchableFileInstance}" var="error">
+											<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+											</g:eachError>
+										</ul>
+										</g:hasErrors>
+										<g:form url="[resource:searchableFileInstance, action:'save']" method="POST" class="smart-form">
+											<g:hiddenField name="version" value="${searchableFileInstance?.version}" />
 											<header>
 												Standard Form Header
 											</header>
-				
-											<fieldset>
-												
-												<section>
-													<label class="label">Name</label>
-													<label class="input state-disabled">
-														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="name"/>">
-													</label>
-												</section>
-				
-												<section>
-													<label class="label">File path</label>
-													<label class="input state-disabled">
-														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="path"/>">
-													</label>
-												</section>
-				
-											
+											<fieldset class="form">
+												<g:render template="form"/>
 											</fieldset>
-				
-					
-					
-					
-											<fieldset>
-												
-												
-												<section>
-													<label class="label">URL</label>
-													<label class="input state-disabled">
-														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="url"/>">
-													</label>
-												</section>
-												
-												<section>
-													<label class="label">User</label>
-													<label class="input state-disabled">
-														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="user"/>">
-													</label>
-												</section>
-				
-												<section>
-													<label class="label">Password</label>
-													<label class="input state-disabled">
-														
-														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="password"/>">
-													</label>
-												</section>
-												
-												
-												
-												
-											</fieldset>
-				
-											
 											<footer>
 												<fieldset class="buttons">
-													<g:link class="btn btn-danger" action="delete" params="[identifier: searchableFileInstance.identifier]" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" ><g:message code="default.button.delete.label" default="Delete" /></g:link>
-													<g:link class="btn btn-primary" action="edit" params="[identifier: searchableFileInstance.identifier]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-													<g:link class="btn btn-primary" action="copy" params="[identifier: searchableFileInstance.identifier]"><g:message code="default.button.copy.label" default="Copy" /></g:link>
-													<g:link class="btn btn-default" action="index">List</g:link>
-				
+																								
+													<g:submitButton name="create" class="btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+																								
+													<g:link class="btn btn-default" action="index" resource="${searchableFileInstance}">List</g:link>
 												</fieldset>
 											</footer>
-										</g:form>	
-											
-											
+										</g:form>
+									</div>
 										
 				
 									</div>

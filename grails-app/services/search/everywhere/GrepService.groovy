@@ -6,35 +6,23 @@ import static org.grep4j.core.Grep4j.regularExpression
 import static org.grep4j.core.fluent.Dictionary.on
 import grails.transaction.Transactional
 
-import org.grep4j.core.request.GrepExpression
 import org.grep4j.core.result.GrepResults
 
 @Transactional
 class GrepService {
 
-	def grepBasedOnSearchParams(params) {
+	ProfileConverterService profileConverterService
 
-		boolean regex = false
-		def selectedWloProfiles = null
-		String searchText = null
+	def grepBasedOnSearchParams(SearchParam searchParam) {
 
+		GrepResults results;
 
-
-
-		GrepExpression grepExpression;
-
-		if (params.regex){
-			grepExpression = regularExpression(searchText)
+		if (searchParam.regex){
+			results = grep(regularExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
 		}else{
-			grepExpression = constantExpression(searchText)
+			results = grep(constantExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
 		}
 
-		GrepResults results = grep(grepExpression, on(profiles));
-
-
-
-		grepsearchResult.save()
-
-		return grepsearchResult
+		return results.toString()
 	}
 }

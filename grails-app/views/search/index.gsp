@@ -103,7 +103,7 @@
 										<section>
 											<label class="label">Search Text</label>
 											<label class="input">
-												<input type="text" maxlength="10"  name="searchText" placeholder="Enter text">
+												<input type="text" maxlength="10"  name="text" placeholder="Enter text">
 											</label>
 										</section>
 		
