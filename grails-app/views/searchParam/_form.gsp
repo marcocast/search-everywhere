@@ -1,6 +1,7 @@
 <%@ page import="search.everywhere.SearchParam" %>
 <%@ page import="search.everywhere.SearchableFile" %>
 
+
 <fieldset>
 										
 <section>
@@ -61,8 +62,8 @@
 			<select name="pnames" multiple="" class="custom-scroll">
 			<g:each in="${searchableFileInstanceList}" status="i" var="searchableFileInstance">
 				
-				<g:if test="${searchParamInstance?.searchableFileNames != null && searchParamInstance?.searchableFileNames.contains(searchableFileInstance.name)}">
-					<option value="${searchableFileInstance.name}" selected>${searchableFileInstance.name}</option>
+				<g:if test="${searchParamInstance?.searchableFileNames != null && searchParamInstance?.searchableFileNames.contains(searchableFileInstance.identifier)}">
+					<option value="${searchableFileInstance.identifier}" selected>${searchableFileInstance.name}</option>
 				</g:if>
 				<g:else>
 					<option value="${searchableFileInstance.identifier}" >${searchableFileInstance.name}</option>

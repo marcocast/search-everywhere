@@ -1,5 +1,6 @@
 <%@ page import="search.everywhere.SearchParam" %>
-
+<%@ page import="search.everywhere.SearchableFileDAOService" %>
+<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -122,7 +123,7 @@
 									<td>
 									
 									    <g:each in="${searchParamInstance.searchableFileNames}" status="u" var="searchablefileName">
-									    	${searchablefileName}
+									    	${searchableFileDAOService.getSearchableFile(searchablefileName).name}
 										</g:each>
 									</td>
 								

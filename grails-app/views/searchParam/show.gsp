@@ -1,5 +1,7 @@
 
 <%@ page import="search.everywhere.SearchParam" %>
+<%@ page import="search.everywhere.SearchableFileDAOService" %>
+<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -137,7 +139,7 @@
 							<label class="select select-multiple state-disabled">
 								<select multiple="" class="custom-scroll" disabled="disabled">
 									<g:each in="${searchParamInstance.searchableFileNames}" var="p">
-									<option value="${p}">${p}</option>
+									<option value="${p}">${searchableFileDAOService.getSearchableFile(p).name}</option>
 									</g:each>
 								</select> </label>
 						</section>

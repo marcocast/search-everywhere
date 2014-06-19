@@ -22,6 +22,11 @@ class SearchableFileDAOService {
 		return searchEverywhereCacheService.searchableFileCache.get(identifier)
 	}
 
+	def SearchableFile getSearchableFileByName(String name){
+		return searchEverywhereCacheService.searchableFileCache.find{it.name == name}
+	}
+
+
 	def void addSearchableFile(SearchableFile searchableFile){
 		searchableFile.identifier = searchableFile.name.replaceAll(" ","_").replaceAll("\\.", "-")
 		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + searchableFile.identifier)
@@ -37,8 +42,6 @@ class SearchableFileDAOService {
 
 	def void editSearchableFile(SearchableFile searchableFile){
 		removeSearchableFile(searchableFile.identifier)
-
-		searchableFile.identifier = searchableFile.name.replaceAll(" ","_").replaceAll("\\.", "-")
 		def modifiedFile = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + searchableFile.identifier)
 		modifiedFile.write searchableFile.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchableFileCache.put(searchableFile.identifier,searchableFile)
