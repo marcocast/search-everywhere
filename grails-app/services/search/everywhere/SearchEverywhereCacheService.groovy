@@ -16,8 +16,11 @@ class SearchEverywhereCacheService {
 	private static final String searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere";
 	static final String searchableFilesFolder = searchEverywhereHomeFolder + "/searchable-files";
 	static final String searchParamsFolder = searchEverywhereHomeFolder + "/search-params";
+	static final String resultsFolder = searchEverywhereHomeFolder + "/results";
+	static final String textResultsFolder = searchEverywhereHomeFolder + "/textResults";
 	final Map<String,SearchableFile> searchableFileCache = new ConcurrentHashMap<String,SearchableFile>();
 	final Map<String,SearchParam> searchParamCache = new ConcurrentHashMap<String,SearchParam>();
+	final Map<String,Result> resultCache = new ConcurrentHashMap<String,Result>();
 
 
 	def createFolersIfNotExist(){

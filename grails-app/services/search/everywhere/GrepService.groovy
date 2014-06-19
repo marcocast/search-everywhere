@@ -15,14 +15,22 @@ class GrepService {
 
 	def grepBasedOnSearchParams(SearchParam searchParam) {
 
-		GrepResults results;
+		GrepResults grepResult;
 
 		if (searchParam.regex){
-			results = grep(regularExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
+			grepResult = grep(regularExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
 		}else{
-			results = grep(constantExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
+			grepResult = grep(constantExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
 		}
 
-		return results.toString()
+
+		Result result = new Result();
+
+		result.text = searchParam.text
+		result.regex = searchParam.regex
+		result.searchableFileNames = searchParam.searchableFileNames
+		result.result = grepResult.text
+		result.totalMatches = grepResult.totalLines()
+		return result
 	}
 }

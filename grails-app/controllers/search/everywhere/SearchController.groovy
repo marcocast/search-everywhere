@@ -14,9 +14,9 @@ class SearchController {
 
 		searchParam.searchableFileNames = [params.searchableFileName].flatten().findAll{ it != null }
 
-		String grepsearchResult = grepService.grepBasedOnSearchParams(searchParam)
+		Result result = grepService.grepBasedOnSearchParams(searchParam)
 
-		render (template: "result", model: [grepsearchResult: grepsearchResult])
+		render (template: "result", model: [result: result])
 	}
 
 

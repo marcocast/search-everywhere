@@ -2,14 +2,14 @@
 				
 <form class="smart-form">
 	<header>
-		Responsive grid system
+		${result.text} on ${result.searchableFileNames} with regex ${result.regex}
 	</header>
 
 	<fieldset>
 									
 		<section>
 			<label class="textarea"> 										
-				<textarea rows="300" placeholder="Nothing found">${grepsearchResult}</textarea> 
+				<textarea rows="${result.totalMatches}" placeholder="Nothing found">${result.result}</textarea> 
 			</label>
 		</section>
 	</fieldset>
