@@ -23,7 +23,7 @@ class SearchParamDAOService {
 	}
 
 	def void addSearchParam(SearchParam searchParam){
-		searchParam.identifier = searchParam.name
+		searchParam.identifier = searchParam.name.replaceAll(" ","_").replaceAll("\\.", "-")
 		def file1 = new File(searchEverywhereCacheService.searchParamsFolder + "/" + searchParam.identifier)
 		file1.write searchParam.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchParamCache.put(searchParam.identifier,searchParam)
@@ -38,7 +38,7 @@ class SearchParamDAOService {
 	def void editSearchParam(SearchParam searchParam){
 		removeSearchParam(searchParam.identifier)
 
-		searchParam.identifier = searchParam.name
+		searchParam.identifier = searchParam.name.replaceAll(" ","_").replaceAll("\\.", "-")
 		def modifiedFile = new File(searchEverywhereCacheService.searchParamsFolder + "/" + searchParam.identifier)
 		modifiedFile.write searchParam.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchParamCache.put(searchParam.identifier,searchParam)

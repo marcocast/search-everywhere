@@ -65,7 +65,7 @@
 					<option value="${searchableFileInstance.name}" selected>${searchableFileInstance.name}</option>
 				</g:if>
 				<g:else>
-					<option value="${searchableFileInstance.name}" >${searchableFileInstance.name}</option>
+					<option value="${searchableFileInstance.identifier}" >${searchableFileInstance.name}</option>
 				</g:else>
 
 			</g:each>

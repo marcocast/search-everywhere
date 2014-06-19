@@ -197,7 +197,7 @@
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 		
-								<g:form action="search" id="formSearch"  class="smart-form">
+								<g:form action="searchWithSearchParam" id="formSearchWithSearchParam"  class="smart-form">
 									<header>
 										Standard Form Header
 									</header>
@@ -207,7 +207,7 @@
 										<section>
 											<label class="label">Select Search existing Param</label>
 											<label class="select select-multiple">
-												<g:select optionKey="name" class="custom-scroll" optionValue="name"
+												<g:select optionKey="identifier" class="custom-scroll" optionValue="name"
 												name="searchParamas" from="${searchParamDAOService.getAllSearchParams()}" />
 												</label>
 											<div class="note">
@@ -221,7 +221,7 @@
 									
 									<footer>
 												<fieldset class="buttons">
-													<g:link class="btn btn-primary" action="search"><g:message code="default.button.execute.search.label" default="Execute Search " /><i class="fa fa-search"></i></g:link>				
+													<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Execute Search " /><i class="fa fa-search"></i></button>
 												</fieldset>
 											</footer>
 								</g:form>	

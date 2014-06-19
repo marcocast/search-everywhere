@@ -75,7 +75,7 @@
 					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
 					<div class="btn-group btn-group-justified" data-toggle="buttons">
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/mail.html">
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchableFilesSmall.gsp">
 							Files (<g:totSearchablefiles/>) </label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/notifications.html">
