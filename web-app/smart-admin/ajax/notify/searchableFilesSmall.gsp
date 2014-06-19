@@ -1,8 +1,8 @@
-<%@ page import="search.everywhere.SearchableFileDAOService" %>
-<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
+<%@ page import="search.everywhere.NotifyService" %>
+<g:set var="notifyService" bean="notifyService"/>
 
 <ul class="notification-body">
-<g:each in="${searchableFileDAOService.getAllSearchableFiles()}" var="searchableFile">
+<g:each in="${notifyService.getLatestSearchableFiles(2)}" var="searchableFile">
 
 	<li>
 		<span class="unread">
