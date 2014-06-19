@@ -67,7 +67,7 @@
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> </span>
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-paw"></i> </span>
 
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -89,11 +89,12 @@
 					<div class="ajax-notifications custom-scroll">
 
 						<div class="alert alert-transparent">
-							<h4>Click a button to show messages here</h4>
-							This blank page message helps protect your privacy, or you can show the first message here automatically.
+							<h2>Last 5</h2>
+							<h4>Click a button to show the latest details</h4>
+							
 						</div>
 
-						<i class="fa fa-lock fa-4x fa-border"></i>
+						<i class="fa fa-paw fa-4x fa-border"></i>
 
 					</div>
 					<!-- end notification content -->
@@ -113,8 +114,9 @@
 			<div class="project-context hidden-xs">
 
 				<span class="label">Jobs:</span>
-				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent Searches <i class="fa fa-angle-down"></i></span>
-
+				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent Searches <i class="fa fa-hand-o-down"></i></span>
+				
+				
 				<!-- Suggestion: populate this list with fetch and push technique -->
 				<ul class="dropdown-menu">
 					<li>
