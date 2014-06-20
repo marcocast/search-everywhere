@@ -7,11 +7,14 @@ import static org.grep4j.core.fluent.Dictionary.on
 import grails.transaction.Transactional
 
 import org.grep4j.core.result.GrepResults
+import org.springframework.stereotype.Service
 
+
+@Service
 @Transactional
 class GrepService {
 
-	ProfileConverterService profileConverterService
+	def profileConverterService
 
 	def grepBasedOnSearchParams(SearchParam searchParam) {
 
