@@ -34,6 +34,7 @@ class GrepService {
 		result.searchableFileNames = searchParam.searchableFileNames
 		result.result = grepResult.text
 		result.totalMatches = grepResult.totalLines()
+		result.resultDate = System.currentTimeMillis()
 		return result
 	}
 }

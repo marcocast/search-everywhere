@@ -1,62 +1,161 @@
-
 <%@ page import="search.everywhere.Result" %>
+<%@ page import="search.everywhere.SearchableFileDAOService" %>
+<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="smart-admin"/>
 		<g:set var="entityName" value="${message(code: 'result.label', default: 'Result')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-result" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-result" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
+	
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+						<h1 class="page-title txt-color-blueDark">
+							<i class="fa fa-table fa-fw "></i> 
+								Table 
+							<span>> 
+								Data Tables
+							</span>
+						</h1>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+						<ul id="sparks" class="">
+							<li class="sparks-info">
+								<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+								<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+									1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+								</div>
+							</li>
+							<li class="sparks-info">
+								<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+								<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+									110,150,300,130,400,240,220,310,220,300, 270, 210
+								</div>
+							</li>
+							<li class="sparks-info">
+								<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+								<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+									110,150,300,130,400,240,220,310,220,300, 270, 210
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<!-- widget grid -->
+				<section id="widget-grid" class="">
+				
+					<!-- row -->
+					<div class="row">
+				
+						<!-- NEW WIDGET START -->
+						<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				
+							<!-- Widget ID (each widget will need unique ID)-->
+							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+								<!-- widget options:
+								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+				
+								data-widget-colorbutton="false"
+								data-widget-editbutton="false"
+								data-widget-togglebutton="false"
+								data-widget-deletebutton="false"
+								data-widget-fullscreenbutton="false"
+								data-widget-custombutton="false"
+								data-widget-collapsed="true"
+								data-widget-sortable="false"
+				
+								-->
+								<header>
+									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+									<h2>Standard Data Tables </h2>
+				
+								</header>
+				
+								<!-- widget div-->
+								<div>
+				
+									<!-- widget edit box -->
+									<div class="jarviswidget-editbox">
+										<!-- This area used as dropdown edit box -->
+				
+									</div>
+									<!-- end widget edit box -->
+				
+									<!-- widget content -->
+									<div class="widget-body no-padding">
+										<div class="widget-body-toolbar">
+											<g:link class="btn btn-primary" action="create" resource="${resultInstance}"><g:message code="default.button.create.label" default="Add Searchable file" /></g:link>
+												
+										</div>
+							
+										<table id="dt_basic" class="table table-striped table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>Text</th>
+													<th>Searchable File Names</th>
+													<th>Total Matches</th>
+													<th>Result Date</th>
+													
+												</tr>
+											</thead>
+											<tbody>
+							
+											<g:each in="${resultInstanceList}" status="i" var="resultInstance">
+												<tr>
+												
+													<td>${fieldValue(bean: resultInstance, field: "text")}
+														<g:if test="${resultInstance?.regex==true}">
+															<span class="badge pull-right toggle state-disabled">Regex</span>
+														</g:if>
+													</td>
+													<td>
+														 <g:each in="${resultInstance.searchableFileNames}" status="u" var="searchablefileName">
+													    	${searchableFileDAOService.getSearchableFile(searchablefileName).name}
+														</g:each>
+													</td>
+													<td><g:link action="show" id="${resultInstance.identifier}" params="[identifier: resultInstance.identifier]">${fieldValue(bean: resultInstance, field: "totalMatches")}</g:link></td>
+													
+													<td>${new Date(resultInstance.resultDate)}</td>
+												
+													
+												</tr>
+												
+						
 					
-						<g:sortableColumn property="result" title="${message(code: 'result.result.label', default: 'Result')}" />
-					
-						<g:sortableColumn property="resultDate" title="${message(code: 'result.resultDate.label', default: 'Result Date')}" />
-					
-						<g:sortableColumn property="regex" title="${message(code: 'result.regex.label', default: 'Regex')}" />
-					
-						<g:sortableColumn property="text" title="${message(code: 'result.text.label', default: 'Text')}" />
-					
-						<g:sortableColumn property="totalMatches" title="${message(code: 'result.totalMatches.label', default: 'Total Matches')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${resultInstanceList}" status="i" var="resultInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${resultInstance.id}">${fieldValue(bean: resultInstance, field: "result")}</g:link></td>
-					
-						<td><g:formatDate date="${resultInstance.resultDate}" /></td>
-					
-						<td><g:formatBoolean boolean="${resultInstance.regex}" /></td>
-					
-						<td>${fieldValue(bean: resultInstance, field: "text")}</td>
-					
-						<td>${fieldValue(bean: resultInstance, field: "totalMatches")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${resultInstanceCount ?: 0}" />
+											</g:each>
+											
+											
+												
+											</tbody>
+										</table>
+				
+									</div>
+									<!-- end widget content -->
+				
+								</div>
+								<!-- end widget div -->
+				
+							</div>
+							<!-- end widget -->
+				
+						</article>
+						<!-- WIDGET END -->
+				
+					</div>
+				
+					<!-- end row -->
+				
+				</section>
+				<!-- end widget grid -->
+
 			</div>
-		</div>
+			<!-- END MAIN CONTENT -->
 	</body>
 </html>

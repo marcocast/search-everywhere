@@ -26,8 +26,19 @@ class SearchEverywhereCacheService {
 	def createFolersIfNotExist(){
 		if(!new File(searchEverywhereHomeFolder).exists()){
 			new File( searchEverywhereHomeFolder ).mkdir()
+		}
+		if(!new File(searchableFilesFolder).exists()){
 			new File( searchableFilesFolder ).mkdir()
+		}
+		if(!new File(searchParamsFolder).exists()){
 			new File( searchParamsFolder ).mkdir()
+		}
+
+		if(!new File(resultsFolder).exists()){
+			new File( resultsFolder ).mkdir()
+		}
+		if(!new File(textResultsFolder).exists()){
+			new File( textResultsFolder ).mkdir()
 		}
 	}
 
@@ -35,6 +46,7 @@ class SearchEverywhereCacheService {
 
 		loadSearchbaleFiles()
 		loadSearchParams()
+		loadResults()
 	}
 
 
@@ -52,6 +64,14 @@ class SearchEverywhereCacheService {
 		def dir = new File(searchParamsFolder)
 		dir.eachFileRecurse (FileType.FILES) { file ->
 			searchParamCache.put(file.name, new SearchParam(JSON.parse(file.text)))
+		}
+	}
+
+	def loadResults() {
+
+		def dir = new File(resultsFolder)
+		dir.eachFileRecurse (FileType.FILES) { file ->
+			resultCache.put(file.name, new Result(JSON.parse(file.text)))
 		}
 	}
 }

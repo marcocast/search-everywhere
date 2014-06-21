@@ -1,5 +1,5 @@
-		
-				
+<%@ page import="search.everywhere.ResultDAOService" %>
+<g:set var="resultDAOService" bean="resultDAOService"/>
 <form class="smart-form">
 	<header>
 		${result.text} on ${result.searchableFileNames} with regex ${result.regex}
@@ -9,7 +9,7 @@
 									
 		<section>
 			<label class="textarea"> 										
-				<textarea rows="${result.totalMatches}" placeholder="Nothing found">${result.result}</textarea> 
+				<textarea rows="${result.totalMatches}" placeholder="Nothing found">${resultDAOService.getFullResultText(result.identifier)}</textarea> 
 			</label>
 		</section>
 	</fieldset>

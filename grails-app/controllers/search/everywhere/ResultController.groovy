@@ -8,97 +8,63 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ResultController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static allowedMethods = [save: "POST", update: "PUT"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Result.list(params), model:[resultInstanceCount: Result.count()]
-    }
+	ResultDAOService resultDAOService;
 
-    def show(Result resultInstance) {
-        respond resultInstance
-    }
+	def index() {
+		respond resultDAOService.getAllResults(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
+	}
 
-    def create() {
-        respond new Result(params)
-    }
+	def show(params) {
+		respond resultDAOService.getResult(params.identifier)
+	}
 
-    @Transactional
-    def save(Result resultInstance) {
-        if (resultInstance == null) {
-            notFound()
-            return
-        }
+	def create() {
+		respond new Result(params)
+	}
 
-        if (resultInstance.hasErrors()) {
-            respond resultInstance.errors, view:'create'
-            return
-        }
+	@Transactional
+	def save(Result resultInstance) {
+		if (resultInstance == null) {
+			notFound()
+			return
+		}
 
-        resultInstance.save flush:true
+		if (resultInstance.hasErrors()) {
+			respond resultInstance.errors, view:'create'
+			return
+		}
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'resultInstance.label', default: 'Result'), resultInstance.id])
-                redirect resultInstance
-            }
-            '*' { respond resultInstance, [status: CREATED] }
-        }
-    }
+		resultDAOService.addResult(resultInstance)
 
-    def edit(Result resultInstance) {
-        respond resultInstance
-    }
+		redirect(controller:'result',action:'index')
+	}
 
-    @Transactional
-    def update(Result resultInstance) {
-        if (resultInstance == null) {
-            notFound()
-            return
-        }
+	def edit(params) {
+		respond resultDAOService.getResult(params.identifier)
+	}
 
-        if (resultInstance.hasErrors()) {
-            respond resultInstance.errors, view:'edit'
-            return
-        }
 
-        resultInstance.save flush:true
+	@Transactional
+	def delete(params) {
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Result.label', default: 'Result'), resultInstance.id])
-                redirect resultInstance
-            }
-            '*'{ respond resultInstance, [status: OK] }
-        }
-    }
 
-    @Transactional
-    def delete(Result resultInstance) {
+		resultDAOService.removeResult(params.identifier)
 
-        if (resultInstance == null) {
-            notFound()
-            return
-        }
+		redirect(controller:'result',action:'index')
+	}
 
-        resultInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Result.label', default: 'Result'), resultInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'resultInstance.label', default: 'Result'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
+	protected void notFound() {
+		request.withFormat {
+			form multipartForm {
+				flash.message = message(code: 'default.not.found.message', args: [
+					message(code: 'resultInstance.label', default: 'Result'),
+					params.id
+				])
+				redirect action: "index", method: "GET"
+			}
+			'*'{ render status: NOT_FOUND }
+		}
+	}
 }

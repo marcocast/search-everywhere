@@ -67,7 +67,7 @@
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-paw"></i> </span>
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-html5"></i> </span>
 
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -78,8 +78,8 @@
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchableFilesSmall.gsp">
 							Files (<g:totSearchablefiles/>) </label>
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/notifications.html">
-							Results (3000) </label>
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/resultsSmall.gsp">
+							Results (<g:totResults/>) </label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/tasks.html">
 							Searches (445) </label>
@@ -249,7 +249,15 @@
 				-->
 
 				<ul>
-				
+					<li>
+						<g:link controller="search" action="index"><i class="fa fa-lg fa-fw fa-search"></i> <span class="menu-item-parent">Search</span></g:link>
+						
+					</li>
+					
+					<li>
+						<g:link controller="result" action="index"><i class="fa fa-lg fa-fw fa-list-ol"></i>Results<span class="badge pull-right inbox-badge"><g:totResults/></span></g:link>
+						
+					</li>
 		
 					<li class="active">
 						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Searchable Files</span></a>
@@ -264,10 +272,7 @@
 						</ul>
 					</li>
 					
-					<li>
-						<g:link controller="search" action="index"><i class="fa fa-lg fa-fw fa-search"></i> <span class="menu-item-parent">Search</span></g:link>
-						
-					</li>
+					
 					
 					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Search Paramas</span></a>

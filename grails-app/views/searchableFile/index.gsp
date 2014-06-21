@@ -4,7 +4,6 @@
 <html>
 	<head>
 		<meta name="layout" content="smart-admin"/>
-		<title>Welcome to Grails</title>
 		<g:set var="entityName" value="${message(code: 'searchableFile.label', default: 'SearchableFile')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>

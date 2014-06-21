@@ -7,7 +7,7 @@ class Result {
 	long totalMatches;
 	String text
 	boolean regex
-	Date resultDate
+	long resultDate
 	static hasMany = [searchableFileNames:String]
 
 	static constraints = {

@@ -7,6 +7,7 @@ class SearchController {
 	GrepService grepService
 	SearchableFileDAOService searchableFileDAOService;
 	SearchParamDAOService searchParamDAOService;
+	ResultDAOService resultDAOService;
 
 	def executeSearch(params){
 
@@ -15,6 +16,8 @@ class SearchController {
 		searchParam.searchableFileNames = [params.searchableFileName].flatten().findAll{ it != null }
 
 		Result result = grepService.grepBasedOnSearchParams(searchParam)
+
+		resultDAOService.addResult(result)
 
 		render (template: "result", model: [result: result])
 	}

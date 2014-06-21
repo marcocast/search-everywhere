@@ -1,80 +1,134 @@
-
-<%@ page import="search.everywhere.Result" %>
+<%@ page import="search.everywhere.SearchableFile" %>
+<%@ page import="search.everywhere.SearchParam" %>
+<%@ page import="search.everywhere.ResultDAOService" %>
+<g:set var="resultDAOService" bean="resultDAOService"/>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'result.label', default: 'Result')}" />
+		
+		<meta name="layout" content="smart-admin"/>
+		<g:set var="entityName" value="${message(code: 'searchableFile.label', default: 'SearchableFile')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<g:javascript library="jquery"/>
+
 	</head>
 	<body>
-		<a href="#show-result" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+		
+		
+	<div id="content">
+	
+		<div class="row">
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark">
+					<i class="fa fa-edit fa-fw "></i> 
+						Search 
+					
+				</h1>
+			</div>
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+				<ul id="sparks" class="">
+					<li class="sparks-info">
+						<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
+						<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
+							1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+						</div>
+					</li>
+					<li class="sparks-info">
+						<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+						<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
+							110,150,300,130,400,240,220,310,220,300, 270, 210
+						</div>
+					</li>
+					<li class="sparks-info">
+						<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
+						<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
+							110,150,300,130,400,240,220,310,220,300, 270, 210
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div id="show-result" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list result">
+		
+		
+		
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
+		
 			
-				<g:if test="${resultInstance?.result}">
-				<li class="fieldcontain">
-					<span id="result-label" class="property-label"><g:message code="result.result.label" default="Result" /></span>
-					
-						<span class="property-value" aria-labelledby="result-label"><g:fieldValue bean="${resultInstance}" field="result"/></span>
-					
-				</li>
-				</g:if>
+		
+			<!-- END ROW -->
+		
+			<!-- START ROW -->
+		
+			<div class="row">
 			
-				<g:if test="${resultInstance?.resultDate}">
-				<li class="fieldcontain">
-					<span id="resultDate-label" class="property-label"><g:message code="result.resultDate.label" default="Result Date" /></span>
-					
-						<span class="property-value" aria-labelledby="resultDate-label"><g:formatDate date="${resultInstance?.resultDate}" /></span>
-					
-				</li>
-				</g:if>
+				<div class="jarviswidget" id="wid-id-0${resultInstance.searchableFileNames}" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+							<!-- widget options:
+							usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 			
-				<g:if test="${resultInstance?.regex}">
-				<li class="fieldcontain">
-					<span id="regex-label" class="property-label"><g:message code="result.regex.label" default="Regex" /></span>
-					
-						<span class="property-value" aria-labelledby="regex-label"><g:formatBoolean boolean="${resultInstance?.regex}" /></span>
-					
-				</li>
-				</g:if>
+							data-widget-colorbutton="false"
+							data-widget-editbutton="false"
+							data-widget-togglebutton="false"
+							data-widget-deletebutton="false"
+							data-widget-fullscreenbutton="false"
+							data-widget-custombutton="false"
+							data-widget-collapsed="true"
+							data-widget-sortable="false"
 			
-				<g:if test="${resultInstance?.text}">
-				<li class="fieldcontain">
-					<span id="text-label" class="property-label"><g:message code="result.text.label" default="Text" /></span>
-					
-						<span class="property-value" aria-labelledby="text-label"><g:fieldValue bean="${resultInstance}" field="text"/></span>
-					
-				</li>
-				</g:if>
+							-->
+							<header>
+								<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+								<h2>Result for ${resultInstance.searchableFileNames}</h2>
 			
-				<g:if test="${resultInstance?.totalMatches}">
-				<li class="fieldcontain">
-					<span id="totalMatches-label" class="property-label"><g:message code="result.totalMatches.label" default="Total Matches" /></span>
-					
-						<span class="property-value" aria-labelledby="totalMatches-label"><g:fieldValue bean="${resultInstance}" field="totalMatches"/></span>
-					
-				</li>
-				</g:if>
+							</header>
 			
-			</ol>
-			<g:form url="[resource:resultInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${resultInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+							<!-- widget div-->
+							<div>
+			
+								<!-- widget edit box -->
+								<div class="jarviswidget-editbox">
+									<!-- This area used as dropdown edit box -->
+			
+								</div>
+								<!-- end widget edit box -->
+			
+								<!-- widget content -->
+										<div class="widget-body no-padding">
+												
+												<article class="col-sm-12 col-md-12 col-lg-12" id="resultBox${searchableFileName}">		
+													<form class="smart-form">
+														<header>
+															${resultInstance.text} on ${resultInstance.searchableFileNames} with regex ${resultInstance.regex}
+														</header>
+													
+														<fieldset>
+																						
+															<section>
+																<label class="textarea"> 										
+																	<textarea rows="${resultInstance.totalMatches}" placeholder="Nothing found">${resultDAOService.getFullResultText(resultInstance.identifier)}</textarea> 
+																</label>
+															</section>
+														</fieldset>
+													
+														
+														
+													</form>
+												
+												</article>
+																
+										</div>
+										
+								</div>
+								
+					</div>
+						
+
 		</div>
-	</body>
+				</section>
+		<!-- end widget grid -->
+	</div>
+
+</body>
+
+
 </html>
