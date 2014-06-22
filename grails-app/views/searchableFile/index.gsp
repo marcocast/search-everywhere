@@ -90,7 +90,7 @@
 									<!-- widget content -->
 									<div class="widget-body no-padding">
 										<div class="widget-body-toolbar">
-											<g:link class="btn btn-primary" action="create" resource="${searchableFileInstance}"><g:message code="default.button.create.label" default="Add Searchable file" /></g:link>
+											<g:link class="btn btn-primary" action="create" resource="${searchableFileInstance}"><i class="fa fa-plus"></i> Add Searchable file</g:link>
 												
 										</div>
 										

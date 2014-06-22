@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 class SearchableFileDAOService {
 
 	def searchEverywhereCacheService;
+	def searchParamDAOService;
 	def encodingService;
 
 	def List<SearchableFile> getAllSearchableFiles(){
@@ -22,6 +23,11 @@ class SearchableFileDAOService {
 	def SearchableFile getSearchableFile(String identifier){
 		return searchEverywhereCacheService.searchableFileCache.get(identifier)
 	}
+
+	def String getSearchableFileNameFromIdentifier(String identifier){
+		return identifier.replaceAll("_"," ").replaceAll("-", "\\.")
+	}
+
 
 	def SearchableFile getSearchableFileByName(String name){
 		return searchEverywhereCacheService.searchableFileCache.find{it.name == name}
@@ -42,6 +48,7 @@ class SearchableFileDAOService {
 		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + identifier)
 		file1.delete()
 		searchEverywhereCacheService.searchableFileCache.remove(identifier)
+		searchParamDAOService.removeSearchableFileFromSearchParams(identifier)
 	}
 
 	def void editSearchableFile(SearchableFile searchableFile){

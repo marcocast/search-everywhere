@@ -16,6 +16,11 @@ class ResultController {
 		respond resultDAOService.getAllResults(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
 	}
 
+	def cleanAllResults() {
+		resultDAOService.removeAll()
+		redirect(controller:'result',action:'index')
+	}
+
 	def show(params) {
 		respond resultDAOService.getResult(params.identifier)
 	}

@@ -138,8 +138,10 @@
 							<label class="label">Searchable Files</label>
 							<label class="select select-multiple state-disabled">
 								<select multiple="" class="custom-scroll" disabled="disabled">
-									<g:each in="${searchParamInstance.searchableFileNames}" var="p">
-									<option value="${p}">${searchableFileDAOService.getSearchableFile(p).name}</option>
+									<g:each in="${searchParamInstance.searchableFileNames}" var="searchablefileName">
+									<g:if test="${searchableFileDAOService.getSearchableFile(searchablefileName)!=null}">
+										<option value="${searchablefileName}">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</option>											
+									</g:if>
 									</g:each>
 								</select> </label>
 						</section>

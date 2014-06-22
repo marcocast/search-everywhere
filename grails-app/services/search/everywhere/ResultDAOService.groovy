@@ -51,6 +51,10 @@ class ResultDAOService {
 		searchEverywhereCacheService.resultCache.remove(identifier)
 	}
 
+	def void removeAll(){
+		searchEverywhereCacheService.resultCache.findAll{it.value != null }.each { removeResult(it.key) }
+	}
+
 	def void editResult(Result result){
 		removeResult(result.identifier)
 		addResult(result)

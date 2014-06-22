@@ -22,8 +22,18 @@
 				<br>
 				On profile : 
 				 <g:each in="${result.searchableFileNames}" status="u" var="searchablefileName">
-			    	<span class="text-primary">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</span>
+			    	<g:if test="${searchableFileDAOService.getSearchableFile(searchablefileName)==null}">
+						<span class="badge bg-color-red  pull-left toggle from"> <i class="fa fa-user fa-fw fa-trash-o"></i> ${searchableFileDAOService.getSearchableFileNameFromIdentifier(searchablefileName)} <i class="icon-paperclip"></i></span>
+					</g:if>
+					<g:else>
+					   	<span class="text-primary">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</span>								
+					</g:else>
 				</g:each>
+
+				
+
+
+
 
 				 <br>
 				 <span class="pull-right font-xs text-muted">Total Lines found<i>${result.totalMatches}</i></span>

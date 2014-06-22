@@ -92,7 +92,8 @@
 					<!-- widget content -->
 					<div class="widget-body no-padding">
 						<div class="widget-body-toolbar">
-							<g:link class="btn btn-primary" action="create" resource="${searchParamInstance}"><g:message code="default.button.create.label" default="Add Searchable file" /></g:link>
+							<g:link class="btn btn-primary" action="create" resource="${searchParamInstance}">
+							<i class="fa fa-plus"></i> Add Search Param</g:link>
 								
 						</div>
 						
@@ -123,7 +124,12 @@
 									<td>
 									
 									    <g:each in="${searchParamInstance.searchableFileNames}" status="u" var="searchablefileName">
-									    	${searchableFileDAOService.getSearchableFile(searchablefileName).name}
+									    	<g:if test="${searchableFileDAOService.getSearchableFile(searchablefileName)==null}">
+												<span class="badge bg-color-red  pull-left toggle from"> <i class="fa fa-user fa-fw fa-trash-o"></i> ${searchableFileDAOService.getSearchableFileNameFromIdentifier(searchablefileName)} <i class="icon-paperclip"></i></span>
+											</g:if>
+											<g:else>
+											   	${searchableFileDAOService.getSearchableFile(searchablefileName).name}								
+											</g:else>
 										</g:each>
 									</td>
 								
