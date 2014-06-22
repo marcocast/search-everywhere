@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 class ResultDAOService {
 
 	def searchEverywhereCacheService;
+	def mostCommonResultService;
 
 	def List<Result> getAllResults(){
 
@@ -32,7 +33,7 @@ class ResultDAOService {
 
 	def void addResult(Result result){
 
-		result.identifier = (result.resultDate + result.text + result.searchableFileNames).replaceAll("\\[","__").replaceAll("\\]","").replaceAll(" ","_").replaceAll("\\.", "-")
+		result.identifier = (result.resultDate + "X" + result.text + result.searchableFileNames).replaceAll("\\[","__").replaceAll("\\]","").replaceAll(" ","_").replaceAll("\\.", "-")
 		if(result.totalMatches > 0){
 			def file2 =new File(searchEverywhereCacheService.textResultsFolder + "/" + result.identifier)
 			file2.write result.result

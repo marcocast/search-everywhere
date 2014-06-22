@@ -208,7 +208,7 @@
 											<label class="label">Select Search existing Param</label>
 											<label class="select select-multiple">
 												<g:select optionKey="identifier" class="custom-scroll" optionValue="name"
-												name="searchParamas" from="${searchParamDAOService.getAllSearchParams()}" />
+												name="searchParamas" from="${searchParamDAOService.getAllActiveSearchParams()}" />
 												</label>
 											<div class="note">
 												<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.

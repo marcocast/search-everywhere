@@ -47,7 +47,7 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div>.danger
 	
 	<!-- widget grid -->
 <section id="widget-grid" class="">
@@ -108,7 +108,14 @@
 							<tbody>
 		
 							<g:each in="${searchParamInstanceList}" status="i" var="searchParamInstance">
-								<tr>
+							    .danger
+							    <g:if test="${searchParamInstance.searchableFileNames.isEmpty()}">
+									<tr class="danger">								
+								</g:if>
+								<g:else>
+								   	<tr>								
+								</g:else>
+								
 
 
 									<td><g:link action="show" id="${searchParamInstance.name}" params="[identifier: searchParamInstance.identifier]">${fieldValue(bean: searchParamInstance, field: "name")}</g:link></td>

@@ -1,6 +1,8 @@
 <%@ page import="search.everywhere.Result" %>
 <%@ page import="search.everywhere.SearchableFileDAOService" %>
 <g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
+<%@ page import="search.everywhere.MostCommonResultService" %>
+<g:set var="mostCommonResultService" bean="mostCommonResultService"/>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -33,7 +35,7 @@
 					</div>
 				</li>
 				<li class="sparks-info">
-					<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
+					<h5> The most common search <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
 					<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
 						110,150,300,130,400,240,220,310,220,300, 270, 210
 					</div>

@@ -21,7 +21,8 @@ class SearchEverywhereCacheService {
 	final Map<String,SearchableFile> searchableFileCache = new ConcurrentHashMap<String,SearchableFile>();
 	final Map<String,SearchParam> searchParamCache = new ConcurrentHashMap<String,SearchParam>();
 	final Map<String,Result> resultCache = new ConcurrentHashMap<String,Result>();
-
+	final Map<Result,String> mostCommonResultCache = new ConcurrentHashMap<Result,String>();
+	def mostCommonResultService;
 
 	def createFolersIfNotExist(){
 		if(!new File(searchEverywhereHomeFolder).exists()){

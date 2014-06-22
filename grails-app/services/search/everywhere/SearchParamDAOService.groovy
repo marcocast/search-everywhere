@@ -18,12 +18,16 @@ class SearchParamDAOService {
 		return allSearchParams
 	}
 
-	def SearchParam getSearchParam(String identifier){
-		return searchEverywhereCacheService.searchParamCache.get(identifier)
+	def List<SearchParam> getAllActiveSearchParams(){
+
+		List<SearchParam> allSearchParams = new ArrayList<SearchParam>()
+		searchEverywhereCacheService.searchParamCache.findAll{it.value.searchableFileNames.isEmpty() == false}.each() { k, v -> allSearchParams.add( v) }
+		return allSearchParams
 	}
 
-	def SearchParam getSearchParamByName(String name){
-		return searchEverywhereCacheService.searchParamCache.find{it.name == name}
+
+	def SearchParam getSearchParam(String identifier){
+		return searchEverywhereCacheService.searchParamCache.get(identifier)
 	}
 
 	def void addSearchParam(SearchParam searchParam){
