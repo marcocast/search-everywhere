@@ -10,12 +10,9 @@ import org.springframework.stereotype.Service
 @Transactional
 class ProfileConverterService {
 
-	def searchableFileDAOService;
 	def encodingService;
 
-	def convertSearchableFileToGrep4jProfile(String searchableFileName) {
-
-		SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(searchableFileName)
+	def convertSearchableFileToGrep4jProfile(SearchableFile searchableFile) {
 
 		if(searchableFile.url == "localhost"){
 			return ProfileBuilder.newBuilder()

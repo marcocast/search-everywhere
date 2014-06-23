@@ -53,7 +53,12 @@ class SearchableFileDAOService {
 
 	def void editSearchableFile(SearchableFile searchableFile){
 		removeSearchableFile(searchableFile.identifier)
-		addSearchableFile(searchableFile)
+		if(searchableFile.password){
+			searchableFile.password = encodingService.econdeBase64(searchableFile.password)
+		}
+		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + searchableFile.identifier)
+		file1.write searchableFile.encodeAsJSON().toString()
+		searchEverywhereCacheService.searchableFileCache.put(searchableFile.identifier,searchableFile)
 	}
 
 	def searchableFilesSize(){

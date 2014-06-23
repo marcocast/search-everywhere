@@ -143,8 +143,12 @@
 												<section>
 													<label class="label">Password</label>
 													<label class="input state-disabled">
-														
-														<input type="text" maxlength="10" disabled="disabled" value="<g:fieldValue bean="${searchableFileInstance}" field="password"/>">
+														<g:if test="${searchableFileInstance?.password}">
+															<input type="text" maxlength="10" disabled="disabled" value="******">
+														</g:if>
+														<g:else>
+														    <input type="text" maxlength="10" disabled="disabled" value="">
+														</g:else>
 													</label>
 												</section>
 												

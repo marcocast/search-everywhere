@@ -15,15 +15,19 @@ import org.springframework.stereotype.Service
 class GrepService {
 
 	def profileConverterService
+	def searchableFileDAOService;
+
 
 	def grepBasedOnSearchParams(SearchParam searchParam) {
+
+		SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(searchParam.searchableFileNames.first())
 
 		GrepResults grepResult;
 
 		if (searchParam.regex){
-			grepResult = grep(regularExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
+			grepResult = grep(regularExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchableFile)));
 		}else{
-			grepResult = grep(constantExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchParam.searchableFileNames.first())));
+			grepResult = grep(constantExpression(searchParam.text), on(profileConverterService.convertSearchableFileToGrep4jProfile(searchableFile)));
 		}
 
 
@@ -31,7 +35,7 @@ class GrepService {
 
 		result.text = searchParam.text
 		result.regex = searchParam.regex
-		result.searchableFileNames = searchParam.searchableFileNames
+		result.searchableFileNames = [searchableFile.identifier].flatten().findAll{ it != null }
 		result.result = grepResult.text
 		result.totalMatches = grepResult.totalLines()
 		result.resultDate = System.currentTimeMillis()

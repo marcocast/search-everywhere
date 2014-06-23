@@ -11,7 +11,7 @@ class SearchableFileController {
 	static allowedMethods = [save: "POST", update: "PUT"]
 
 	SearchableFileDAOService searchableFileDAOService;
-
+	def encodingService
 
 
 
@@ -45,11 +45,19 @@ class SearchableFileController {
 	}
 
 	def edit(params) {
-		respond searchableFileDAOService.getSearchableFile(params.identifier)
+		SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(params.identifier)
+		if(searchableFile.password != null){
+			searchableFile.password = encodingService.decodeBase64(searchableFile.password);
+		}
+		respond searchableFile
 	}
 
 	def copy(params) {
-		respond searchableFileDAOService.getSearchableFile(params.identifier)
+		SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(params.identifier)
+		if(searchableFile.password != null){
+			searchableFile.password = encodingService.decodeBase64(searchableFile.password);
+		}
+		respond searchableFile
 	}
 
 	@Transactional
