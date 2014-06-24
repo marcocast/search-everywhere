@@ -45,14 +45,18 @@ class SearchableFileDAOService {
 	}
 
 	def void removeSearchableFile(String identifier){
-		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + identifier)
-		file1.delete()
-		searchEverywhereCacheService.searchableFileCache.remove(identifier)
+		removeSearchableFileOnly(identifier)
 		searchParamDAOService.removeSearchableFileFromSearchParams(identifier)
 	}
 
+	def void removeSearchableFileOnly(String identifier){
+		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + identifier)
+		file1.delete()
+		searchEverywhereCacheService.searchableFileCache.remove(identifier)
+	}
+
 	def void editSearchableFile(SearchableFile searchableFile){
-		removeSearchableFile(searchableFile.identifier)
+		removeSearchableFileOnly(searchableFile.identifier)
 		if(searchableFile.password){
 			searchableFile.password = encodingService.econdeBase64(searchableFile.password)
 		}
