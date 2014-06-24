@@ -71,29 +71,40 @@ class CommonResultsDAOService {
 			last = it
 			counter++
 		}
+
+
 		BigDecimal allLessLast = new BigDecimal(total)
-		if(counter > 1){
+
+		BigDecimal average = new BigDecimal(total)
+		if(counter > 2){
 			allLessLast	= new BigDecimal(total - last)
+			average =  allLessLast.divide(new BigDecimal(counter-1),1, BigDecimal.ROUND_HALF_UP)
+		}else if(counter > 1){
+			average =  new BigDecimal(total - last)
 		}
 
-		BigDecimal average =  allLessLast.divide(new BigDecimal(counter),1, BigDecimal.ROUND_HALF_UP)
 
 		int compareResult = average.compareTo(new BigDecimal(last)) ;
-
 		String increasingDecrising = ""
 		BigDecimal averageResult = null
 		if(compareResult == 1){
+			BigDecimal difference = average.subtract(new BigDecimal(last))
 			increasingDecrising = "fa-arrow-circle-down"
-			averageResult = new BigDecimal(last).divide(average,BigDecimal.ROUND_HALF_UP)
+			averageResult = (difference.multiply(new BigDecimal(100))).divide(average,BigDecimal.ROUND_HALF_UP)
 		}else if(compareResult == -1){
+			BigDecimal difference = new BigDecimal(last).subtract(average)
 			increasingDecrising = "fa-arrow-circle-up"
-			averageResult = new BigDecimal(last).divide(average,BigDecimal.ROUND_HALF_UP)
+			if(average.compareTo(BigDecimal.ZERO) == 0){
+				averageResult = new BigDecimal(100);
+			}else{
+				averageResult = (difference.multiply(new BigDecimal(100))).divide(average,BigDecimal.ROUND_HALF_UP)
+			}
 		}else{
 			increasingDecrising = "fa-arrow-circle-o-right"
 			averageResult = BigDecimal.ZERO
 		}
 
-		dataToReturn = name + "???" + totalLines.substring(0,totalLines.size()-1) + "AVE" + averageResult + "UD" + increasingDecrising
+		dataToReturn = name	+ "???" +	totalLines.substring(0,totalLines.size()-1) + "AVE" + averageResult + "UD" + increasingDecrising
 
 		return dataToReturn
 	}
