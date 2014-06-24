@@ -10,7 +10,8 @@ class ResultController {
 
 	static allowedMethods = [save: "POST", update: "PUT"]
 
-	ResultDAOService resultDAOService;
+	def resultDAOService;
+	def commonResultsDAOService;
 
 	def index() {
 		respond resultDAOService.getAllResults(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
@@ -18,6 +19,7 @@ class ResultController {
 
 	def cleanAllResults() {
 		resultDAOService.removeAll()
+		commonResultsDAOService.removeAll()
 		redirect(controller:'result',action:'index')
 	}
 

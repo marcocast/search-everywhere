@@ -18,11 +18,11 @@ class SearchEverywhereCacheService {
 	static final String searchParamsFolder = searchEverywhereHomeFolder + "/search-params";
 	static final String resultsFolder = searchEverywhereHomeFolder + "/results";
 	static final String textResultsFolder = searchEverywhereHomeFolder + "/textResults";
+	static final String commonResultsFolder = searchEverywhereHomeFolder + "/commonResults";
 	final Map<String,SearchableFile> searchableFileCache = new ConcurrentHashMap<String,SearchableFile>();
 	final Map<String,SearchParam> searchParamCache = new ConcurrentHashMap<String,SearchParam>();
 	final Map<String,Result> resultCache = new ConcurrentHashMap<String,Result>();
-	final Map<Result,String> mostCommonResultCache = new ConcurrentHashMap<Result,String>();
-	def mostCommonResultService;
+	final Map<String,List<Long>> commonResultsCache = new ConcurrentHashMap<String,List<Long>>();
 
 	def createFolersIfNotExist(){
 		if(!new File(searchEverywhereHomeFolder).exists()){
@@ -41,6 +41,9 @@ class SearchEverywhereCacheService {
 		if(!new File(textResultsFolder).exists()){
 			new File( textResultsFolder ).mkdir()
 		}
+		if(!new File(commonResultsFolder).exists()){
+			new File( commonResultsFolder ).mkdir()
+		}
 	}
 
 	def loadAllIntoCache() {
@@ -48,6 +51,7 @@ class SearchEverywhereCacheService {
 		loadSearchbaleFiles()
 		loadSearchParams()
 		loadResults()
+		loadCommonResults()
 	}
 
 
@@ -73,6 +77,14 @@ class SearchEverywhereCacheService {
 		def dir = new File(resultsFolder)
 		dir.eachFileRecurse (FileType.FILES) { file ->
 			resultCache.put(file.name, new Result(JSON.parse(file.text)))
+		}
+	}
+
+	def loadCommonResults() {
+
+		def dir = new File(commonResultsFolder)
+		dir.eachFileRecurse (FileType.FILES) { file ->
+			commonResultsCache.put(file.name, new ArrayList<Long>(JSON.parse(file.text)))
 		}
 	}
 }

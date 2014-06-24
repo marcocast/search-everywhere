@@ -9,18 +9,21 @@ import org.springframework.stereotype.Service
 class ResultDAOService {
 
 	def searchEverywhereCacheService;
-	def mostCommonResultService;
+	def commonResultsDAOService;
 
 	def List<Result> getAllResults(){
 
 		List<Result> allResults = new ArrayList<Result>()
 		searchEverywhereCacheService.resultCache.each() { k, v -> allResults.add( v) }
-
 		return allResults
 	}
 
 	def Result getResult(String identifier){
 		return searchEverywhereCacheService.resultCache.get(identifier)
+	}
+
+	def String getResultParamFromIdentifier(String identifier){
+		return identifier.substring(identifier.indexOf('X') + 1).replaceAll("__", " on ").replaceAll("_"," ").replaceAll("-", "\\.")
 	}
 
 	def String getFullResultText(String identifier){
@@ -42,6 +45,7 @@ class ResultDAOService {
 		def file1 = new File(searchEverywhereCacheService.resultsFolder + "/" + result.identifier)
 		file1.write result.encodeAsJSON().toString()
 		searchEverywhereCacheService.resultCache.put(result.identifier,result)
+		commonResultsDAOService.addResult(result)
 	}
 
 	def void removeResult(String identifier){

@@ -313,7 +313,7 @@
 				<div class="col-xs-12 col-sm-6">
 					<span class="txt-color-white">Cast studio © 2013-2014</span>
 				</div>
-
+			</div>
 				
 		</div>
 		<!-- END PAGE FOOTER -->
