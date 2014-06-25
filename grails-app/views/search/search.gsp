@@ -20,11 +20,11 @@
 		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
 			<h1 class="page-title txt-color-blueDark">
 				<i class="fa fa-edit fa-fw "></i> 
-					Search 
+					Search Result 
 				
 			</h1>
 		</div>
-		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<div id="commonResult" class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
 			<g:render template="/layouts/mostcommon" />
 		</div>
 	</div>
@@ -47,7 +47,7 @@
 			<g:each in="${searchParam.searchableFileNames}" status="i" var="searchableFileName">
 				
 				<script>
-				  	<g:remoteFunction controller="search" action="executeSearch" update="resultBox${searchableFileName}" params="'name=${searchParam.name}&text=${searchParam.text}&regex=${searchParam.regex}&searchableFileName=${searchableFileName}'"/>
+				  	<g:remoteFunction controller="search" action="executeSearch" update="resultBox${searchableFileName},commonResult" params="'name=${searchParam.name}&text=${searchParam.text}&regex=${searchParam.regex}&searchableFileName=${searchableFileName}'"/>
 	        	  </script>
 				
 				

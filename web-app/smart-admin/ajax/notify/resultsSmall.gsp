@@ -11,11 +11,11 @@
 		<span class="padding-10 unread">
 
 			<em class="badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5">
-				<i class="fa fa-user fa-fw fa-2x"></i>
+				<i class="fa fa-arrow-circle-right fa-fw fa-2x"></i>
 			</em>
 			
 			<span>
-				 On ${new Date(result.resultDate)} with text<span class="text-primary">${result.text}</span> 
+				 On ${new Date(result.resultDate)} with text <span class="text-warning">${result.text}</span> 
 				 <g:if test="${result.regex==true}">
 					<span class="badge pull-right toggle state-disabled">Regex</span>
 				</g:if>
@@ -30,13 +30,8 @@
 					</g:else>
 				</g:each>
 
-				
-
-
-
-
 				 <br>
-				 <span class="pull-right font-xs text-muted">Total Lines found<i>${result.totalMatches}</i></span>
+				 <span class="pull-right font-xs">Total Lines found : <i>${result.totalMatches}</i></span>
 			</span>
 			
 		</span>

@@ -67,7 +67,7 @@
 
 				<!-- Note: The activity badge color changes when clicked and resets the number to 0
 				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-html5"></i> </span>
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-expand"></i> </span>
 
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -76,13 +76,13 @@
 					<div class="btn-group btn-group-justified" data-toggle="buttons">
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchableFilesSmall.gsp">
-							Files (<g:totSearchablefiles/>) </label>
+							<small>Searchable Files</small></label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/resultsSmall.gsp">
-							Results (<g:totResults/>) </label>
+							<small>Results</small></label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/tasks.html">
-							Searches (445) </label>
+							<small>Search Param</small></label>
 					</div>
 
 					<!-- notification content -->
@@ -274,13 +274,13 @@
 					
 					
 					
-					<li>
+					<li class="active">
 						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Search Paramas</span></a>
 						<ul>
 							<li>
 								<g:link controller="searchParam" action="index">View<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
 							</li>
-							<li>
+							<li class="active">
 								<g:link controller="searchParam" action="create">Create new</g:link>
 							</li>
 							
@@ -421,12 +421,13 @@
 	
 			/* BASIC ;*/
 			$('#dt_basic_result').dataTable( {
-			    "order": [[ 0, "desc" ]]
+			    scrollY: 500,
+			    paging: false
 			} );
 			
 			/* BASIC ;*/
 			$('#dt_basic').dataTable( {
-			    "order": [[ 0, "asc" ]]
+			   "bSort": false
 			} );
 	
 			

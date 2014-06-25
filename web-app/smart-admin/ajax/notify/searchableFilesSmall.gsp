@@ -5,16 +5,21 @@
 <g:each in="${notifyService.getLatestSearchableFiles(5)}" var="searchableFile">
 
 	<li>
-		<span class="unread">
-			<a href="javascript:void(0);" class="msg">
-               
-				<span class="badge pull-left toggle from"> <i class="fa fa-user fa-fw fa-file-text"></i> ${searchableFile.name} <i class="icon-paperclip"></i></span>
-				<time>${searchableFile.identifier}</time>
-				<span class="subject">${searchableFile.url}</span>
-				<span class="msg-body">${searchableFile.path}</span>
-			</a>
+		<span class="padding-10 unread">
+
+			<em class="badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5">
+				<i class="fa fa-file fa-fw fa-2x"></i>
+			</em>
+			
+			<span>
+				 ID : <span class="text-warning">${searchableFile.identifier}</span> 
+				<br>
+				Name : <span class="text-primary">${searchableFile.name}</span>								
+				<br>
+				<span class="pull-left font-xs"><i>${searchableFile.path}</i>@<i>${searchableFile.url}</i></span>
+			</span>
+			
 		</span>
 	</li>
-
 	</g:each>
 </ul>

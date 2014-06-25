@@ -14,7 +14,7 @@ class ResultController {
 	def commonResultsDAOService;
 
 	def index() {
-		respond resultDAOService.getAllResults(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
+		respond resultDAOService.getAllResults().sort{it.resultDate}.reverse(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
 	}
 
 	def cleanAllResults() {

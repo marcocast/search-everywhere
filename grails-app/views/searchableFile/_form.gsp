@@ -59,6 +59,6 @@
 		
 	</label>
 	<label class="input">
-		<g:passwordField name="password" value="${searchableFileInstance?.password}"/>
+		<g:passwordField name="password" value=""/>
 	</label>
 </div>
