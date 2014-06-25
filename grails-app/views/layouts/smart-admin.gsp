@@ -420,8 +420,14 @@
 			*/	
 	
 			/* BASIC ;*/
+			$('#dt_basic_result').dataTable( {
+			    "order": [[ 0, "desc" ]]
+			} );
 			
-			$('#dt_basic').dataTable();
+			/* BASIC ;*/
+			$('#dt_basic').dataTable( {
+			    "order": [[ 0, "asc" ]]
+			} );
 	
 			
 			/* END BASIC */
@@ -462,7 +468,7 @@
 			});
 			
 			/* END COLUMN SHOW - HIDE */
-	
+			
 			/* TABLETOOLS */
 			$('#datatable_tabletools').dataTable({
 				

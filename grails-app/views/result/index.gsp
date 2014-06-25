@@ -77,13 +77,14 @@
 								<g:link class="btn btn-primary" action="cleanResultsUntil"><i class="fa fa-trash-o"></i> Clean results older than</g:link>	
 							</div>
 				
-							<table id="dt_basic" class="table table-striped table-bordered table-hover">
+							<table id="dt_basic_result" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
+										<th>Result Date</th>
 										<th>Text</th>
 										<th>Searchable File Names</th>
 										<th>Total Matches</th>
-										<th>Result Date</th>
+										
 										
 									</tr>
 								</thead>
@@ -91,7 +92,7 @@
 				
 								<g:each in="${resultInstanceList}" status="i" var="resultInstance">
 									<tr>
-									
+										<td>${new Date(resultInstance.resultDate)}</td>
 										<td>${fieldValue(bean: resultInstance, field: "text")}
 											<g:if test="${resultInstance?.regex==true}">
 												<span class="badge pull-right toggle state-disabled">Regex</span>
@@ -109,7 +110,7 @@
 										</td>
 										<td><g:link action="show" id="${resultInstance.identifier}" params="[identifier: resultInstance.identifier]">${fieldValue(bean: resultInstance, field: "totalMatches")}</g:link></td>
 										
-										<td>${new Date(resultInstance.resultDate)}</td>
+										
 									
 										
 									</tr>

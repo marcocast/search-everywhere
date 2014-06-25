@@ -4987,7 +4987,7 @@
 		
 			oOpts = $.extend( {}, {
 				"filter": "none", // applied
-				"order": "current", // "original"
+				"order": "desc", // "original"
 				"page": "all" // current
 			}, oOpts );
 		

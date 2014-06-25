@@ -2,6 +2,10 @@ package search.everywhere
 
 class Result {
 
+	@Override
+	public String toString() {
+		return "Result [identifier=" + identifier + ", resultDate=" + resultDate + "]";
+	}
 	String identifier;
 	String result
 	long totalMatches;
