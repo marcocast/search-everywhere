@@ -422,12 +422,13 @@
 			/* BASIC ;*/
 			$('#dt_basic_result').dataTable( {
 			    scrollY: 500,
-			    paging: false
+			    paging: false,
+			    bSort: false
 			} );
 			
 			/* BASIC ;*/
 			$('#dt_basic').dataTable( {
-			   "bSort": false
+			   bSort: false
 			} );
 	
 			

@@ -4,11 +4,17 @@
 	<header>
 		<ul>
 	        <li><strong>${result.text}</strong>
+	        <input type="checkbox" name="regex" checked="checked" disabled="disabled">
+					
+			<g:if test="${result.regex==true}">
+				<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
+			</g:if>
+			<g:else>
+			     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
+			</g:else>Regex</label>
 	        <small> on </small>
 	        <strong>${result.searchableFileNames} </strong>
-	        <g:if test="${result.regex==true}">
-				<span class="badge pull-right toggle state-disabled">Regex</span>
-			</g:if>
+	        
 	        <small> Total lines found </small><strong class="text-danger">${result.totalMatches} </strong></li>
         </ul>
 	</header>

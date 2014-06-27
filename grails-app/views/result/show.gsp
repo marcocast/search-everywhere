@@ -79,18 +79,31 @@
 												<article class="col-sm-12 col-md-12 col-lg-12" id="resultBox${searchableFileName}">		
 													<form class="smart-form">
 														<header>
-															${resultInstance.text} on ${resultInstance.searchableFileNames} with regex ${resultInstance.regex}
+															<ul>
+														        <li><strong>${resultInstance.text}</strong>
+														        <input type="checkbox" name="regex" checked="checked" disabled="disabled">
+					
+																	<g:if test="${resultInstance.regex==true}">
+																		<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
+																	</g:if>
+																	<g:else>
+																	     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
+																</g:else>Regex</label>
+														        <small> on </small>
+														        <strong>${resultInstance.searchableFileNames} </strong>
+														        
+														        <small> Total lines found </small><strong class="text-danger">${resultInstance.totalMatches} </strong></li>
+													        </ul>
 														</header>
 													
 														<fieldset>
 																						
 															<section>
 																<label class="textarea"> 										
-																	<textarea rows="${resultInstance.totalMatches}" placeholder="Nothing found">${resultDAOService.getFullResultText(resultInstance.identifier)}</textarea> 
+																	<textarea rows="${resultInstance.totalMatches + 10}" placeholder="Nothing found">${resultDAOService.getFullResultText(resultInstance.identifier)}</textarea> 
 																</label>
 															</section>
 														</fieldset>
-													
 														
 														
 													</form>
