@@ -66,10 +66,17 @@
 				<span id="logo"> <img src="${request.contextPath}/smart-admin/img/logo.png" alt="SmartAdmin"> </span>
 				<!-- END LOGO PLACEHOLDER -->
 
-				<!-- Note: The activity badge color changes when clicked and resets the number to 0
-				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
-				<span id="activity" class="activity-dropdown"> <i class="fa fa-expand"></i> </span>
 
+
+				
+			</div>
+
+			<!-- projects dropdown -->
+			<div class="project-context hidden-xs">
+
+				<span class="label">Jobs:</span>
+				<span id="activity" class="activity-dropdown" ><a>Recent Activities <i class="fa fa-hand-o-down"></i></a></span>
+				
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
 
@@ -94,7 +101,7 @@
 							<h4>Click a button to show the latest details</h4>
 						</div>
 
-						<i class="fa fa-paw fa-4x fa-border"></i>
+						
 
 					</div>
 					<!-- end notification content -->
@@ -104,32 +111,6 @@
 					<!-- end footer -->
 
 				</div>
-				<!-- END AJAX-DROPDOWN -->
-			</div>
-
-			<!-- projects dropdown -->
-			<div class="project-context hidden-xs">
-
-				<span class="label">Jobs:</span>
-				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent Searches <i class="fa fa-hand-o-down"></i></span>
-				
-				
-				<!-- Suggestion: populate this list with fetch and push technique -->
-				<ul class="dropdown-menu">
-					<li>
-						<a href="javascript:void(0);">ERROR on prod box 1</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">Campaign id on DEV api</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">INFO on property abc</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-					</li>
-				</ul>
 				<!-- end dropdown-menu-->
 
 			</div>
