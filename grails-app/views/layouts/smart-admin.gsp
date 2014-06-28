@@ -1,4 +1,5 @@
-
+<%@ page import="search.everywhere.NotifyService" %>
+<g:set var="notifyService" bean="notifyService"/>
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
@@ -75,14 +76,14 @@
 					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
 					<div class="btn-group btn-group-justified" data-toggle="buttons">
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchableFilesSmall.gsp">
-							<small>Searchable Files</small></label>
-						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/resultsSmall.gsp">
 							<small>Results</small></label>
 						<label class="btn btn-default">
-							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/tasks.html">
-							<small>Search Param</small></label>
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchableFilesSmall.gsp">
+							<small>Searchable Files</small></label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchParamsSmall.gsp">
+							<small>Search Params</small></label>
 					</div>
 
 					<!-- notification content -->
@@ -100,7 +101,7 @@
 					<!-- end notification content -->
 
 					<!-- footer: refresh area -->
-					<span> Last updated on: 12/12/2013 9:43AM
+					<span> Last updated on: ${new Date(notifyService.getLastUpdateDate())}
 						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
 							<i class="fa fa-refresh"></i>
 						</button> </span>
