@@ -100,15 +100,16 @@
 						<div class="alert alert-transparent">
 							<h2>Most recent activities</h2>
 							<h4>Click a button to show the latest details</h4>
+							<span> Last activity was on: ${new Date(notifyService.getLastUpdateDate())}</span>
 						</div>
-
+						
 						
 
 					</div>
 					<!-- end notification content -->
 
 					<!-- footer: refresh area -->
-					<span> Last updated on: ${new Date(notifyService.getLastUpdateDate())}</span>
+					
 					<!-- end footer -->
 
 				</div>
