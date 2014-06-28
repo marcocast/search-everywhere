@@ -1,6 +1,7 @@
 <%@ page import="search.everywhere.SearchableFile" %>
 <%@ page import="search.everywhere.SearchParam" %>
-
+<%@ page import="search.everywhere.SearchableFileDAOService" %>
+<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -68,7 +69,7 @@
 							-->
 							<header>
 								<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-								<h2>Result for ${searchableFileName}</h2>
+								<h2>Result for ${searchableFileDAOService.getSearchableFile(searchableFileName).name}</h2>
 			
 							</header>
 			

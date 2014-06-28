@@ -2,6 +2,8 @@
 <%@ page import="search.everywhere.SearchParam" %>
 <%@ page import="search.everywhere.ResultDAOService" %>
 <g:set var="resultDAOService" bean="resultDAOService"/>
+<%@ page import="search.everywhere.SearchableFileDAOService" %>
+<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -59,8 +61,7 @@
 							-->
 							<header>
 								<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-								<h2>Result for ${resultInstance.searchableFileNames}</h2>
-			
+								<h2>Result for ${searchableFileDAOService.getSearchableFile(resultInstance.searchableFileNames.first()).name}</h2>
 							</header>
 			
 							<!-- widget div-->
@@ -90,7 +91,7 @@
 																	     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
 																</g:else>Regex</label>
 														        <small> on </small>
-														        <strong>${resultInstance.searchableFileNames} </strong>
+														        <strong>${searchableFileDAOService.getSearchableFile(resultInstance.searchableFileNames.first()).name} </strong>
 														        
 														        <small> Total lines found </small><strong class="text-danger">${resultInstance.totalMatches} </strong></li>
 													        </ul>
