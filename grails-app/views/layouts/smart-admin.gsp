@@ -54,6 +54,7 @@
 		<link rel="apple-touch-startup-image" href="${request.contextPath}/smart-admin/img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
 		<link rel="apple-touch-startup-image" href="${request.contextPath}/smart-admin/img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 		<r:layoutResources/>
+		
 	</head>
 	<body class="">
 		<!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
@@ -63,7 +64,7 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"> <img src="${request.contextPath}/smart-admin/img/logo.png" alt="SmartAdmin"> </span>
+				<span> <img src="${request.contextPath}/smart-admin/img/logo.png" style="width: 70%; height: 70%" alt="SSearcH everywhere"> </span>
 				<!-- END LOGO PLACEHOLDER -->
 
 
@@ -74,8 +75,8 @@
 			<!-- projects dropdown -->
 			<div class="project-context hidden-xs">
 
-				<span class="label">Jobs:</span>
-				<span id="activity" class="activity-dropdown" ><a>Recent Activities <i class="fa fa-hand-o-down"></i></a></span>
+				<span class="label">Recent Activities</span>
+				<span id="activity" class="activity-dropdown" ><a>Click here <i class="fa fa-hand-o-down"></i></a></span>
 				
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -129,9 +130,7 @@
 				<!-- Top menu profile link : this shows only when top menu is active -->
 				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
 					<li class="">
-						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
-							<img src="${request.contextPath}/smart-admin/img/avatars/sunny.png" alt="John Doe" class="online" />  
-						</a>
+						
 						<ul class="dropdown-menu pull-right">
 							<li>
 								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
@@ -265,7 +264,10 @@
 						</ul>
 					</li>
 					
-					
+					<li>
+						<g:link controller="graph" action="index"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></g:link>
+						
+					</li>
 				</ul>
 			</nav>
 			<span class="minifyme" data-action="minifyMenu"> 
@@ -277,7 +279,7 @@
 
 		<!-- MAIN PANEL -->
 		<div id="main" role="main">
-
+			
 		
 			<g:layoutBody/>
 			<r:layoutResources/>
@@ -299,9 +301,10 @@
 		
 
 		<!--================================================== -->
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
 		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="${request.contextPath}/smart-admin/js/plugin/pace/pace.min.js"></script>
 
 		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -483,7 +486,10 @@
 		})
 
 		</script>
-
+		
+		
+		
+		
 		<!-- Your GOOGLE ANALYTICS CODE Below -->
 		<script type="text/javascript">
 			var _gaq = _gaq || [];

@@ -19,7 +19,7 @@
 	
 		<!-- breadcrumb -->
 		<ol class="breadcrumb">
-			<li>Home</li><li>Search </li><li>form</li>
+			<li>Home</li><li>Graph </li><li>search</li>
 		</ol>
 		<!-- end breadcrumb -->
 	

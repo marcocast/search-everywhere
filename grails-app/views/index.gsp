@@ -81,23 +81,31 @@
 		</style>
 	</head>
 	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<!-- RIBBON -->
+	<div id="ribbon">
+	
+		<span class="ribbon-button-alignment"> 
+			<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+				<i class="fa fa-refresh"></i>
+			</span> 
+		</span>
+	
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Home</li>
+		</ol>
+		<!-- end breadcrumb -->
+	
+	
+	
+	</div>
+	<!-- END RIBBON -->
 		
-		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+		<div id="content">
+			<h1>Welcome to SSearch everywhere</h1>
+			<p>Congratulations, you have successfully started your SSearch everywhere application! </p>
 
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
+			
 		</div>
 	</body>
 </html>

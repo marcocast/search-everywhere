@@ -5,12 +5,30 @@
 <html>
 	<head>
 		<meta name="layout" content="smart-admin"/>
-		<title>Welcome to Grails</title>
+		<title>Search Params</title>
 		<g:set var="entityName" value="${message(code: 'searchParam.label', default: 'SearchParam')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
 <body>
-
+	<!-- RIBBON -->
+	<div id="ribbon">
+	
+		<span class="ribbon-button-alignment"> 
+			<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+				<i class="fa fa-refresh"></i>
+			</span> 
+		</span>
+	
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Home</li><li>Search Params</li><li>list</li>
+		</ol>
+		<!-- end breadcrumb -->
+	
+	
+	
+	</div>
+	<!-- END RIBBON -->
 
 		<!-- MAIN CONTENT -->
 <div id="content">

@@ -15,7 +15,9 @@
 			</em>
 			
 			<span>
-				 On ${new Date(result.resultDate)} with text <span class="text-warning">${result.text}</span> 
+				 On ${new Date(result.resultDate)} 
+				 <br>
+				 with text <span class="text-warning">${result.text}</span> 
 				 <g:if test="${result.regex==true}">
 					<span class="badge pull-right toggle state-disabled">Regex</span>
 				</g:if>
