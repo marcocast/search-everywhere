@@ -28,7 +28,7 @@
 		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
 			<g:render template="/layouts/mostcommon" />
 		</div>
-	</div>.danger
+	</div>
 	
 	<!-- widget grid -->
 <section id="widget-grid" class="">
@@ -89,7 +89,6 @@
 							<tbody>
 		
 							<g:each in="${searchParamInstanceList}" status="i" var="searchParamInstance">
-							    .danger
 							    <g:if test="${searchParamInstance.searchableFileNames.isEmpty()}">
 									<tr class="danger">								
 								</g:if>

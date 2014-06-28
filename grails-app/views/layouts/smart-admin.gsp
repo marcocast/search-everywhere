@@ -74,7 +74,7 @@
 				<div class="ajax-dropdown">
 
 					<!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
-					<div class="btn-group btn-group-justified" data-toggle="buttons">
+					<div class="btn-group btn-group-justified" data-toggle="buttons" >
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/resultsSmall.gsp">
 							<small>Results</small></label>
@@ -90,9 +90,8 @@
 					<div class="ajax-notifications custom-scroll">
 
 						<div class="alert alert-transparent">
-							<h2>Last 5</h2>
+							<h2>Most recent activities</h2>
 							<h4>Click a button to show the latest details</h4>
-							
 						</div>
 
 						<i class="fa fa-paw fa-4x fa-border"></i>
@@ -101,10 +100,7 @@
 					<!-- end notification content -->
 
 					<!-- footer: refresh area -->
-					<span> Last updated on: ${new Date(notifyService.getLastUpdateDate())}
-						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
-							<i class="fa fa-refresh"></i>
-						</button> </span>
+					<span> Last updated on: ${new Date(notifyService.getLastUpdateDate())}</span>
 					<!-- end footer -->
 
 				</div>
@@ -419,17 +415,18 @@
 				
 				Also see: http://legacy.datatables.net/usage/features
 			*/	
-	
+			
 			/* BASIC ;*/
 			$('#dt_basic_result').dataTable( {
 			    scrollY: 500,
 			    paging: false,
-			    bSort: false
+			    bSort: true,
+       			"deferRender": true
 			} );
 			
 			/* BASIC ;*/
 			$('#dt_basic').dataTable( {
-			   bSort: false
+			   bSort: true
 			} );
 	
 			
