@@ -93,7 +93,7 @@
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 		
-								<g:form action="search" id="formSearch"  class="smart-form">
+								<g:form action="graph" id="formSearch"  class="smart-form">
 									<header>
 										Standard Form Header
 									</header>
@@ -140,7 +140,7 @@
 									
 									<footer>
 												<fieldset class="buttons">
-													<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Execute Search " /><i class="fa fa-search"></i></button>
+													<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Generate Graph " /><i class="fa fa-bar-chart-o"></i></button>
 												</fieldset>
 											</footer>
 								</g:form>	
@@ -221,7 +221,7 @@
 									
 									<footer>
 												<fieldset class="buttons">
-													<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Execute Search " /><i class="fa fa-search"></i></button>
+													<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Generate Graph " /><i class="fa fa-bar-chart-o"></i></button>
 												</fieldset>
 											</footer>
 								</g:form>	

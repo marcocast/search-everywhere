@@ -42,17 +42,13 @@
 	
 		<div class="row">
 	
-		
-	
-			<g:each in="${searchParam.searchableFileNames}" status="i" var="searchableFileName">
-				
-				<script>
-				  	<g:remoteFunction controller="graph" action="executeSearch" update="resultBox${searchableFileName},commonResult" params="'name=${searchParam.name}&text=${searchParam.text}&regex=${searchParam.regex}&searchableFileName=${searchableFileName}'"/>
+					<script>
+				  	<g:remoteFunction controller="graph" action="executeSearch" update="resultBox" params="'name=${searchParam.name}&text=${searchParam.text}&regex=${searchParam.regex}&searchableFileNames=${searchParam.searchableFileNames}'"/>
 	        	  </script>
 				
 				
 				
-				<div class="jarviswidget" id="wid-id-0${searchableFileName}" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+				<div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
 							<!-- widget options:
 							usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 			
@@ -68,7 +64,7 @@
 							-->
 							<header>
 								<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-								<h2>Result for ${searchableFileDAOService.getSearchableFile(searchableFileName).name}</h2>
+								<h2>Graph</h2>
 			
 							</header>
 			
@@ -84,7 +80,7 @@
 			
 								<!-- widget content -->
 										<div class="widget-body no-padding">												
-												<article class="col-sm-12 col-md-12 col-lg-12" id="resultBox${searchableFileName}">		
+												<article class="col-sm-12 col-md-12 col-lg-12" id="resultBox">		
 													<div class="progress">		
 														<div class="progress progress-striped active">
 															<div class="progress-bar bg-color-purple" role="progressbar" style="width: 88%"></div>
@@ -99,10 +95,6 @@
 								
 					</div>
 					
-				
-				
-				
-			</g:each>
 		
 	</div>
 			</section>

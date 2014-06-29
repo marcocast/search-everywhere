@@ -12,64 +12,48 @@ class GraphController {
 	def executeSearch(params){
 
 		def myDailyActivitiesColumns = [
-			["string", "Profile - File"],
-			["number", "lines found"]
+			["string", "Searchable File"],
+			["number", "Lines found"]
 		]
 
 		def myDailyActivitiesData = [];
 
-		SearchParam searchParam = new SearchParam(params)
+		def allSearchableFiles =params.searchableFileNames.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' )
 
-		searchParam.searchableFileNames = [params.searchableFileName].flatten().findAll{ it != null }
-		Result result = null;
-		try{
-			result = grepService.grepBasedOnSearchParams(searchParam)
-			resultDAOService.addResult(result)
-			myDailyActivitiesData.add([
-				result.identifier,
-				result.totalMatches
-			])
-			myDailyActivitiesData.add([
-				result.identifier,
-				result.totalMatches
-			])
-			myDailyActivitiesData.add([
-				result.identifier,
-				result.totalMatches
-			])
-			myDailyActivitiesData.add([
-				result.identifier,
-				result.totalMatches
-			])
-			myDailyActivitiesData.add([
-				result.identifier,
-				result.totalMatches
-			])
-		}catch(Exception e){
-			result = new Result();
-			result.text = searchParam.text
-			result.regex = searchParam.regex
-			result.searchableFileNames = searchParam.searchableFileNames
-			result.totalMatches = -1
-			result.resultDate = System.currentTimeMillis()
-			result.result = e.getMessage()
-			result.result = result.result + "\n"
-			String searchableFileIdentifier = searchParam.searchableFileNames.first()
-			result.result = result.result + "Make sure the searchable file : '" + searchableFileDAOService.getSearchableFile(searchableFileIdentifier).name + "' exists and that the credentials are correct"
+		for(String searchableFileName : allSearchableFiles){
+
+
+			SearchParam searchParam = new SearchParam(params)
+
+			searchParam.searchableFileNames = [searchableFileName]
+
+			Result result = null;
+			try{
+				result = grepService.grepBasedOnSearchParams(searchParam)
+
+				myDailyActivitiesData.add([
+					searchableFileDAOService.getSearchableFile(searchableFileName).name,
+					result.totalMatches
+				])
+			}catch(Exception e){
+			}
 		}
 
-		render template: "chart", model: [result: result, "myDailyActivitiesColumns": myDailyActivitiesColumns,	"myDailyActivitiesData": myDailyActivitiesData]
+
+
+
+		render template: "chart", model: ["myDailyActivitiesColumns": myDailyActivitiesColumns,	"myDailyActivitiesData": myDailyActivitiesData.sort(true) {it[1]}.reverse()]
 	}
 
 
-	def search() {
+	def graph() {
 		SearchParam searchParam = new SearchParam(params)
 		[ searchParam:searchParam ]
 	}
 
 	def searchWithSearchParam() {
 		SearchParam searchParam = searchParamDAOService.getSearchParam(params.searchParamas)
-		render(view: "search", model: [searchParam:searchParam])
+		render(view: "graph", model: [searchParam:searchParam])
 	}
 
 
