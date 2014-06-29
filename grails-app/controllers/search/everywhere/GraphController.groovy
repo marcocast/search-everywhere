@@ -18,7 +18,7 @@ class GraphController {
 
 		def myDailyActivitiesData = [];
 
-		def allSearchableFiles =params.searchableFileNames.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' )
+		def allSearchableFiles = params.searchableFileNames.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' )
 
 		for(String searchableFileName : allSearchableFiles){
 

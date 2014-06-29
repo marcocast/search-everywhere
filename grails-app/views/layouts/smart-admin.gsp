@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> Search Everywhere </title>
+		<title> SSearcH Everywhere </title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 			
@@ -265,10 +265,20 @@
 						</ul>
 					</li>
 					
-					<li>
-						<g:link controller="graph" action="index"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></g:link>
-						
+					<li class="active">
+						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Graphs</span></a>
+						<ul>
+							<li>
+								<g:link controller="graph" action="index">Real time data</g:link>
+							</li>
+							<li class="active">
+								<g:link controller="graphByResult" action="index">Historical data</g:link>
+							</li>
+							
+						</ul>
 					</li>
+					
+					
 				</ul>
 			</nav>
 			<span class="minifyme" data-action="minifyMenu"> 
@@ -379,6 +389,8 @@
 		
 		<script type="text/javascript">
 		
+		
+		
 		// DO NOT REMOVE : GLOBAL FUNCTIONS!
 		
 		$(document).ready(function() {
@@ -409,12 +421,28 @@
        			"deferRender": true
 			} );
 			
+			$('#dt_basic_result_graph').dataTable( {
+			    scrollY: 500,
+			    paging: false,
+			    bSort: false,
+       			"deferRender": true
+			} );
+			
 			/* BASIC ;*/
 			$('#dt_basic').dataTable( {
 			   bSort: true
 			} );
-	
+		
+			$('#checkbox-inline-all').click (function () {
+			     var checkedStatus = this.checked;
+			    $('#dt_basic_result_graph tbody tr').find('td:first :checkbox').each(function () {
+			        $(this).prop('checked', checkedStatus);
+			     });
+			});
 			
+			
+			
+						
 			/* END BASIC */
 			
 			/* COLUMN FILTER  */
