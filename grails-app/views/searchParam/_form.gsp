@@ -59,7 +59,7 @@
 		<label  for="searchableFileNames" class="label">Select Searchable files</label>
 		<label class="select select-multiple">
 		
-			<select name="pnames" multiple="" class="custom-scroll">
+			<select name="pnames" multiple style="width:100%" class="select2">
 			<g:each in="${searchableFileInstanceList}" status="i" var="searchableFileInstance">
 				
 				<g:if test="${searchParamInstance?.searchableFileNames != null && searchParamInstance?.searchableFileNames.contains(searchableFileInstance.identifier)}">
@@ -76,7 +76,7 @@
 		</label>	
 			
 		<div class="note">
-			<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
+			<strong>Note:</strong>type or click on the field to add multiple searchable files.
 		</div>
 	
 </div>

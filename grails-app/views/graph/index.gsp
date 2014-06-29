@@ -125,11 +125,11 @@
 										<section>
 											<label class="label">Select Searchable files</label>
 											<label class="select select-multiple">
-												<g:select optionKey="identifier" class="custom-scroll" optionValue="name"
-												name="searchableFileNames" from="${searchableFileInstanceList}" multiple="true" size="${searchableFileInstanceList.size()}" />
+												<g:select optionKey="identifier" multiple style="width:100%" class="select2" optionValue="name"
+												name="searchableFileNames" from="${searchableFileInstanceList}"  size="${searchableFileInstanceList.size()}" />
 												</label>
 											<div class="note">
-												<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
+												<strong>Note:</strong>type or click on the field to add multiple searchable files.
 											</div>
 										</section>
 								
@@ -197,7 +197,7 @@
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 		
-								<g:form action="searchWithSearchParam" id="formSearchWithSearchParam"  class="smart-form">
+								<g:form action="graphWithSearchParam" id="formGraphWithSearchParam"  class="smart-form">
 									<header>
 										Standard Form Header
 									</header>

@@ -56,8 +56,8 @@
 		<r:layoutResources/>
 		
 	</head>
-	<body class="">
-		<!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
+	<body class="fixed-width fixed-header fixed-ribbon">
+		<!-- possible classes:  minified, fixed-ribbon, fixed-header, fixed-width-->
 
 		<!-- HEADER -->
 		<header id="header">
