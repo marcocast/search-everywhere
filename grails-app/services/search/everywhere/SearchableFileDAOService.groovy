@@ -10,6 +10,7 @@ class SearchableFileDAOService {
 
 	def searchEverywhereCacheService;
 	def searchParamDAOService;
+	def resultDAOService;
 	def encodingService;
 
 	def List<SearchableFile> getAllSearchableFiles(){
@@ -45,8 +46,10 @@ class SearchableFileDAOService {
 	}
 
 	def void removeSearchableFile(String identifier){
-		removeSearchableFileOnly(identifier)
+
 		searchParamDAOService.removeSearchableFileFromSearchParams(identifier)
+		resultDAOService.removeSearchableFileFromResult(identifier)
+		removeSearchableFileOnly(identifier)
 	}
 
 	def void removeSearchableFileOnly(String identifier){

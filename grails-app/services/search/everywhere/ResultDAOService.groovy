@@ -60,6 +60,10 @@ class ResultDAOService {
 		searchEverywhereCacheService.resultCache.findAll{it.value != null }.each { removeResult(it.key) }
 	}
 
+	def void removeSearchableFileFromResult(String searchableFileIdentifier){
+		searchEverywhereCacheService.resultCache.findAll{it.value.searchableFileNames.contains(searchableFileIdentifier)}.each { removeResult(it.value.identifier) }
+	}
+
 	def void editResult(Result result){
 		removeResult(result.identifier)
 		addResult(result)

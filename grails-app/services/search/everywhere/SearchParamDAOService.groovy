@@ -46,7 +46,11 @@ class SearchParamDAOService {
 	def void removeSearchableFileFromSearchParams(String searchableFileIdentifier){
 		searchEverywhereCacheService.searchParamCache.findAll{it.value.searchableFileNames.contains(searchableFileIdentifier)}.each {
 			it.value.searchableFileNames.remove(searchableFileIdentifier)
-			editSearchParam(it.value)
+			if(it.value.searchableFileNames.size()==0){
+				removeSearchParam(it.value.identifier)
+			}else{
+				editSearchParam(it.value)
+			}
 		}
 	}
 

@@ -51,8 +51,10 @@ class NotifyService {
 		if(!new File(searchEverywhereCacheService.searchParamsFolder).listFiles().grep{it.file}.grep(~/.*/).isEmpty()){
 			mostRecents.add(new File(searchEverywhereCacheService.searchParamsFolder).listFiles().grep{it.file}.grep(~/.*/).sort{it.lastModified()}.reverse().head())
 		}
-		def lastDate = mostRecents.sort{it.lastModified()}.reverse().head().lastModified()
-
-		return lastDate
+		if(mostRecents.isEmpty()){
+			return 0
+		}else{
+			return mostRecents.sort{it.lastModified()}.reverse().head().lastModified()
+		}
 	}
 }

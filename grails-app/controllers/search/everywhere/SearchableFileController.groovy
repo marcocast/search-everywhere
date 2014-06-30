@@ -54,9 +54,8 @@ class SearchableFileController {
 
 	def copy(params) {
 		SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(params.identifier)
-		if(searchableFile.password != null){
-			searchableFile.password = encodingService.decodeBase64(searchableFile.password);
-		}
+		searchableFile.password = null
+		searchableFile.name = "CopyOf"+searchableFile.name
 		respond searchableFile
 	}
 
