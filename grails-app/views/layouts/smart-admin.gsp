@@ -76,7 +76,7 @@
 			<div class="project-context hidden-xs">
 
 				<span class="label">Recent Activities</span>
-				<span id="activity" class="activity-dropdown" ><a>Click here <i class="fa fa-hand-o-down"></i></a></span>
+				<span id="activity" class="activity-dropdown" ><a>Show <i class="fa fa-history"></i></a></span>
 				
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -98,13 +98,11 @@
 					<div class="ajax-notifications custom-scroll">
 
 						<div class="alert alert-transparent">
-							<h2>Most recent activities</h2>
+							<h2>Most recent activities <i class="fa fa-refresh fa-spin"></i></h2>
 							<h4>Click a button to show the latest details</h4>
 							<span> Last activity was on: ${new Date(notifyService.getLastUpdateDate())}</span>
 						</div>
 						
-						
-
 					</div>
 					<!-- end notification content -->
 
@@ -266,7 +264,7 @@
 					</li>
 					
 					<li class="active">
-						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Graphs</span></a>
+						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
 						<ul>
 							<li>
 								<g:link controller="graph" action="index">Real time data</g:link>
@@ -415,17 +413,13 @@
 			
 			/* BASIC ;*/
 			$('#dt_basic_result').dataTable( {
-			    scrollY: 500,
-			    paging: false,
-			    bSort: true,
-       			"deferRender": true
+			 	paging: false,
+			    bSort: false
 			} );
 			
 			$('#dt_basic_result_graph').dataTable( {
-			    scrollY: 500,
 			    paging: false,
-			    bSort: false,
-       			"deferRender": true
+			    bSort: true
 			} );
 			
 			/* BASIC ;*/

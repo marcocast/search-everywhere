@@ -2,6 +2,8 @@ package search.everywhere;
 
 
 
+
+
 class GraphByResultController {
 
 	GrepService grepService
@@ -20,32 +22,20 @@ class GraphByResultController {
 
 		def myDailyActivitiesData = [];
 
-		def myDailyActivitiesDataPerType = [
-			[new Date(), 33, 22],
-			[new Date(), 44, 45]
-		]
+		def myDailyActivitiesDataPerType = []
 
-		def myDailyActivitiesColumnsPerType = [
-			["date", "date"],
-			[
-				"number",
-				"Some result name a"
-			],
-			[
-				"number",
-				"Some result name b"
-			]
-		]
+		def myDailyActivitiesColumnsPerType = [["string", "date"]]
 
 		Map<String, List<Result>> identifierPerResult = new HashMap<String, List<Result>>();
 
-		def allResults = params.checkboxResult.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' )
+		List<Long> dates = new ArrayList<Long>()
+
+		def allResults = params.checkboxResult.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' ).sort(true)
 
 		for(String identifier : allResults){
 
 			Result result = resultDAOService.getResult(identifier)
 			String searchableFileName = searchableFileDAOService.getSearchableFile(result.searchableFileNames.first()).name;
-
 
 			myDailyActivitiesData.add([
 				searchableFileName + " - " + new Date(result.resultDate),
@@ -57,15 +47,42 @@ class GraphByResultController {
 			}
 
 			identifierPerResult.get(resultDAOService.getResultParamFromIdentifier(identifier)).add(result)
+
+			long droppedMillis = 100000 * (result.resultDate/ 100000);
+			dates.add(droppedMillis)
 		}
 
 
 
+		identifierPerResult.each{ k, v ->
 
+			myDailyActivitiesColumnsPerType.add(["number", k])
+		}
 
+		dates.each{ dd ->
 
+			def element = []
+			element.add(new Date(dd))
 
+			identifierPerResult.each{ k, v ->
+				boolean added = false;
+				v.each { el ->
 
+					long droppedMillis = 100000 * (el.resultDate/ 100000);
+
+					if(droppedMillis.compareTo(dd.longValue()) == 0){
+						element.add(el.totalMatches)
+						added = true;
+					}
+				}
+
+				if(!added){
+					element.add(0l)
+				}
+			}
+
+			myDailyActivitiesDataPerType.add(element)
+		}
 
 		render  template: "chart", model: ["myDailyActivitiesColumns": myDailyActivitiesColumns, "myDailyActivitiesData": myDailyActivitiesData, "myDailyActivitiesColumnsPerType":myDailyActivitiesColumnsPerType, "myDailyActivitiesDataPerType": myDailyActivitiesDataPerType]
 	}

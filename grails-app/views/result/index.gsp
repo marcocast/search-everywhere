@@ -95,7 +95,7 @@
 								<g:link class="btn btn-primary" action="cleanAllResults"><i class="fa fa-trash-o"></i> Clean All</g:link>
 								<g:link class="btn btn-primary" action="cleanResultsUntil"><i class="fa fa-trash-o"></i> Clean results older than</g:link>	
 							</div>
-				
+							<div class="table-responsive">
 							<table id="dt_basic_result" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
@@ -142,7 +142,7 @@
 									
 								</tbody>
 							</table>
-	
+						</div>
 						</div>
 						<!-- end widget content -->
 	
