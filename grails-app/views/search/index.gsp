@@ -33,7 +33,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
 				<h1 class="page-title txt-color-blueDark">
-					<i class="fa fa-edit fa-fw "></i> 
+					<i class="fa fa-search fa-fw "></i> 
 						Search 
 					
 				</h1>
@@ -60,7 +60,7 @@
 				<article class="col-sm-12 col-md-12 col-lg-6">
 		
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-colorbutton="true" data-widget-editbutton="true" data-widget-custombutton="true">
 						<!-- widget options:
 						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 		
@@ -76,7 +76,7 @@
 						-->
 						<header>
 							<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-							<h2>Search Form Elements </h2>
+							<h2>On Demand Search Form</h2>
 		
 						</header>
 		
@@ -95,7 +95,7 @@
 		
 								<g:form action="search" id="formSearch"  class="smart-form">
 									<header>
-										Standard Form Header
+										Create and run your search
 									</header>
 		
 									<fieldset>
@@ -103,7 +103,7 @@
 										<section>
 											<label class="label">Search Text</label>
 											<label class="input">
-												<input type="text" maxlength="500"  name="text" placeholder="Enter text">
+												<input type="text" maxlength="500"  name="text" placeholder="Enter text to search">
 												
 											</label>
 										</section>
@@ -130,7 +130,7 @@
 												name="searchableFileNames" from="${searchableFileInstanceList}" multiple style="width:100%" class="select2" size="${searchableFileInstanceList.size()}" />
 												</label>
 											<div class="note">
-												<strong>Note:</strong>type or click on the field to add multiple searchable files.
+												<strong>Note:</strong> type or click on the field to add multiple searchable files.
 											</div>
 										</section>
 								
@@ -165,7 +165,7 @@
 		<article class="col-sm-12 col-md-12 col-lg-6">
 		
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
 						<!-- widget options:
 						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 		
@@ -181,7 +181,7 @@
 						-->
 						<header>
 							<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-							<h2>Search Form Elements </h2>
+							<h2>Params Search based Form </h2>
 		
 						</header>
 		
@@ -200,19 +200,19 @@
 		
 								<g:form action="searchWithSearchParam" id="formSearchWithSearchParam"  class="smart-form">
 									<header>
-										Standard Form Header
+										Select an existing search param and run your search
 									</header>
 			
 									<g:set var="searchParamDAOService" bean="searchParamDAOService"/>
 									<fieldset>
 										<section>
-											<label class="label">Select Search existing Param</label>
+											<label class="label">Search Param</label>
 											<label class="select select-multiple">
 												<g:select optionKey="identifier" class="custom-scroll" optionValue="name"
 												name="searchParamas" from="${searchParamDAOService.getAllActiveSearchParams()}" />
 												</label>
 											<div class="note">
-												<strong>Note:</strong> hold down the ctrl/cmd button to select multiple options.
+												<strong>Note:</strong> Click to select one option.
 											</div>
 										</section>
 								

@@ -103,7 +103,7 @@
 		
 		<div id="content">
 			<h1>Welcome to SSearch everywhere</h1>
-			<p>Congratulations, you have successfully started your SSearch everywhere application! </p>
+			<p>Congratulations, you have successfully started your <strong>SS</strong>earc<strong>H</strong> everywhere application! </p>
 
 			
 		</div>
