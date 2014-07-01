@@ -28,8 +28,10 @@
 				</label>
 			</section>
 			</g:else>	
+	    
+	        	<g:remoteLink class="btn btn-primary pull-right" controller="search" action="executeSearch" update="resultBox${result.searchableFileNames.first()}" params="'name=${result.identifier}&text=${result.text}&regex=${result.regex}&searchableFileName=${result.searchableFileNames.first()}'" >Refresh result</g:remoteLink>
+
 	        </li>
-	        
         </ul>
 	</header>
 	<g:if test="${result.totalMatches > -1 }">	

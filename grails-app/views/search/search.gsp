@@ -48,7 +48,7 @@
 			<g:each in="${searchParam.searchableFileNames}" status="i" var="searchableFileName">
 				
 				<script>
-				  	<g:remoteFunction controller="search" action="executeSearch" update="resultBox${searchableFileName},commonResult" params="'name=${searchParam.name}&text=${searchParam.text}&regex=${searchParam.regex}&searchableFileName=${searchableFileName}'"/>
+				  	<g:remoteFunction controller="search" action="executeSearch" update="resultBox${searchableFileName}" params="'name=${searchParam.name}&text=${searchParam.text}&regex=${searchParam.regex}&searchableFileName=${searchableFileName}'"/>
 	        	  </script>
 				
 				
