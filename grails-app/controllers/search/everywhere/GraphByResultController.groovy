@@ -38,7 +38,7 @@ class GraphByResultController {
 			String searchableFileName = searchableFileDAOService.getSearchableFile(result.searchableFileNames.first()).name;
 
 			myDailyActivitiesData.add([
-				searchableFileName + " - " + new Date(result.resultDate),
+				resultDAOService.getResultParamFromIdentifier(identifier) + " - " + new Date(result.resultDate),
 				result.totalMatches
 			])
 

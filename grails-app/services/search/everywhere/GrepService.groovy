@@ -4,14 +4,12 @@ import static org.grep4j.core.Grep4j.constantExpression
 import static org.grep4j.core.Grep4j.grep
 import static org.grep4j.core.Grep4j.regularExpression
 import static org.grep4j.core.fluent.Dictionary.on
-import grails.transaction.Transactional
 
 import org.grep4j.core.result.GrepResults
 import org.springframework.stereotype.Service
 
 
 @Service
-@Transactional
 class GrepService {
 
 	def profileConverterService
