@@ -10,7 +10,7 @@ class SearchableFileController {
 
 	static allowedMethods = [save: "POST", update: "PUT"]
 
-	SearchableFileDAOService searchableFileDAOService;
+	def searchableFileDAOService;
 	def encodingService
 
 

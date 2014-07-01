@@ -60,7 +60,7 @@
 				<article class="col-sm-12 col-md-12 col-lg-6">
 		
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+					<div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
 						<!-- widget options:
 						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 		
@@ -126,7 +126,7 @@
 											<label class="label">Select Searchable files</label>
 											<label class="select select-multiple">
 												<g:select optionKey="identifier" multiple style="width:100%" class="select2" optionValue="name"
-												name="searchableFileNames" from="${searchableFileInstanceList}"  size="${searchableFileInstanceList.size()}" />
+												name="searchableFileNames" from="${searchableFileInstanceList}"  />
 												</label>
 											<div class="note">
 												<strong>Note:</strong>type or click on the field to add multiple searchable files.
@@ -164,7 +164,7 @@
 		<article class="col-sm-12 col-md-12 col-lg-6">
 		
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+					<div class="jarviswidget jarviswidget-color-darken" id="wid-id-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
 						<!-- widget options:
 						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 		

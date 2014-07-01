@@ -1,5 +1,8 @@
 <%@ page import="search.everywhere.NotifyService" %>
 <g:set var="notifyService" bean="notifyService"/>
+<%@ page import="search.everywhere.IntraSearchService" %>
+<g:set var="intraSearchService" bean="intraSearchService"/>
+
 <!DOCTYPE html>
 <html lang="en-us">
 	<head>
@@ -160,35 +163,13 @@
 				<!-- end search mobile button -->
 
 				<!-- input: search field -->
-				<form action="search.html" class="header-search pull-right">
-					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
-					"ActionScript",
-					"AppleScript",
-					"Asp",
-					"BASIC",
-					"C",
-					"C++",
-					"Clojure",
-					"COBOL",
-					"ColdFusion",
-					"Erlang",
-					"Fortran",
-					"Groovy",
-					"Haskell",
-					"Java",
-					"JavaScript",
-					"Lisp",
-					"Perl",
-					"PHP",
-					"Python",
-					"Ruby",
-					"Scala",
-					"Scheme"]'>
-					<button type="submit">
-						<i class="fa fa-search"></i>
-					</button>
-					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-				</form>
+			<g:form action="search" controller="intraSearch" id="formSearch" class="header-search pull-right">				
+				<input id="search-fld"  type="text" name="param" placeholder="Find results and more" data-autocomplete='${intraSearchService.getAllLabels()}'>
+				<button type="submit">
+					<i class="fa fa-search"></i>
+				</button>
+				<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+			</g:form>	
 				<!-- end input: search field -->
 
 				<!-- fullscreen button -->

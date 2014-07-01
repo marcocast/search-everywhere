@@ -26,62 +26,66 @@ class GraphByResultController {
 
 		def myDailyActivitiesColumnsPerType = [["string", "date"]]
 
-		Map<String, List<Result>> identifierPerResult = new HashMap<String, List<Result>>();
+		try{
 
-		List<Long> dates = new ArrayList<Long>()
+			Map<String, List<Result>> identifierPerResult = new HashMap<String, List<Result>>();
 
-		def allResults = params.checkboxResult.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' ).sort(true)
+			List<Long> dates = new ArrayList<Long>()
 
-		for(String identifier : allResults){
+			def allResults = params.checkboxResult.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' ).sort(true)
 
-			Result result = resultDAOService.getResult(identifier)
-			String searchableFileName = searchableFileDAOService.getSearchableFile(result.searchableFileNames.first()).name;
+			for(String identifier : allResults){
 
-			myDailyActivitiesData.add([
-				resultDAOService.getResultParamFromIdentifier(identifier) + " - " + new Date(result.resultDate),
-				result.totalMatches
-			])
+				Result result = resultDAOService.getResult(identifier)
+				String searchableFileName = searchableFileDAOService.getSearchableFile(result.searchableFileNames.first()).name;
 
-			if(!identifierPerResult.containsKey(resultDAOService.getResultParamFromIdentifier(identifier))){
-				identifierPerResult.put(resultDAOService.getResultParamFromIdentifier(identifier), new ArrayList<Result>())
+				myDailyActivitiesData.add([
+					resultDAOService.getResultParamFromIdentifier(identifier) + " - " + new Date(result.resultDate),
+					result.totalMatches
+				])
+
+				if(!identifierPerResult.containsKey(resultDAOService.getResultParamFromIdentifier(identifier))){
+					identifierPerResult.put(resultDAOService.getResultParamFromIdentifier(identifier), new ArrayList<Result>())
+				}
+
+				identifierPerResult.get(resultDAOService.getResultParamFromIdentifier(identifier)).add(result)
+
+				long droppedMillis = 100000 * (result.resultDate/ 100000);
+				dates.add(droppedMillis)
 			}
 
-			identifierPerResult.get(resultDAOService.getResultParamFromIdentifier(identifier)).add(result)
 
-			long droppedMillis = 100000 * (result.resultDate/ 100000);
-			dates.add(droppedMillis)
-		}
-
-
-
-		identifierPerResult.each{ k, v ->
-
-			myDailyActivitiesColumnsPerType.add(["number", k])
-		}
-
-		dates.each{ dd ->
-
-			def element = []
-			element.add(new Date(dd))
 
 			identifierPerResult.each{ k, v ->
-				boolean added = false;
-				v.each { el ->
 
-					long droppedMillis = 100000 * (el.resultDate/ 100000);
+				myDailyActivitiesColumnsPerType.add(["number", k])
+			}
 
-					if(droppedMillis.compareTo(dd.longValue()) == 0){
-						element.add(el.totalMatches)
-						added = true;
+			dates.each{ dd ->
+
+				def element = []
+				element.add(new Date(dd))
+
+				identifierPerResult.each{ k, v ->
+					boolean added = false;
+					v.each { el ->
+
+						long droppedMillis = 100000 * (el.resultDate/ 100000);
+
+						if(droppedMillis.compareTo(dd.longValue()) == 0){
+							element.add(el.totalMatches)
+							added = true;
+						}
+					}
+
+					if(!added){
+						element.add(0l)
 					}
 				}
 
-				if(!added){
-					element.add(0l)
-				}
+				myDailyActivitiesDataPerType.add(element)
 			}
-
-			myDailyActivitiesDataPerType.add(element)
+		}catch (Exception e){
 		}
 
 		render  template: "chart", model: ["myDailyActivitiesColumns": myDailyActivitiesColumns, "myDailyActivitiesData": myDailyActivitiesData, "myDailyActivitiesColumnsPerType":myDailyActivitiesColumnsPerType, "myDailyActivitiesDataPerType": myDailyActivitiesDataPerType]
@@ -92,10 +96,7 @@ class GraphByResultController {
 		[ checkboxResult:params.checkboxResult ]
 	}
 
-	def graphWithSearchParam() {
-		SearchParam searchParam = searchParamDAOService.getSearchParam(params.searchParamas)
-		render(view: "graph", model: [searchParam:searchParam])
-	}
+
 
 
 	def index() {

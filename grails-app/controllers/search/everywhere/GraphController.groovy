@@ -52,8 +52,12 @@ class GraphController {
 	}
 
 	def graphWithSearchParam() {
-		SearchParam searchParam = searchParamDAOService.getSearchParam(params.searchParamas)
-		render(view: "graph", model: [searchParam:searchParam])
+		if(params.searchParamas == null){
+			render(view: "graph", model: [searchParam:new SearchParam()])
+		}else{
+			SearchParam searchParam = searchParamDAOService.getSearchParam(params.searchParamas)
+			render(view: "graph", model: [searchParam:searchParam])
+		}
 	}
 
 

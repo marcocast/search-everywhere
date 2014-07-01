@@ -41,8 +41,12 @@ class SearchController {
 	}
 
 	def searchWithSearchParam() {
-		SearchParam searchParam = searchParamDAOService.getSearchParam(params.searchParamas)
-		render(view: "search", model: [searchParam:searchParam])
+		if(params.searchParamas == null){
+			render(view: "search", model: [searchParam:new SearchParam()])
+		}else{
+			SearchParam searchParam = searchParamDAOService.getSearchParam(params.searchParamas)
+			render(view: "search", model: [searchParam:searchParam])
+		}
 	}
 
 

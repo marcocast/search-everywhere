@@ -127,7 +127,7 @@
 											<label class="label">Select Searchable files</label>
 											<label class="select select-multiple">
 												<g:select optionKey="identifier"  optionValue="name"
-												name="searchableFileNames" from="${searchableFileInstanceList}" multiple style="width:100%" class="select2" size="${searchableFileInstanceList.size()}" />
+												name="searchableFileNames" from="${searchableFileInstanceList}" multiple style="width:100%" class="select2" />
 												</label>
 											<div class="note">
 												<strong>Note:</strong> type or click on the field to add multiple searchable files.

@@ -34,7 +34,7 @@ class GrepService {
 		result.text = searchParam.text
 		result.regex = searchParam.regex
 		result.searchableFileNames = [searchableFile.identifier].flatten().findAll{ it != null }
-		result.result = grepResult.getSingleResult()
+		result.result = grepResult.toString()
 		result.totalMatches = grepResult.totalLines()
 		result.resultDate = System.currentTimeMillis()
 		return result

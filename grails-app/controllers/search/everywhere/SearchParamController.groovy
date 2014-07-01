@@ -10,8 +10,8 @@ class SearchParamController {
 
 	static allowedMethods = [save: "POST", update: "PUT"]
 
-	SearchParamDAOService searchParamDAOService;
-	SearchableFileDAOService searchableFileDAOService;
+	def searchParamDAOService;
+	def searchableFileDAOService;
 
 	def index(Integer max) {
 		respond searchParamDAOService.getAllSearchParams(), model:[searchParamInstanceCount: searchParamDAOService.getAllSearchParams().size()]
