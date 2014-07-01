@@ -4,8 +4,13 @@
 <g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <form class="smart-form">
 	<header>
-		<ul>
-	        <li><strong>${result.text}</strong>
+		<ul class="list-inline">
+			<li>
+	        <small> Text : </small>
+	        </li>
+	        <li class="text-success"><strong>${result.text}</strong>
+	        </li>
+	        <li>
 	        <input type="checkbox" name="regex" checked="checked" disabled="disabled">
 					
 			<g:if test="${result.regex==true}">
@@ -14,22 +19,29 @@
 			<g:else>
 			     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
 			</g:else>Regex</label>
+			</li>
+			<li>
 	        <small> on </small>
-	        <strong>${searchableFileDAOService.getSearchableFile(result.searchableFileNames.first()).name} </strong>
-	        <g:if test="${result.totalMatches > -1 }">		
-	        	<small> Total lines found </small><strong class="text-danger">${result.totalMatches} </strong>
-	        </g:if>
-	        <g:else>
-			<section>
-				<label class="textarea textarea-resizable"> 
-				    									
-				<strong class="text-danger">${result.result}</strong>
-					
-				</label>
-			</section>
-			</g:else>	
-	    
-	        	<g:remoteLink class="btn btn-primary pull-right" controller="search" action="executeSearch" update="resultBox${result.searchableFileNames.first()}" params="'name=${result.identifier}&text=${result.text}&regex=${result.regex}&searchableFileName=${result.searchableFileNames.first()}'" >Refresh result</g:remoteLink>
+	        </li>
+	        <li>
+	        <strong><u>${searchableFileDAOService.getSearchableFile(result.searchableFileNames.first()).name} </u></strong>
+	        </li>
+	        <li>
+		        <g:if test="${result.totalMatches > -1 }">		
+		        	<small> Total lines found </small><strong class="text-danger">${result.totalMatches} </strong>
+		        </g:if>
+		        <g:else>
+					<section>
+						<label class="textarea textarea-resizable"> 
+						    									
+							<strong class="text-danger">${result.result}</strong>
+							
+						</label>
+					</section>
+				</g:else>	
+		    </li>
+	    <li>
+	        	<g:remoteLink class="btn btn-primary pull-right" controller="search" action="executeSearch" update="resultBox${result.searchableFileNames.first()}" params="'name=${result.identifier}&text=${result.text}&regex=${result.regex}&searchableFileName=${result.searchableFileNames.first()}'" >Refresh result <i class="fa fa-refresh"></i></g:remoteLink>
 
 	        </li>
         </ul>

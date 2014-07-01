@@ -37,7 +37,7 @@
 							<i class="fa fa-table fa-fw "></i> 
 								Table 
 							<span>> 
-								Data Tables
+								Searchable Files
 							</span>
 						</h1>
 					</div>
@@ -72,7 +72,7 @@
 								-->
 								<header>
 									<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-									<h2>Standard Data Tables </h2>
+									<h2>Existing Searchable Files </h2>
 				
 								</header>
 				

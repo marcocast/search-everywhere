@@ -75,8 +75,7 @@
 			<!-- projects dropdown -->
 			<div class="project-context hidden-xs">
 
-				<span class="label">Recent Activities</span>
-				<span id="activity" class="activity-dropdown" ><a>Show <i class="fa fa-history"></i></a></span>
+				<span id="activity" class="activity-dropdown" ><a href="javascript:void(0);" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-list"></i></a> Recent activities</span>
 				
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -234,34 +233,18 @@
 						<g:link controller="result" action="index"><i class="fa fa-lg fa-fw fa-list-ol"></i>Results<span class="badge pull-right inbox-badge"><g:totResults/></span></g:link>
 						
 					</li>
+					
+					<li>
+						<g:link controller="searchableFile" action="index"><i class="fa fa-lg fa-fw fa-table"></i>Searchable Files<span class="badge pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
+						
+					</li>
+					
+					<li>
+						<g:link controller="searchParam" action="index"><i class="fa fa-lg fa-fw fa-table"></i>Search Paramas<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
+						
+					</li>
 		
-					<li class="active">
-						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Searchable Files</span></a>
-						<ul>
-							<li>
-								<g:link controller="searchableFile" action="index">View<span class="badge pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
-							</li>
-							<li class="active">
-								<g:link controller="searchableFile" action="create">Create new</g:link>
-							</li>
-							
-						</ul>
-					</li>
-					
-					
-					
-					<li class="active">
-						<a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Search Paramas</span></a>
-						<ul>
-							<li>
-								<g:link controller="searchParam" action="index">View<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
-							</li>
-							<li class="active">
-								<g:link controller="searchParam" action="create">Create new</g:link>
-							</li>
-							
-						</ul>
-					</li>
+				
 					
 					<li class="active">
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>

@@ -54,9 +54,13 @@ class SearchableFileController {
 
 	def copy(params) {
 		SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(params.identifier)
-		searchableFile.password = null
-		searchableFile.name = "CopyOf"+searchableFile.name
-		respond searchableFile
+		SearchableFile newOne = new SearchableFile();
+		newOne.name = "CopyOf"+searchableFile.name
+		newOne.password = null
+		newOne.url = searchableFile.url
+		newOne.path = searchableFile.path
+		newOne.user = searchableFile.user
+		respond newOne
 	}
 
 	@Transactional

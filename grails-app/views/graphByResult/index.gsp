@@ -97,6 +97,8 @@
 								<button type="submit" class="btn btn-primary"><g:message code="default.button.execute.search.label" default="Generate Graph " /><i class="fa fa-bar-chart-o"></i></button>
 											
 							</div>
+							
+							
 							<div class="table-responsive">
 							<table id="dt_basic_result_graph" class="table table-bordered table-striped table-hover smart-form has-tickbox">
 								<thead>

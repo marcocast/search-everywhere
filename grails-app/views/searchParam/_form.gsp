@@ -44,14 +44,21 @@
 
 <section>
 
-<div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'regex', 'error')} ">
-	<label for="regex">
-		<g:message code="searchParam.regex.label" default="Regex" />
-	</label>
-	<g:checkBox name="regex" value="${searchParamInstance?.regex}" />
-
-</div>
+	<div class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'regex', 'error')} ">
+		<label class="toggle pull-left text-left">
+				<input type="checkbox" name="regex" checked="checked">
+				<g:if test="${searchParamInstance?.regex}">
+					<i data-swchon-text="ON" data-swchoff-text="OFF"></i>Regex</label>
+				</g:if>
+				<g:else>
+					<i data-swchon-text="OFF" data-swchoff-text="ON"></i>Regex</label>
+				</g:else>
+				<br>
+	</div>
 </section>
+
+
+
 
 <section>
 

@@ -79,33 +79,57 @@
 												
 												<article class="col-sm-12 col-md-12 col-lg-12" id="resultBox${searchableFileName}">		
 													<form class="smart-form">
-														<header>
-															<ul>
-														        <li><strong>${resultInstance.text}</strong>
-														        <input type="checkbox" name="regex" checked="checked" disabled="disabled">
-					
-																	<g:if test="${resultInstance.regex==true}">
-																		<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
-																	</g:if>
-																	<g:else>
-																	     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
-																</g:else>Regex</label>
-														        <small> on </small>
-														        <strong>${searchableFileDAOService.getSearchableFile(resultInstance.searchableFileNames.first()).name} </strong>
-														        
-														        <small> Total lines found </small><strong class="text-danger">${resultInstance.totalMatches} </strong></li>
-													        </ul>
-														</header>
-													
-														<fieldset>
-																						
-															<section>
-																<label class="textarea"> 										
-																	<textarea rows="${resultInstance.totalMatches + 10}" placeholder="Nothing found">${resultDAOService.getFullResultText(resultInstance.identifier)}</textarea> 
-																</label>
-															</section>
-														</fieldset>
+													<header>
+														<ul class="list-inline">
+															<li>
+													        <small> Text : </small>
+													        </li>
+													        <li class="text-success"><strong>${resultInstance.text}</strong>
+													        </li>
+													        <li>
+													        <input type="checkbox" name="regex" checked="checked" disabled="disabled">
+																	
+															<g:if test="${resultInstance.regex==true}">
+																<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
+															</g:if>
+															<g:else>
+															     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
+															</g:else>Regex</label>
+															</li>
+															<li>
+													        <small> on </small>
+													        </li>
+													        <li>
+													        <strong><u>${searchableFileDAOService.getSearchableFile(resultInstance.searchableFileNames.first()).name} </u></strong>
+													        </li>
+													        <li>
+														        <g:if test="${resultInstance.totalMatches > -1 }">		
+														        	<small> Total lines found </small><strong class="text-danger">${resultInstance.totalMatches} </strong>
+														        </g:if>
+														        <g:else>
+																	<section>
+																		<label class="textarea textarea-resizable"> 
+																		    									
+																			<strong class="text-danger">${resultInstance.result}</strong>
+																			
+																		</label>
+																	</section>
+																</g:else>	
+														    </li>
+	
+												        </ul>
+													</header>
 														
+													
+													<fieldset>
+																					
+														<section>
+															<label class="textarea"> 										
+																<textarea rows="${resultInstance.totalMatches + 10}" placeholder="Nothing found">${resultDAOService.getFullResultText(resultInstance.identifier)}</textarea> 
+															</label>
+														</section>
+													</fieldset>
+													
 														
 													</form>
 												
