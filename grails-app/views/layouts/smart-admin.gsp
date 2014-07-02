@@ -67,7 +67,11 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span> <img src="${request.contextPath}/smart-admin/img/logo.png" style="width: 70%; height: 70%" alt="SSearcH everywhere"> </span>
+				<span>
+				<ul class="list-inline">
+					  <li><h1><a  href="/search-everywhere">SSearcH Everywhere</a></h1></li>
+					</ul>
+				 </span>
 				<!-- END LOGO PLACEHOLDER -->
 
 
