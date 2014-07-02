@@ -34,16 +34,15 @@
 <div id="content">
 
 	<div class="row">
-		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 			<h1 class="page-title txt-color-blueDark">
-				<i class="fa fa-table fa-fw "></i> 
-					Table 
+				<i class="fa fa-search-plus fa-fw "></i> 
+				Search Params 
 				<span>> 
-					Data Tables
-				</span>
+				List
 			</h1>
 		</div>
-		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
 			<g:render template="/layouts/mostcommon" />
 		</div>
 	</div>
@@ -74,7 +73,7 @@
 				-->
 				<header>
 					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
-					<h2>Standard Data Tables </h2>
+					<h2>Existing Search Params </h2>
 
 				</header>
 

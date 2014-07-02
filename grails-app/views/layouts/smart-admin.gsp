@@ -59,7 +59,7 @@
 		<r:layoutResources/>
 		
 	</head>
-	<body class="fixed-width fixed-header fixed-ribbon">
+	<body class="fixed-width fixed-header fixed-ribbon fixed-navigation">
 		<!-- possible classes:  minified, fixed-ribbon, fixed-header, fixed-width-->
 
 		<!-- HEADER -->
@@ -69,7 +69,7 @@
 				<!-- PLACE YOUR LOGO HERE -->
 				<span>
 				<ul class="list-inline">
-					  <li><h1><a  href="/search-everywhere">SSearcH Everywhere</a></h1></li>
+					  <li><h1><a  href="/search-everywhere"><strong>SS</strong>earc<strong>H</strong> Everywhere</a></h1></li>
 					</ul>
 				 </span>
 				<!-- END LOGO PLACEHOLDER -->
@@ -210,6 +210,10 @@
 
 				<ul>
 					<li>
+						<a  href="/search-everywhere"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Search</span></a>
+						
+					</li>
+					<li>
 						<g:link controller="search" action="index"><i class="fa fa-lg fa-fw fa-search"></i> <span class="menu-item-parent">Search</span></g:link>
 						
 					</li>
@@ -220,12 +224,12 @@
 					</li>
 					
 					<li>
-						<g:link controller="searchableFile" action="index"><i class="fa fa-lg fa-fw fa-table"></i>Searchable Files<span class="badge pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
+						<g:link controller="searchableFile" action="index"><i class="fa fa-lg fa-fw fa-file-text"></i>Searchable Files<span class="badge pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
 						
 					</li>
 					
 					<li>
-						<g:link controller="searchParam" action="index"><i class="fa fa-lg fa-fw fa-table"></i>Search Paramas<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
+						<g:link controller="searchParam" action="index"><i class="fa fa-lg fa-fw fa-search-plus"></i>Search Params<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
 						
 					</li>
 		

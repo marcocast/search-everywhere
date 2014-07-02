@@ -8,21 +8,39 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
+		<!-- RIBBON -->
+		<div id="ribbon">
 		
+			<span class="ribbon-button-alignment"> 
+				<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+					<i class="fa fa-refresh"></i>
+				</span> 
+			</span>
+		
+			<!-- breadcrumb -->
+			<ol class="breadcrumb">
+				<li>Home</li><li>Search Params/li><li>Edit</li>
+			</ol>
+			<!-- end breadcrumb -->
+		
+		
+		
+		</div>
+		<!-- END RIBBON -->	
 		
 		<div id="content">
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 						<h1 class="page-title txt-color-blueDark">
-							<i class="fa fa-edit fa-fw "></i> 
-								Forms 
+							<i class="fa fa-search-plus fa-fw "></i> 
+							Search Params 
 							<span>> 
-								Form Elements
-							</span>
+							Edit
+						</span>
 						</h1>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
 						<g:render template="/layouts/mostcommon" />
 					</div>
 				</div>
@@ -41,7 +59,7 @@
 					<div class="row">
 				
 						<!-- NEW COL START -->
-						<article class="col-sm-12 col-md-12 col-lg-6">
+						<article class="col-sm-12 col-md-12 col-lg-12">
 				
 							<!-- Widget ID (each widget will need unique ID)-->
 							<div class="jarviswidget jarviswidget-color-darken" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
@@ -60,7 +78,7 @@
 								-->
 								<header>
 									<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-									<h2>Basic Form Elements </h2>
+									<h2>Edit Form Elements </h2>
 				
 								</header>
 				
@@ -91,7 +109,7 @@
 										<g:form url="[resource:searchParamInstance, action:'update']" method="PUT" class="smart-form">
 											<g:hiddenField name="version" value="${searchParamInstance?.version}" />
 											<header>
-												Standard Form Header
+												${searchParamInstance.identifier}
 											</header>
 											<fieldset class="form">
 												<g:render template="form"/>

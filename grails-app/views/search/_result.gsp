@@ -11,14 +11,14 @@
 	        <li class="text-success"><strong>${result.text}</strong>
 	        </li>
 	        <li>
+	        <g:if test="${result.regex==true}">
 	        <input type="checkbox" name="regex" checked="checked" disabled="disabled">
-					
-			<g:if test="${result.regex==true}">
-				<i data-swchon-text="ON" data-swchoff-text="OFF"></i>
+				<i data-swchon-text="ON" data-swchoff-text="OFF"></i>Regex</label>
 			</g:if>
 			<g:else>
-			     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>
-			</g:else>Regex</label>
+			<input type="checkbox" name="regex" disabled="disabled">
+			     <i data-swchon-text="OFF" data-swchoff-text="OFF"></i>Regex</label>
+			</g:else>
 			</li>
 			<li>
 	        <small> on </small>

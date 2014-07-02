@@ -35,16 +35,16 @@
 			<div id="content">
 
 				<div class="row">
-					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 						<h1 class="page-title txt-color-blueDark">
-							<i class="fa fa-table fa-fw "></i> 
-								Intra search for
-							<span>
+							<i class="fa fa-bars fa-fw "></i> 
+								Search Result for
+							<span>>
 								"${text}"
 							</span>
 						</h1>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
 						<g:render template="/layouts/mostcommon" />
 					</div>
 				</div>
@@ -76,15 +76,15 @@
 
 									<ul class="nav nav-tabs pull-right in" id="myTab">
 										<li class="active">
-											<a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span class="hidden-mobile hidden-tablet">Results</span></a>
+											<a data-toggle="tab" href="#s1"><i class="fa fa-list-ol"></i> <span class="hidden-mobile hidden-tablet">Results</span></a>
 										</li>
 
 										<li>
-											<a data-toggle="tab" href="#s2"><i class="fa fa-facebook"></i> <span class="hidden-mobile hidden-tablet">Searchable Files</span></a>
+											<a data-toggle="tab" href="#s2"><i class="fa fa-file-text"></i> <span class="hidden-mobile hidden-tablet">Searchable Files</span></a>
 										</li>
 
 										<li>
-											<a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i> <span class="hidden-mobile hidden-tablet">Search Params</span></a>
+											<a data-toggle="tab" href="#s3"><i class="fa fa-search-plus"></i> <span class="hidden-mobile hidden-tablet">Search Params</span></a>
 										</li>
 									</ul>
 
@@ -92,12 +92,7 @@
 
 								<!-- widget div-->
 								<div class="no-padding">
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-
-										test
-									</div>
-									<!-- end widget edit box -->
+									
 
 									<div class="widget-body">
 										<!-- content -->

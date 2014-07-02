@@ -16,18 +16,38 @@
 	</head>
 	<body>
 		
-		
+		<!-- RIBBON -->
+	<div id="ribbon">
+	
+		<span class="ribbon-button-alignment"> 
+			<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+				<i class="fa fa-refresh"></i>
+			</span> 
+		</span>
+	
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Home</li><li>Results</li><li>Result</li>
+		</ol>
+		<!-- end breadcrumb -->
+	
+	
+	
+	</div>
+	<!-- END RIBBON -->		
 	<div id="content">
 	
 		<div class="row">
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 				<h1 class="page-title txt-color-blueDark">
-					<i class="fa fa-edit fa-fw "></i> 
-						Search 
-					
+					<i class="fa fa-list-ol fa-fw "></i> 
+					Result 
+				<span>> 
+					Selected
+				</span>
 				</h1>
 			</div>
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
 				<g:render template="/layouts/mostcommon" />
 			</div>
 		</div>

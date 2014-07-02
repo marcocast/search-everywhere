@@ -31,14 +31,17 @@
 <div id="content">
 
 		<div class="row">
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 				<h1 class="page-title txt-color-blueDark">
 					<i class="fa fa-search fa-fw "></i> 
 						Search 
+					<span>> 
+						Form
+					</span>
 					
 				</h1>
 			</div>
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
 				<g:render template="/layouts/mostcommon" />
 			</div>
 		</div>
@@ -95,7 +98,7 @@
 		
 								<g:form action="search" id="formSearch"  class="smart-form">
 									<header>
-										Create and run your search
+										Build your search
 									</header>
 		
 									<fieldset>

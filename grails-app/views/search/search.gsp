@@ -13,19 +13,38 @@
 
 </head>
 <body>
+	<!-- RIBBON -->
+	<div id="ribbon">
 	
+		<span class="ribbon-button-alignment"> 
+			
+		</span>
+	
+		<!-- breadcrumb -->
+		<ol class="breadcrumb">
+			<li>Home</li><li>Search </li><li>result</li>
+		</ol>
+		<!-- end breadcrumb -->
+	
+	
+	
+	</div>
+	<!-- END RIBBON -->		
 	
 <div id="content">
 
 	<div class="row">
-		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 			<h1 class="page-title txt-color-blueDark">
-				<i class="fa fa-edit fa-fw "></i> 
-					Search Result 
+				<i class="fa fa-search fa-fw "></i> 
+						Search 
+					<span>> 
+						Result
+					</span>
 				
 			</h1>
 		</div>
-		<div id="commonResult" class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+		<div id="commonResult" class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
 			<g:render template="/layouts/mostcommon" />
 		</div>
 	</div>

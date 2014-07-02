@@ -19,7 +19,7 @@ class IntraSearchController {
 		if(text != null && !text.isEmpty()){
 
 			resultDAOService.getAllResults().findAll{
-				(it.text.indexOf(text) != -1 || searchableFileDAOService.getSearchableFile(it.searchableFileNames.first()).name.indexOf(text) != -1 ||searchableFileDAOService.getSearchableFile(it.searchableFileNames.first()).url.indexOf(text) != -1 || it.result.indexOf(text) != -1 )
+				(it.text.indexOf(text) != -1 || searchableFileDAOService.getSearchableFile(it.searchableFileNames.first()).name.indexOf(text) != -1 ||searchableFileDAOService.getSearchableFile(it.searchableFileNames.first()).url.indexOf(text) != -1  )
 			}.each { resultsList.add(it) }
 
 			searchableFileDAOService.getAllSearchableFiles().findAll{

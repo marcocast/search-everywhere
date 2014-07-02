@@ -60,8 +60,8 @@ class CommonResultsDAOService {
 		int counter = 0;
 
 		int drop = 0
-		if(results.size() > 12){
-			drop = results.size() - 12
+		if(results.size() > 10){
+			drop = results.size() - 10
 		}
 
 

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="smart-admin"/>
-		<title>Welcome to Grails</title>
+		<title>Welcome to SSearcH Everywhere</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
