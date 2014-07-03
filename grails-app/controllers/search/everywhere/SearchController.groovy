@@ -13,10 +13,6 @@ class SearchController {
 
 		SearchParam searchParam = new SearchParam(params)
 
-
-		println "daiiiii : " +searchParam.regex
-
-
 		searchParam.searchableFileNames = [params.searchableFileName].flatten().findAll{ it != null }
 		Result result = null;
 		try{

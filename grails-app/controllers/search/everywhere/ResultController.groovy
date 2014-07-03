@@ -12,14 +12,52 @@ class ResultController {
 
 	def resultDAOService;
 	def commonResultsDAOService;
+	def searchableFileDAOService;
 
 	def index() {
 		respond resultDAOService.getAllResults().sort{it.resultDate}.reverse(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
 	}
 
-	def cleanAllResults() {
-		resultDAOService.removeAll()
-		commonResultsDAOService.removeAll()
+	def filterResults() {
+
+		String text = params.text
+		String searchableFileName = params.searchableFileName
+		String fromS = params.from
+		String toS = params.to
+
+
+		List<Result> filteredResults = resultDAOService.getAllResults()
+
+		if(text != null && !text.isEmpty()){
+			filteredResults.findAll{ it.text != text }.each { filteredResults.remove(it) }
+		}
+		if(searchableFileName != null && !searchableFileName.isEmpty()){
+			filteredResults.findAll{ searchableFileDAOService.getSearchableFile(it.searchableFileNames.first()).name != searchableFileName }.each { filteredResults.remove(it) }
+		}
+
+		if(fromS != null && !fromS.isEmpty()){
+			Date from = new Date(fromS)
+			filteredResults.findAll{ new Date(it.resultDate).compareTo(from) == -1 }.each { filteredResults.remove(it) }
+		}
+		if(toS != null && !toS.isEmpty()){
+			Date to = new Date(toS)
+			filteredResults.findAll{ new Date(it.resultDate).compareTo(to) == 1 }.each { filteredResults.remove(it) }
+		}
+
+		render(view: "index", model: [resultInstanceList:filteredResults,getAllResultsInstanceCount:filteredResults.size()])
+	}
+
+
+
+	def cleanAllResults(params) {
+
+		def allResults = params.resultInstanceList.replaceAll('\\[', '').replaceAll('\\]', '').replaceAll(' ', '').tokenize( ',' ).sort(true)
+
+		allResults.each {
+
+			resultDAOService.removeResult(it)
+		}
+
 		redirect(controller:'result',action:'index')
 	}
 

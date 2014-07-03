@@ -97,7 +97,34 @@ class GraphByResultController {
 	}
 
 
+	def filterResults() {
 
+		String text = params.text
+		String searchableFileName = params.searchableFileName
+		String fromS = params.from
+		String toS = params.to
+
+
+		List<Result> filteredResults = resultDAOService.getAllResults()
+
+		if(text != null && !text.isEmpty()){
+			filteredResults.findAll{ it.text != text }.each { filteredResults.remove(it) }
+		}
+		if(searchableFileName != null && !searchableFileName.isEmpty()){
+			filteredResults.findAll{ searchableFileDAOService.getSearchableFile(it.searchableFileNames.first()).name != searchableFileName }.each { filteredResults.remove(it) }
+		}
+
+		if(fromS != null && !fromS.isEmpty()){
+			Date from = new Date(fromS)
+			filteredResults.findAll{ new Date(it.resultDate).compareTo(from) == -1 }.each { filteredResults.remove(it) }
+		}
+		if(toS != null && !toS.isEmpty()){
+			Date to = new Date(toS)
+			filteredResults.findAll{ new Date(it.resultDate).compareTo(to) == 1 }.each { filteredResults.remove(it) }
+		}
+
+		render(view: "index", model: [resultInstanceList:filteredResults,getAllResultsInstanceCount:filteredResults.size()])
+	}
 
 	def index() {
 		respond resultDAOService.getAllResults().sort{ it.resultDate }.reverse(), model:[getAllResultsInstanceCount: resultDAOService.getAllResults().size()]
