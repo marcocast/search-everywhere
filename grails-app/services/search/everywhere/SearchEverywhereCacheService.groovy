@@ -28,6 +28,7 @@ class SearchEverywhereCacheService {
 
 
 
+
 	def createFolersIfNotExist(){
 		if(!new File(searchEverywhereHomeFolder).exists()){
 			new File( searchEverywhereHomeFolder ).mkdir()

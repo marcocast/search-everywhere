@@ -67,22 +67,10 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span>
-				<ul class="list-inline">
-					  <li><h1><a  href="/search-everywhere"><strong>SS</strong>earc<strong>H</strong> Everywhere</a></h1></li>
-					</ul>
-				 </span>
+				<span id="logo"><a  href="/search-everywhere"><strong>SS</strong>earc<strong>H</strong> Everywhere</a></span>
 				<!-- END LOGO PLACEHOLDER -->
 
-
-
-				
-			</div>
-
-			<!-- projects dropdown -->
-			<div class="project-context hidden-xs">
-
-				<span id="activity" class="activity-dropdown" ><a href="javascript:void(0);" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-list"></i></a> Recent activities</span>
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-clock-o"></i> <b class="badge"> ${notifyService.getTotalActivity()} </b> </span>
 				
 				<!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
 				<div class="ajax-dropdown">
@@ -118,6 +106,13 @@
 
 				</div>
 				<!-- end dropdown-menu-->
+				
+			</div>
+
+			<!-- projects dropdown -->
+			<div class="project-context hidden-xs">
+
+				
 
 			</div>
 			<!-- end projects dropdown -->

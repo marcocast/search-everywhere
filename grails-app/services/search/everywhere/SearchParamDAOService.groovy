@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 class SearchParamDAOService {
 
 	def searchEverywhereCacheService;
+	def notifyService;
 
 	def List<SearchParam> getAllSearchParams(){
 
@@ -35,6 +36,7 @@ class SearchParamDAOService {
 		def file1 = new File(searchEverywhereCacheService.searchParamsFolder + "/" + searchParam.identifier)
 		file1.write searchParam.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchParamCache.put(searchParam.identifier,searchParam)
+		notifyService.addActivity();
 	}
 
 	def void removeSearchParam(String identifier){

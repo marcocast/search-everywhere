@@ -10,6 +10,7 @@ class ResultDAOService {
 
 	def searchEverywhereCacheService;
 	def commonResultsDAOService;
+	def notifyService;
 
 	def List<Result> getAllResults(){
 
@@ -46,6 +47,7 @@ class ResultDAOService {
 		file1.write result.encodeAsJSON().toString()
 		searchEverywhereCacheService.resultCache.put(result.identifier,result)
 		commonResultsDAOService.addResult(result)
+		notifyService.addActivity();
 	}
 
 	def void removeResult(String identifier){

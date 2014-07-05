@@ -12,6 +12,7 @@ class SearchableFileDAOService {
 	def searchParamDAOService;
 	def resultDAOService;
 	def encodingService;
+	def notifyService;
 
 	def List<SearchableFile> getAllSearchableFiles(){
 
@@ -43,6 +44,7 @@ class SearchableFileDAOService {
 		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + searchableFile.identifier)
 		file1.write searchableFile.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchableFileCache.put(searchableFile.identifier,searchableFile)
+		notifyService.addActivity();
 	}
 
 	def void removeSearchableFile(String identifier){

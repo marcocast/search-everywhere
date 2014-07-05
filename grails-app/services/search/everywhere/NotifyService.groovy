@@ -2,6 +2,8 @@ package search.everywhere
 
 import grails.transaction.Transactional
 
+import java.util.concurrent.atomic.AtomicInteger
+
 import org.springframework.stereotype.Service
 
 
@@ -13,6 +15,15 @@ class NotifyService {
 	def searchableFileDAOService
 	def searchParamDAOService
 	def resultDAOService
+	private AtomicInteger recentActivitiesCounter = new AtomicInteger(0);
+
+	public void addActivity(){
+		recentActivitiesCounter.incrementAndGet();
+	}
+
+	public int getTotalActivity(){
+		return recentActivitiesCounter.get();
+	}
 
 	def getLatestSearchableFiles(int tot) {
 		def orderedFiles = []
@@ -41,6 +52,7 @@ class NotifyService {
 	}
 
 	def getLastUpdateDate(){
+		recentActivitiesCounter.set(0);
 		List<File> mostRecents = new ArrayList<File>();
 		if(!new File(searchEverywhereCacheService.resultsFolder).listFiles().grep{it.file}.grep(~/.*/).isEmpty()){
 			mostRecents.add(new File(searchEverywhereCacheService.resultsFolder).listFiles().grep{it.file}.grep(~/.*/).sort{it.lastModified()}.reverse().head())
