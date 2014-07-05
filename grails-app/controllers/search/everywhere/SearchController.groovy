@@ -19,14 +19,15 @@ class SearchController {
 			result = grepService.grepBasedOnSearchParams(searchParam)
 			resultDAOService.addResult(result)
 		}catch(Exception e){
+
 			result = new Result();
 			result.text = searchParam.text
 			result.regex = searchParam.regex
 			result.searchableFileNames = searchParam.searchableFileNames
 			result.totalMatches = -1
 			result.resultDate = System.currentTimeMillis()
-			result.result = e.getMessage()
-			result.result = result.result + "\n"
+			result.result = e
+			result.result = result.result + "/n"
 			String searchableFileIdentifier = searchParam.searchableFileNames.first()
 			result.result = result.result + "Make sure the searchable file : '" + searchableFileDAOService.getSearchableFile(searchableFileIdentifier).name + "' exists and that the credentials are correct"
 		}

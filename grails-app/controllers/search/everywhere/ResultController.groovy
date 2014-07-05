@@ -26,6 +26,7 @@ class ResultController {
 		String toS = params.to
 
 
+
 		List<Result> filteredResults = resultDAOService.getAllResults()
 
 		if(text != null && !text.isEmpty()){
@@ -40,6 +41,7 @@ class ResultController {
 			filteredResults.findAll{ new Date(it.resultDate).compareTo(from) == -1 }.each { filteredResults.remove(it) }
 		}
 		if(toS != null && !toS.isEmpty()){
+			toS = toS + " 24:59:59"
 			Date to = new Date(toS)
 			filteredResults.findAll{ new Date(it.resultDate).compareTo(to) == 1 }.each { filteredResults.remove(it) }
 		}

@@ -235,13 +235,13 @@
 		
 				
 					
-					<li class="active">
+					<li>
 						<a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
 						<ul>
 							<li>
 								<g:link controller="graph" action="index">Real time data</g:link>
 							</li>
-							<li class="active">
+							<li>
 								<g:link controller="graphByResult" action="index">Historical data</g:link>
 							</li>
 							

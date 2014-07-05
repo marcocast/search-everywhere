@@ -2,7 +2,7 @@ package search.everywhere
 
 import grails.transaction.Transactional
 
-import java.util.LinkedHashMap.Entry
+import java.util.HashMap.Entry
 
 import org.springframework.stereotype.Service
 
@@ -14,37 +14,64 @@ class CommonResultsDAOService {
 	def resultDAOService;
 
 
-	def int getCommonResultsSize(){
-
-		return searchEverywhereCacheService.commonResultsCache.size()
-	}
-
-
 	def String get1stCommonData(){
-
-		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
-			it.value.size()
-		}.entrySet().toList().reverse()
-
-		return extractCommonData(entries.get(0))
+		return searchEverywhereCacheService.commonResultsDataCache.get("first")
 	}
 
 	def String get2ndCommonData(){
-
-		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
-			it.value.size()
-		}.entrySet().toList().reverse()
-
-		return extractCommonData(entries.get(1))
+		return searchEverywhereCacheService.commonResultsDataCache.get("second")
 	}
 
 	def String get3rdCommonData(){
+		return searchEverywhereCacheService.commonResultsDataCache.get("third")
+	}
+
+	def extract1stCommonData(){
 
 		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
 			it.value.size()
 		}.entrySet().toList().reverse()
 
-		return extractCommonData(entries.get(2))
+		if(entries.size() > 0){
+
+			String data = extractCommonData(entries.get(0))
+
+			searchEverywhereCacheService.commonResultsDataCache.put("first",data)
+			def file1 = new File(searchEverywhereCacheService.commonResultsDataFolder + "/first")
+			file1.write data
+		}
+	}
+
+	def extract2ndCommonData(){
+
+		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
+			it.value.size()
+		}.entrySet().toList().reverse()
+
+		if(entries.size() > 1){
+
+			String data = extractCommonData(entries.get(1))
+
+			searchEverywhereCacheService.commonResultsDataCache.put("second",data)
+			def file1 = new File(searchEverywhereCacheService.commonResultsDataFolder + "/second")
+			file1.write data
+		}
+	}
+
+	def extract3rdCommonData(){
+
+		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
+			it.value.size()
+		}.entrySet().toList().reverse()
+
+		if(entries.size() > 2){
+
+			String data = extractCommonData(entries.get(2))
+
+			searchEverywhereCacheService.commonResultsDataCache.put("third",data)
+			def file1 = new File(searchEverywhereCacheService.commonResultsDataFolder + "/third")
+			file1.write data
+		}
 	}
 
 	private String extractCommonData(Entry<String, List<Long>> entry){
@@ -120,10 +147,14 @@ class CommonResultsDAOService {
 		removeCommonResultFile(commonIdentifier)
 		def file1 = new File(searchEverywhereCacheService.commonResultsFolder + "/" + commonIdentifier)
 		file1.write searchEverywhereCacheService.commonResultsCache.get(commonIdentifier).encodeAsJSON().toString()
+
+		extract1stCommonData()
+		extract2ndCommonData()
+		extract3rdCommonData()
 	}
 
 	def void removeAll(){
-		searchEverywhereCacheService.commonResultsCache.findAll{it.value != null }.each { removeCommonResult(it.key) }
+		searchEverywhereCacheService.commonResultsCache.findAll{ it.value != null }.each { removeCommonResult(it.key) }
 	}
 
 	def void removeCommonResultFile(String commonIdentifier){
