@@ -44,7 +44,7 @@ class SearchableFileDAOService {
 		def file1 = new File(searchEverywhereCacheService.searchableFilesFolder + "/" + searchableFile.identifier)
 		file1.write searchableFile.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchableFileCache.put(searchableFile.identifier,searchableFile)
-		notifyService.addActivity();
+		notifyService.addSearchableFileActivity();
 	}
 
 	def void removeSearchableFile(String identifier){

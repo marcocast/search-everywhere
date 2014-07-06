@@ -15,18 +15,41 @@ class NotifyService {
 	def searchableFileDAOService
 	def searchParamDAOService
 	def resultDAOService
-	private AtomicInteger recentActivitiesCounter = new AtomicInteger(0);
+	private AtomicInteger recentSearchableFilesActivitiesCounter = new AtomicInteger(0);
+	private AtomicInteger recentSearchParamsActivitiesCounter = new AtomicInteger(0);
+	private AtomicInteger recentResultsActivitiesCounter = new AtomicInteger(0);
 
-	public void addActivity(){
-		recentActivitiesCounter.incrementAndGet();
+	public void addResultActivity(){
+		recentResultsActivitiesCounter.incrementAndGet();
+	}
+
+	public void addSearchParamActivity(){
+		recentSearchParamsActivitiesCounter.incrementAndGet();
+	}
+
+	public void addSearchableFileActivity(){
+		recentSearchableFilesActivitiesCounter.incrementAndGet();
 	}
 
 	public int getTotalActivity(){
-		return recentActivitiesCounter.get();
+		return recentSearchableFilesActivitiesCounter.get() + recentSearchParamsActivitiesCounter.get() + recentResultsActivitiesCounter.get();
+	}
+
+	public int getTotalRecentSearchableFilesActivities(){
+		return recentSearchableFilesActivitiesCounter.get();
+	}
+
+	public int getTotalRecentSearchParamsActivities(){
+		return recentSearchParamsActivitiesCounter.get() ;
+	}
+
+	public int getTotalRecentResultsActivities(){
+		return recentResultsActivitiesCounter.get();
 	}
 
 	def getLatestSearchableFiles(int tot) {
-		def orderedFiles = []
+		recentSearchableFilesActivitiesCounter.set(0);
+		List<SearchableFile> orderedFiles = new ArrayList<SearchableFile>()
 		if(!new File(searchEverywhereCacheService.searchableFilesFolder).listFiles().grep{it.file}.grep(~/.*/).isEmpty()){
 			orderedFiles =  new File(searchEverywhereCacheService.searchableFilesFolder).listFiles().grep{it.file}.grep(~/.*/).sort{it.lastModified()}.reverse()
 			orderedFiles.collect { searchableFileDAOService.getSearchableFile(it.name) }.take(tot)
@@ -35,7 +58,8 @@ class NotifyService {
 
 
 	def getLatestSearchParams(int tot) {
-		def orderedFiles = []
+		recentSearchParamsActivitiesCounter.set(0);
+		List<SearchParam>  orderedFiles = new ArrayList<SearchParam>()
 		if(!new File(searchEverywhereCacheService.searchParamsFolder).listFiles().grep{it.file}.grep(~/.*/).isEmpty()){
 			orderedFiles =  new File(searchEverywhereCacheService.searchParamsFolder).listFiles().grep{it.file}.grep(~/.*/).sort{it.lastModified()}.reverse()
 			orderedFiles.collect { searchParamDAOService.getSearchParam(it.name) }.take(tot)
@@ -44,7 +68,8 @@ class NotifyService {
 
 
 	def getLatestResults(int tot) {
-		def orderedFiles = []
+		recentResultsActivitiesCounter.set(0);
+		List<Result>  orderedFiles = new ArrayList<Result>()
 		if(!new File(searchEverywhereCacheService.resultsFolder).listFiles().grep{it.file}.grep(~/.*/).isEmpty()){
 			orderedFiles =  new File(searchEverywhereCacheService.resultsFolder).listFiles().grep{it.file}.grep(~/.*/).sort{it.lastModified()}.reverse()
 			orderedFiles.collect { resultDAOService.getResult(it.name) }.take(tot)
@@ -52,7 +77,7 @@ class NotifyService {
 	}
 
 	def getLastUpdateDate(){
-		recentActivitiesCounter.set(0);
+
 		List<File> mostRecents = new ArrayList<File>();
 		if(!new File(searchEverywhereCacheService.resultsFolder).listFiles().grep{it.file}.grep(~/.*/).isEmpty()){
 			mostRecents.add(new File(searchEverywhereCacheService.resultsFolder).listFiles().grep{it.file}.grep(~/.*/).sort{it.lastModified()}.reverse().head())

@@ -2,7 +2,7 @@
 <g:set var="notifyService" bean="notifyService"/>
 
 <ul class="notification-body">
-<g:each in="${notifyService.getLatestSearchableFiles(5)}" var="searchableFile">
+<g:each in="${notifyService.getLatestSearchableFiles(notifyService.getTotalRecentSearchableFilesActivities())}" var="searchableFile">
 
 	<li>
 		<span class="padding-10 unread">

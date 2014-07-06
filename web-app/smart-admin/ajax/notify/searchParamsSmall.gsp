@@ -2,7 +2,7 @@
 <g:set var="notifyService" bean="notifyService"/>
 
 <ul class="notification-body">
-<g:each in="${notifyService.getLatestSearchParams(5)}" var="searchParam">
+<g:each in="${notifyService.getLatestSearchParams(notifyService.getTotalRecentSearchParamsActivities())}" var="searchParam">
 
 	<li>
 		<span class="padding-10 unread">

@@ -4,7 +4,7 @@
 <%@ page import="search.everywhere.SearchableFileDAOService" %>
 <g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 <ul class="notification-body">
-<g:each in="${notifyService.getLatestResults(5)}" var="result">
+<g:each in="${notifyService.getLatestResults(notifyService.getTotalRecentResultsActivities())}" var="result">
 
 	
 	<li>

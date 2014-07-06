@@ -47,7 +47,7 @@ class ResultDAOService {
 		file1.write result.encodeAsJSON().toString()
 		searchEverywhereCacheService.resultCache.put(result.identifier,result)
 		commonResultsDAOService.addResult(result)
-		notifyService.addActivity();
+		notifyService.addResultActivity();
 	}
 
 	def void removeResult(String identifier){

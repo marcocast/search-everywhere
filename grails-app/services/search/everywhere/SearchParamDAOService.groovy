@@ -36,7 +36,7 @@ class SearchParamDAOService {
 		def file1 = new File(searchEverywhereCacheService.searchParamsFolder + "/" + searchParam.identifier)
 		file1.write searchParam.encodeAsJSON().toString()
 		searchEverywhereCacheService.searchParamCache.put(searchParam.identifier,searchParam)
-		notifyService.addActivity();
+		notifyService.addSearchParamActivity();
 	}
 
 	def void removeSearchParam(String identifier){

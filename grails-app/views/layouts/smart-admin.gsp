@@ -79,13 +79,13 @@
 					<div class="btn-group btn-group-justified" data-toggle="buttons" >
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/resultsSmall.gsp">
-							<small>Results</small></label>
+							<small>Results ${notifyService.getTotalRecentResultsActivities()}</small></label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchableFilesSmall.gsp">
-							<small>Searchable Files</small></label>
+							<small>Searchable Files ${notifyService.getTotalRecentSearchableFilesActivities()}</small></label>
 						<label class="btn btn-default">
 							<input type="radio" name="activity" id="${request.contextPath}/smart-admin/ajax/notify/searchParamsSmall.gsp">
-							<small>Search Params</small></label>
+							<small>Search Params ${notifyService.getTotalRecentSearchParamsActivities()}</small></label>
 					</div>
 
 					<!-- notification content -->
