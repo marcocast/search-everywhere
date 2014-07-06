@@ -29,6 +29,15 @@ class IntraSearchController {
 			searchParamDAOService.getAllSearchParams().findAll{
 				(it.name.indexOf(text) != -1 || it.text.indexOf(text) != -1 )
 			}.each { searchParamsList.add(it) }
+
+			for(SearchParam searchParan  : searchParamDAOService.getAllSearchParams()){
+				for(String searchableFileIdentifier : searchParan.searchableFileNames){
+					SearchableFile searchableFile = searchableFileDAOService.getSearchableFile(searchableFileIdentifier);
+					if(searchableFile.name.indexOf(text)!= -1 || searchableFile.url.indexOf(text)!= -1 ){
+						searchParamsList.add(searchParan)
+					}
+				}
+			}
 		}
 
 
