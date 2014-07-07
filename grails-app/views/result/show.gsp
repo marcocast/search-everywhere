@@ -120,7 +120,8 @@
 													        <small> on </small>
 													        </li>
 													        <li>
-													        <strong><u>${searchableFileDAOService.getSearchableFile(resultInstance.searchableFileNames.first()).name} </u></strong>
+													        <g:link controller="searchableFile" action="show" id="${resultInstance.searchableFileNames.first()}" params="[identifier: resultInstance.searchableFileNames.first()]">${searchableFileDAOService.getSearchableFile(resultInstance.searchableFileNames.first()).name}</g:link>
+
 													        </li>
 													        <li>
 														        <g:if test="${resultInstance.totalMatches > -1 }">		
@@ -136,7 +137,8 @@
 																	</section>
 																</g:else>	
 														    </li>
-	
+	 														<li><small>${new Date(resultInstance.resultDate)}</small>
+	 														 </li>
 												        </ul>
 													</header>
 														

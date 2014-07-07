@@ -67,7 +67,7 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"><a  href="/search-everywhere"><strong>SS</strong>earc<strong>H</strong> Everywhere</a></span>
+				<span id="logo"><a href="${createLink(uri: '/', absolute: true)}"><strong>SS</strong>earc<strong>H</strong> Everywhere</a></span>
 				<!-- END LOGO PLACEHOLDER -->
 
 				<span id="activity" class="activity-dropdown"> <i class="fa fa-clock-o"></i> <b class="badge"> ${notifyService.getTotalActivity()} </b> </span>
@@ -205,7 +205,7 @@
 
 				<ul>
 					<li>
-						<a  href="/search-everywhere"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Search</span></a>
+						<a href="${createLink(uri: '/', absolute: true)}"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Home</span></a>
 						
 					</li>
 					<li>

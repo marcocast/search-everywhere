@@ -132,7 +132,7 @@
 												<span class="badge bg-color-red  pull-left toggle from"> <i class="fa fa-user fa-fw fa-trash-o"></i> ${searchableFileDAOService.getSearchableFileNameFromIdentifier(searchablefileName)} <i class="icon-paperclip"></i></span>
 											</g:if>
 											<g:else>
-											   	${searchableFileDAOService.getSearchableFile(searchablefileName).name}								
+												<g:link controller="searchableFile" action="show" id="${searchablefileName}" params="[identifier: searchablefileName]">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</g:link>
 											</g:else>
 										</g:each>
 									</td>

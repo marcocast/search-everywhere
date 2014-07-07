@@ -218,11 +218,11 @@
 																		<i class="icon-paperclip"></i></span>
 																</g:if>
 																<g:else>
-																	${searchableFileDAOService.getSearchableFile(searchablefileName).name}
+																<g:link controller="searchableFile" action="show" id="${searchablefileName}" params="[identifier: searchablefileName]">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</g:link>
 																</g:else>
 															</g:each></td>
 														<td>
-															${fieldValue(bean: resultInstance, field: "totalMatches")}
+														<g:link controller="result" action="show" id="${resultInstance.identifier}" params="[identifier: resultInstance.identifier]">${fieldValue(bean: resultInstance, field: "totalMatches")}</g:link>
 														</td>
 
 
