@@ -214,17 +214,17 @@
 					</li>
 					
 					<li>
-						<g:link controller="result" action="index"><i class="fa fa-lg fa-fw fa-list-ol"></i>Results<span class="badge pull-right inbox-badge"><g:totResults/></span></g:link>
+						<g:link controller="result" action="index"><i class="fa fa-lg fa-fw fa-list-ol"></i>Results<span class="badge bg-color-purple pull-right inbox-badge"><g:totResults/></span></g:link>
 						
 					</li>
 					
 					<li>
-						<g:link controller="searchableFile" action="index"><i class="fa fa-lg fa-fw fa-file-text"></i>Searchable Files<span class="badge pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
+						<g:link controller="searchableFile" action="index"><i class="fa fa-lg fa-fw fa-file-text"></i>Searchable Files<span class="badge bg-color-blue pull-right inbox-badge"><g:totSearchablefiles/></span></g:link>
 						
 					</li>
 					
 					<li>
-						<g:link controller="searchParam" action="index"><i class="fa fa-lg fa-fw fa-search-plus"></i>Search Params<span class="badge pull-right inbox-badge"><g:totSearchParams/></span></g:link>
+						<g:link controller="searchParam" action="index"><i class="fa fa-lg fa-fw fa-search-plus"></i>Search Params<span class="badge bg-color-pink pull-right inbox-badge"><g:totSearchParams/></span></g:link>
 						
 					</li>
 		
