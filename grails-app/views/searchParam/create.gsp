@@ -117,7 +117,7 @@
 												<fieldset class="buttons">
 													<g:submitButton name="create" class="btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 																								
-													<g:link class="btn btn-default" action="index" resource="${searchParamInstance}">List</g:link>
+													<g:link class="btn btn-default" action="index" resource="${searchParamInstance}"><i class="glyphicon glyphicon-chevron-left"></i> Back</g:link>
 													
 												</fieldset>
 											</footer>

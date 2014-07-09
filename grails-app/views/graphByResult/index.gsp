@@ -92,93 +92,98 @@
 
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-								
-									<div class="widget-body-toolbar">
-										
-										
-										<ul class="list-inline">
-											<li>
-											<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Filter results</button>
-											</li>
-											</ul>
-										
-										<!-- modal -->
-											<g:form action="filterResults" id="formFilterResults">
-														
-														<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-															<div class="modal-dialog">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-																			&times;
-																		</button>
-																		<h4 class="modal-title" id="myModalLabel">Filter Results</h4>
-																	</div>
-																	<div class="modal-body">
-														
-																		<div class="row">
-																			<div class="col-md-12">
-																				<div class="form-group">
-																					<input type="text" name="text" class="form-control" placeholder="Text"/>
-																				</div>
-																				
-																			</div>
-																		</div>
-																		<div class="row">
-																			<div class="col-md-12">
-																				<div class="form-group">
-																					<input type="text" name="searchableFileName" class="form-control" placeholder="Searchable File Name" />
-																				</div>
-																				
-																			</div>
-																		</div>
-																		<div class="row">
-																		<div class="col-sm-12">
-																					<label>Select a date (range):</label>
-																				</div>
-																				<div class="col-sm-6">
-											
-																					<div class="form-group">
-																						<div class="form-group">
-																							<input class="form-control" id="from" name="from" type="text" placeholder="From">
-																						</div>
-																					</div>
-											
-																				</div>
-																				<div class="col-sm-6">
-											
-																					<div class="form-group">
-																						<div class="form-group">
-																							<input class="form-control" id="to" name="to" type="text" placeholder="To">
-																						</div>
-																					</div>
-											
-																				</div>
-																		</div>
-														
-																	</div>
-																	<div class="modal-footer">
-																		<button type="button" class="btn btn-default" data-dismiss="modal">
-																			Cancel
-																		</button>
-																		<button type="submit" class="btn btn-primary">
-																			Filter Results
-																		</button>
-																	</div>
-								
-																</div><!-- /.modal-content -->
-															</div><!-- /.modal-dialog -->
-														</div><!-- /.modal -->
-												</g:form>	
-										
-									</div>
 
-									<g:form action="graph" id="formSearch" class="smart-form">
+								<div class="widget-body-toolbar">
+
+									<button class="btn bg-color-purple txt-color-white" data-toggle="modal"
+										data-target="#myModal">
+										<i class="fa fa-filter"></i> Filter results
+									</button>
+
+
+									<!-- modal -->
+									<g:form action="filterResults" id="formFilterResults">
+
+										<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+											aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+															&times;</button>
+														<h4 class="modal-title" id="myModalLabel">Filter Results</h4>
+													</div>
+													<div class="modal-body">
+
+														<div class="row">
+															<div class="col-md-12">
+																<div class="form-group">
+																	<input type="text" name="text" class="form-control" placeholder="Text" />
+																</div>
+
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="form-group">
+																	<input type="text" name="searchableFileName" class="form-control"
+																		placeholder="Searchable File Name" />
+																</div>
+
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12">
+																<label>Select a date (range):</label>
+															</div>
+															<div class="col-sm-6">
+
+																<div class="form-group">
+																	<div class="form-group">
+																		<input class="form-control" id="from" name="from" type="text" placeholder="From">
+																	</div>
+																</div>
+
+															</div>
+															<div class="col-sm-6">
+
+																<div class="form-group">
+																	<div class="form-group">
+																		<input class="form-control" id="to" name="to" type="text" placeholder="To">
+																	</div>
+																</div>
+
+															</div>
+														</div>
+
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">
+															<i class="glyphicon glyphicon-remove"></i> Cancel
+														</button>
+														<button type="submit" class="btn bg-color-purple txt-color-white">
+															<i class="fa fa-filter"></i> Filter Results
+														</button>
+													</div>
+
+												</div>
+												<!-- /.modal-content -->
+											</div>
+											<!-- /.modal-dialog -->
+										</div>
+										<!-- /.modal -->
+									</g:form>
+
+								</div>
+
+								<g:form action="graph" id="formSearch" class="smart-form">
 									<div class="widget-body-toolbar">
-										<button href="javascript:void(0)" type="submit" class="btn btn-sm btn-primary"> <i class="fa fa-bar-chart-o"></i> Generate Graph </button>				
+										<button type="submit" class="btn btn-primary">
+											<i class="fa fa-bar-chart-o fa-14x fa-border"></i> Generate Graph
+										</button>
 									</div>
 									<div class="table-responsive">
-									
+
 										<table id="dt_basic_result_graph"
 											class="table table-bordered table-striped table-hover smart-form has-tickbox">
 											<thead>
@@ -205,9 +210,9 @@
 															${new Date(resultInstance.resultDate)}
 														</td>
 														<td>
-															${fieldValue(bean: resultInstance, field: "text")} <g:if
-																test="${resultInstance?.regex==true}">
-																<span class="badge pull-right toggle state-disabled">Regex</span>
+															${fieldValue(bean: resultInstance, field: "text")} 
+															<g:if test="${resultInstance?.regex==true}">
+																<span class="label bg-color-blueLight txt-color-white">Regex</span>
 															</g:if>
 														</td>
 														<td><g:each in="${resultInstance.searchableFileNames}" status="u"
@@ -218,12 +223,16 @@
 																		<i class="icon-paperclip"></i></span>
 																</g:if>
 																<g:else>
-																<g:link controller="searchableFile" action="show" id="${searchablefileName}" params="[identifier: searchablefileName]">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</g:link>
+																	<g:link controller="searchableFile" action="show" id="${searchablefileName}"
+																		params="[identifier: searchablefileName]">
+																		${searchableFileDAOService.getSearchableFile(searchablefileName).name}
+																	</g:link>
 																</g:else>
 															</g:each></td>
-														<td>
-														<g:link controller="result" action="show" id="${resultInstance.identifier}" params="[identifier: resultInstance.identifier]">${fieldValue(bean: resultInstance, field: "totalMatches")}</g:link>
-														</td>
+														<td><g:link controller="result" action="show" id="${resultInstance.identifier}"
+																params="[identifier: resultInstance.identifier]">
+																${fieldValue(bean: resultInstance, field: "totalMatches")}
+															</g:link></td>
 
 
 

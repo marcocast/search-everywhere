@@ -159,10 +159,10 @@
 											
 											<footer>
 												<fieldset class="buttons">
-													<g:link class="btn btn-danger" action="delete" params="[identifier: searchableFileInstance.identifier]" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" ><g:message code="default.button.delete.label" default="Delete" /></g:link>
-													<g:link class="btn btn-primary" action="edit" params="[identifier: searchableFileInstance.identifier]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-													<g:link class="btn btn-primary" action="copy" params="[identifier: searchableFileInstance.identifier]"><g:message code="default.button.copy.label" default="Copy" /></g:link>
-													<g:link class="btn btn-default" action="index">List</g:link>
+													<g:link class="btn btn-danger" action="delete" params="[identifier: searchableFileInstance.identifier]" onclick="return confirm('All Results and Search Params associated with this Searchable File will be removed. Are you sure you want to proceed?');" ><i class="fa fa-trash-o"></i> <g:message code="default.button.delete.label" default="Delete" /></g:link>
+													<g:link class="btn btn-primary" action="edit" params="[identifier: searchableFileInstance.identifier]"><i class="fa fa-edit"></i> <g:message code="default.button.edit.label" default="Edit" /></g:link>
+													<g:link class="btn bg-color-orange" action="copy" params="[identifier: searchableFileInstance.identifier]"><i class="fa fa-copy"></i> <g:message code="default.button.copy.label" default="Copy" /></g:link>
+													<g:link class="btn btn-default" action="index"><i class="glyphicon glyphicon-chevron-left"></i> Back</g:link>
 				
 												</fieldset>
 											</footer>

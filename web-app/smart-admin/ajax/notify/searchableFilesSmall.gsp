@@ -8,7 +8,8 @@
 		<span class="padding-10 unread">
 
 			<em class="badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5">
-				<i class="fa fa-file fa-fw fa-2x"></i>
+				<g:link controller="searchableFile" action="show" id="${searchableFile.name}" params="[identifier: searchableFile.identifier]"><i class="fa fa-file fa-fw fa-2x"></i></g:link>						
+				
 			</em>
 			
 			<span>

@@ -95,16 +95,12 @@
 							<ul class="list-inline">
 							<li>
 							<g:form action="cleanAllResults" id="formFilterResults">
-									<button class="btn btn-primary" type="submit">
-										Clean results
-										<g:hiddenField name="resultInstanceList" value="${resultInstanceList*.identifier}" />
-									</button>							
+									<button class="btn btn-danger" type="submit"><i class="fa fa-trash-o"></i> Clean results</button>					
+									<g:hiddenField name="resultInstanceList" value="${resultInstanceList*.identifier}" />		
 							</g:form>
 							</li>
 							<li>
-							<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-								Filter results
-							</button>
+							<button class="btn bg-color-purple txt-color-white" data-toggle="modal" data-target="#myModal"><i class="fa fa-filter"></i> Filter results</button>
 							</li>
 							
 							
@@ -168,12 +164,8 @@
 							
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">
-												Cancel
-											</button>
-											<button type="submit" class="btn btn-primary">
-												Filter Results
-											</button>
+											<button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+																		<button type="submit" class="btn bg-color-purple txt-color-white"><i class="fa fa-filter"></i> Filter Results</button>
 										</div>
 	
 									</div><!-- /.modal-content -->

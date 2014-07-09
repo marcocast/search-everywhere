@@ -11,29 +11,29 @@
 		<span class="padding-10 unread">
 
 			<em class="badge padding-5 no-border-radius bg-color-blueLight pull-left margin-right-5">
-				<i class="fa fa-arrow-circle-right fa-fw fa-2x"></i>
+				<g:link controller="result" action="show" id="${result.identifier}" params="[identifier: result.identifier]"><i class="fa fa-arrow-circle-right fa-fw fa-2x"></i></g:link>
 			</em>
 			
 			<span>
-				 On ${new Date(result.resultDate)} 
+				 <g:each in="${result.searchableFileNames}" status="u" var="searchablefileName">
+			    	<g:if test="${searchableFileDAOService.getSearchableFile(searchablefileName)==null}">
+						<span class="label bg-color-red"> <i class="fa fa-user fa-fw fa-trash-o"></i> ${searchableFileDAOService.getSearchableFileNameFromIdentifier(searchablefileName)} <i class="icon-paperclip"></i></span>
+					</g:if>
+					<g:else>
+					   	<g:link controller="searchableFile" action="show" id="${searchablefileName}" params="[identifier: searchablefileName]">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</g:link>						
+					</g:else>
+				</g:each>
 				 <br>
-				 with text <span class="text-warning">${result.text}</span> 
+				 with text "<span class="text-warning">${result.text}</span>" 
 				 <g:if test="${result.regex==true}">
 					<span class="badge pull-right toggle state-disabled">Regex</span>
 				</g:if>
 				<br>
-				On profile : 
-				 <g:each in="${result.searchableFileNames}" status="u" var="searchablefileName">
-			    	<g:if test="${searchableFileDAOService.getSearchableFile(searchablefileName)==null}">
-						<span class="badge bg-color-red  pull-left toggle from"> <i class="fa fa-user fa-fw fa-trash-o"></i> ${searchableFileDAOService.getSearchableFileNameFromIdentifier(searchablefileName)} <i class="icon-paperclip"></i></span>
-					</g:if>
-					<g:else>
-					   	<span class="text-primary">${searchableFileDAOService.getSearchableFile(searchablefileName).name}</span>								
-					</g:else>
-				</g:each>
+				 Total lines found <span class="text-success"><strong>${result.totalMatches}</strong></span>
+				<br>
 
 				 <br>
-				 <span class="pull-right font-xs">Total Lines found : <i>${result.totalMatches}</i></span>
+				 <span class="pull-right font-xs"><i>${new Date(result.resultDate)}</i></span>
 			</span>
 			
 		</span>

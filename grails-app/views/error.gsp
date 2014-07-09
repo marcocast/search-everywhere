@@ -147,7 +147,7 @@
 										</p>
 								<div class="text-center error-box">
 									<ul class="error-search text-left font-md">
-							            <li><a href="/search-everywhere"><small>Go to My Dashboard <i class="fa fa-arrow-right"></i></small></a></li>
+							            <li><a href="${createLink(uri: '/', absolute: true)}"><small>Go to My Dashboard <i class="fa fa-arrow-right"></i></small></a></li>
 							            <li><a href="mailto:marcocast@gmail.com"><small>Contact SSearcH Everywhere IT <i class="fa fa-mail-forward"></i></small></a></li>
 							            <li><a href="javascript:history.back();"><small>Go back</small></a></li>
 							        </ul>

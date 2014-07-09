@@ -36,7 +36,7 @@
 				</g:else></li>
 			<li>
 				
-					<g:remoteLink class="btn btn-primary pull-right" controller="search" action="executeSearch"
+					<g:remoteLink controller="search" action="executeSearch"
 						update="resultBox${result.searchableFileNames.first()}"
 						params="'name=${result.identifier}&text=${result.text}&regex=${result.regex}&searchableFileName=${result.searchableFileNames.first()}'">Search again <i
 							class="fa fa-refresh"></i>

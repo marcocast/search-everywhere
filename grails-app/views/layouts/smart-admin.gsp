@@ -59,7 +59,7 @@
 		<r:layoutResources/>
 		
 	</head>
-	<body class="fixed-width fixed-header fixed-ribbon fixed-navigation">
+	<body class="smart-rtl fixed-width fixed-header fixed-ribbon fixed-navigation">
 		<!-- possible classes:  minified, fixed-ribbon, fixed-header, fixed-width-->
 
 		<!-- HEADER -->
