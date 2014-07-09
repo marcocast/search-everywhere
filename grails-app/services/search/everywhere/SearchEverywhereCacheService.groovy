@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service
 class SearchEverywhereCacheService {
 
 	private static final String userHomeFolder  = System.getProperty("user.home");
-	private static final String searchEverywhereHomeFolder = userHomeFolder + "/.search-everywhere";
+	private static final String searchEverywhereHomeFolder = userHomeFolder + "/.ssearch-everywhere";
 	static final String searchableFilesFolder = searchEverywhereHomeFolder + "/searchable-files";
 	static final String searchParamsFolder = searchEverywhereHomeFolder + "/search-params";
 	static final String resultsFolder = searchEverywhereHomeFolder + "/results";
-	static final String textResultsFolder = searchEverywhereHomeFolder + "/textResults";
-	static final String commonResultsFolder = searchEverywhereHomeFolder + "/commonResults";
-	static final String commonResultsDataFolder = searchEverywhereHomeFolder + "/commonResultsData";
+	static final String textResultsFolder = resultsFolder + "/textResults";
+	static final String commonResultsFolder = resultsFolder + "/commonResults";
+	static final String commonResultsDataFolder = commonResultsFolder + "/commonResultsData";
 	final Map<String,SearchableFile> searchableFileCache = new ConcurrentHashMap<String,SearchableFile>();
 	final Map<String,SearchParam> searchParamCache = new ConcurrentHashMap<String,SearchParam>();
 	final Map<String,Result> resultCache = new ConcurrentHashMap<String,Result>();
@@ -67,7 +67,7 @@ class SearchEverywhereCacheService {
 	def loadSearchbaleFiles() {
 
 		def dir = new File(searchableFilesFolder)
-		dir.eachFileRecurse (FileType.FILES) { file ->
+		dir.eachFile (FileType.FILES) { file ->
 			searchableFileCache.put(file.name, new SearchableFile(JSON.parse(file.text)))
 		}
 	}
@@ -76,7 +76,7 @@ class SearchEverywhereCacheService {
 	def loadSearchParams() {
 
 		def dir = new File(searchParamsFolder)
-		dir.eachFileRecurse (FileType.FILES) { file ->
+		dir.eachFile (FileType.FILES) { file ->
 			searchParamCache.put(file.name, new SearchParam(JSON.parse(file.text)))
 		}
 	}
@@ -84,7 +84,7 @@ class SearchEverywhereCacheService {
 	def loadResults() {
 
 		def dir = new File(resultsFolder)
-		dir.eachFileRecurse (FileType.FILES) { file ->
+		dir.eachFile (FileType.FILES) { file ->
 			resultCache.put(file.name, new Result(JSON.parse(file.text)))
 		}
 	}
@@ -92,7 +92,7 @@ class SearchEverywhereCacheService {
 	def loadCommonResults() {
 
 		def dir = new File(commonResultsFolder)
-		dir.eachFileRecurse (FileType.FILES) { file ->
+		dir.eachFile (FileType.FILES) { file ->
 			commonResultsCache.put(file.name, new ArrayList<Long>(JSON.parse(file.text)))
 		}
 	}
@@ -100,7 +100,7 @@ class SearchEverywhereCacheService {
 	def loadCommonResultsData() {
 
 		def dir = new File(commonResultsDataFolder)
-		dir.eachFileRecurse (FileType.FILES) { file ->
+		dir.eachFile (FileType.FILES) { file ->
 			commonResultsDataCache.put(file.name, file.text)
 		}
 	}

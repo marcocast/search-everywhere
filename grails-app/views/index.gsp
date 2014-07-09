@@ -112,7 +112,7 @@
 			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-3">
 				<h1 class="page-title txt-color-blueDark">
 					<i class="fa fa-home fa-fw "></i> 
-						Welcome to SSearch Everywhere 
+						Welcome 
 				</h1>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-9">
@@ -127,11 +127,25 @@
 					
 						
 					<div class="bs-example bs-example-type">
-			<p>Congratulations, you have successfully started your <strong>SS</strong>earc<strong>H</strong> everywhere application! </p>
+			<p>Congratulations, you have successfully started your <strong>SS</strong>earc<strong>H</strong> Everywhere application! </p>
 
 			<p>SSearcH Everywhere is a simple and useful application that will make the search of text in remote files easy and fun.</p>
 			
 			<p>As you got it from the name, the connections to remote files are done through SSH, and The actual search are normal greps with or without regex</p>
+			
+			<br>
+			
+			<p>SSearcH stores all its information in the folder ~/.ssearch-everywhere</p>
+			<p>there you can find the following main folders:</p>
+			
+			<ul>
+			<li>searchable-files</li>
+			<li>search-params</li>
+			<li>results</li>
+			</ul>
+			<p>In case you want to back up data, just save the folder(s) you want to backup in another location</p>
+			<p>If instead you want to complete reset data, just remove the ~/.ssearch-everywhere folder entirely and restart the app</p>
+			
 			
 			<p>Ok, so lets start :)</p>
 			
@@ -175,7 +189,7 @@
 				</g:if>
 				<g:else>
 					
-					Ok, so now you know the main 3 concept of SSearcH Everywhere, so have fun and remember to clean your results sometimes :)	
+					Ok, so now you know the main concepts of SSearcH Everywhere, so have fun and remember to clean your results sometimes :)	
 					
 				</g:else>
 			

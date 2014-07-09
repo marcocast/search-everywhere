@@ -67,7 +67,7 @@
 			<div id="logo-group">
 
 				<!-- PLACE YOUR LOGO HERE -->
-				<span id="logo"><a href="${createLink(uri: '/', absolute: true)}"><strong>SS</strong>earc<strong>H</strong> Everywhere</a></span>
+				<span id="logo"><a href="${createLink(uri: '/', absolute: true)}"><img src="${request.contextPath}/smart-admin/img/SSearcH_Everywhere.png" alt="SmartAdmin"></a></span>
 				<!-- END LOGO PLACEHOLDER -->
 
 				<span id="activity" class="activity-dropdown"> <i class="fa fa-clock-o"></i> <b class="badge"> ${notifyService.getTotalActivity()} </b> </span>
