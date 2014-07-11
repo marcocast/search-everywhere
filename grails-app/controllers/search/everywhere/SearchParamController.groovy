@@ -33,12 +33,14 @@ class SearchParamController {
 			return
 		}
 
+		searchParamInstance.searchableFileNames = [params.pnames].flatten().findAll{ it != null }
+
 		if (searchParamInstance.hasErrors()) {
 			respond searchParamInstance.errors, view:'create'
 			return
 		}
 
-		searchParamInstance.searchableFileNames = [params.pnames].flatten().findAll{ it != null }
+
 
 		searchParamDAOService.addSearchParam(searchParamInstance)
 

@@ -1,6 +1,7 @@
 <%@ page import="search.everywhere.SearchParam"%>
 <%@ page import="search.everywhere.SearchableFile"%>
-
+<%@ page import="search.everywhere.SearchableFileDAOService" %>
+<g:set var="searchableFileDAOService" bean="searchableFileDAOService"/>
 
 <fieldset>
 
@@ -63,11 +64,11 @@
 	<section>
 
 		<div
-			class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'searchableFileNames', 'error')} ">
-			<label for="searchableFileNames" class="label">Select Searchable files</label> <label
-				class="select select-multiple"> <select name="pnames" multiple style="width: 100%"
-				class="select2">
-					<g:each in="${searchableFileInstanceList}" status="i" var="searchableFileInstance">
+			class="fieldcontain ${hasErrors(bean: searchParamInstance, field: 'searchableFileNames', 'error')} required">
+			<label for="searchableFileNames" class="label">Select Searchable files</label> 
+			<span class="required-indicator">*</span>
+			<label class="select select-multiple"> <select name="pnames" multiple style="width: 100%" class="select2">
+					<g:each in="${searchableFileDAOService.getAllSearchableFiles()}" status="i" var="searchableFileInstance">
 
 						<g:if
 							test="${searchParamInstance?.searchableFileNames != null && searchParamInstance?.searchableFileNames.contains(searchableFileInstance.identifier)}">

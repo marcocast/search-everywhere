@@ -178,8 +178,9 @@
 
 								<g:form action="graph" id="formSearch" class="smart-form">
 									<div class="widget-body-toolbar">
+										&nbsp;&nbsp;
 										<button type="submit" class="btn btn-primary">
-											<i class="fa fa-bar-chart-o fa-14x fa-border"></i> Generate Graph
+											&nbsp;&nbsp;<i class="fa fa-bar-chart-o fa-border"></i><span class="font-md"> Generate Graph&nbsp;&nbsp;</span>
 										</button>
 									</div>
 									<div class="table-responsive">
@@ -188,8 +189,8 @@
 											class="table table-bordered table-striped table-hover smart-form has-tickbox">
 											<thead>
 												<tr>
-													<th><label class="checkbox"> <input type="checkbox"
-															id="checkbox-inline-all" name="checkbox-inline-all"> <i></i>
+													<th><label class="checkbox"><input type="checkbox"
+															id="checkbox-inline-all" name="checkbox-inline-all"><i></i>
 													</label></th>
 													<th>Result Date</th>
 													<th>Text</th>

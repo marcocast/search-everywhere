@@ -121,7 +121,7 @@
 		</div>
 		<div class="row">
 		<!-- NEW WIDGET START -->
-		<div class="col-sm-6">
+		<div class="col-sm-6 col-lg-12">
 			
 					<!-- widget content -->
 					
@@ -172,8 +172,13 @@
 				
 				
 				<br>
-				<g:render template="/layouts/mostcommon" />
 				
+				<div class="col-sm-6 col-lg-9">
+				<g:render template="/layouts/mostcommon" />
+				</div>
+				<br>
+				<br>
+				<br>
 				<p>The percentage you see above, is the trend of your searches.</p>
 				<p>The most 3 common search trends will be shown.</p>
 				

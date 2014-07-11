@@ -32,13 +32,13 @@
 	</label>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'path', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: searchableFileInstance, field: 'path', 'error')} required">
 	<label class="label"  for="path">
 		<g:message code="searchableFile.path.label" default="Path" />
-		
+		<span class="required-indicator">*</span>
 	</label>
 	<label class="input">
-		<g:textField name="path" value="${searchableFileInstance?.path}"/>
+		<g:textField name="path" required=""  value="${searchableFileInstance?.path}"/>
 	</label>
 </div>
 

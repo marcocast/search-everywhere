@@ -30,7 +30,7 @@ class CommonResultsDAOService {
 
 		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
 			it.value.size()
-		}.entrySet().toList().reverse()
+		}.entrySet().toList().reverse().take(12)
 
 		if(entries.size() > 0){
 
@@ -46,7 +46,7 @@ class CommonResultsDAOService {
 
 		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
 			it.value.size()
-		}.entrySet().toList().reverse()
+		}.entrySet().toList().reverse().take(12)
 
 		if(entries.size() > 1){
 
@@ -62,7 +62,7 @@ class CommonResultsDAOService {
 
 		List<Entry<String, List<Long>>> entries = searchEverywhereCacheService.commonResultsCache.sort {
 			it.value.size()
-		}.entrySet().toList().reverse()
+		}.entrySet().toList().reverse().take(12)
 
 		if(entries.size() > 2){
 
