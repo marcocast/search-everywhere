@@ -34,12 +34,11 @@
 						</label>
 					</section>
 				</g:else></li>
-			<li>
-				
-					<g:remoteLink controller="search" action="executeSearch"
+			<li>				
+					<g:remoteLink controller="search" class="btn btn-primary" action="executeSearch" 
 						update="resultBox${result.searchableFileNames.first()}"
-						params="'name=${result.identifier}&text=${result.text}&regex=${result.regex}&searchableFileName=${result.searchableFileNames.first()}'">Search again <i
-							class="fa fa-refresh"></i>
+						params="'name=${result.identifier}&text=${result.text}&regex=${result.regex}&searchableFileName=${result.searchableFileNames.first()}'">&nbsp;Search again <i
+							class="fa fa-refresh">&nbsp;</i>							
 					</g:remoteLink>
 			
 

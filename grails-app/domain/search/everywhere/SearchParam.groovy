@@ -11,7 +11,7 @@ class SearchParam {
 
 
 	static constraints = {
-		name size: 5..15, blank: false, nullable: false, validator: {
+		name size: 5..30, blank: false, nullable: false, validator: {
 			if (it.isEmpty() ||it.indexOf('/') > -1 || it.indexOf('?') > -1 || it.indexOf('|') > -1 ||it.indexOf('{') > -1 || it.indexOf('}') > -1 || it.indexOf('_') > -1 || it.indexOf('[') > -1 || it.indexOf(']') > -1 || it.indexOf('*') > -1 || it.indexOf('-') > -1) return ['invalid.bountyhunter']
 		}
 		identifier nullable: true
